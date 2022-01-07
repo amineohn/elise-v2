@@ -1,6 +1,6 @@
 html,
 body {
-  @apply font-default transition ease-in-out antialiased p-0 m-0 select-none;
+  @apply font-default transition ease-in-out antialiased p-0 m-0 select-none overflow-hidden;
 }
 
 body {
@@ -37,6 +37,22 @@ p {
 }
 ::-webkit-scrollbar-corner {
   @apply hidden;
+}
+.scale {
+  animation: myAnim 1s ease 0s 1 normal forwards;
+}
+@keyframes myAnim {
+  0% {
+    opacity: 0;
+    animation-duration: 0.1ms;
+    transform: translateX(-50px);
+  }
+
+  100% {
+    opacity: 1;
+    animation-duration: 0.1ms;
+    transform: translateX(0);
+  }
 }
 @tailwind base;
 @tailwind components;
