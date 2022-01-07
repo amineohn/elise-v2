@@ -21,7 +21,7 @@ const Home: NextPage = () => {
               </button>
               <button onClick={() => router.push("/chose")}>
                 <div className="rounded-full py-10 px-10 border border-black bg-white" />
-                <span className="text-xl font-bold">Papier</span>
+                <span className="text-xl font-bold">Cartons</span>
               </button>
               <button onClick={() => router.push("/chose")}>
                 <div className="rounded-full py-10 px-10 border border-black bg-white" />

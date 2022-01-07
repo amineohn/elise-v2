@@ -1,9 +1,16 @@
 import type { NextPage } from "next";
 import React from "react";
+import { Firebase } from "../libs/firebase";
 
 const Home: NextPage = () => {
   const [value, setValue] = React.useState("");
   const text = "Papier > Benne > 200kg";
+  const fire = new Firebase();
+  const handleChange = () => {
+    fire.collection("test").add({
+      value: value,
+    });
+  };
 
   return (
     <>
@@ -163,7 +170,10 @@ const Home: NextPage = () => {
                         </div>
                       </button>
                       <button type="button">
-                        <div className="rounded-full w-20 h-20 bg-green-500">
+                        <div
+                          className="rounded-full w-20 h-20 bg-green-500"
+                          onClick={handleChange}
+                        >
                           <div className="p-5">
                             <span className=" text-3xl font-bold text-white">
                               V
