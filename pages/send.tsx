@@ -1,26 +1,36 @@
 import type { NextPage } from "next";
-import React from "react";
+import React, { useState } from "react";
 import { Firebase } from "../libs/firebase";
 
 const Home: NextPage = () => {
-  const [value, setValue] = React.useState("");
+  const [value, setValue] = useState("");
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
   const text = "Papier > Benne > 200kg";
   const fire = new Firebase();
-  const handleChange = () => {
-    fire.collection("test").add({
-      value: value,
-    });
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (value === "") {
+      setError("Veuillez entrer une valeur");
+    } else {
+      setSuccess("Félicitation, vous avez bien été enregistré");
+      fire.collection("test").add({
+        value: value,
+      });
+    }
   };
 
   return (
     <>
+      {success && <div className="text-center text-green-500">{success}</div>}
+      {error && <div>{error}</div>}
       <div className="h-screen my-48 scale">
         <div className="flex flex-col py-5 px-1 space-y-2">
           <div>
             <h1 className="text-center font-bold text-2xl">Saisir un poids</h1>
           </div>
           <div className="flex justify-center items-center">
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="flex flex-col space-y-2">
                 <span className="text-xl font-bold">{text}</span>
                 <input
@@ -169,11 +179,8 @@ const Home: NextPage = () => {
                           </div>
                         </div>
                       </button>
-                      <button type="button">
-                        <div
-                          className="rounded-full w-20 h-20 bg-green-500"
-                          onClick={handleChange}
-                        >
+                      <button type="submit">
+                        <div className="rounded-full w-20 h-20 bg-green-500">
                           <div className="p-5">
                             <span className=" text-3xl font-bold text-white">
                               V
