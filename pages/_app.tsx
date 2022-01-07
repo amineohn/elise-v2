@@ -1,19 +1,12 @@
 import "../styles/globals.css";
-import React, { useEffect } from "react";
+import React from "react";
 import { ThemeProvider } from "next-themes";
 import { NextPage } from "next";
-import dynamic from "next/dynamic";
 import { StatusBar, Style } from "@capacitor/status-bar";
 import { Capacitor } from "@capacitor/core";
 import { SplashScreen } from "@capacitor/splash-screen";
-import { useRouter } from "next/router";
-import { Firebase } from "../libs/firebase";
 import { NextSeo } from "next-seo";
 import { configuration } from "../utils/configuration";
-const Navigation = dynamic(() => import("../components/navigation"), {
-  ssr: false,
-});
-const fire = new Firebase();
 const isAvailable = Capacitor.isPluginAvailable("StatusBar");
 const isAvailable2 = Capacitor.isPluginAvailable("SplashScreen");
 
@@ -36,13 +29,6 @@ export default function MyApp({
       SplashScreen.hide();
     }
   }
-  const router = useRouter();
-
-  useEffect(() => {
-    if (!fire.user()) {
-      router.push("/");
-    }
-  }, []);
   return (
     <>
       <NextSeo
@@ -63,12 +49,8 @@ export default function MyApp({
         }}
       />
       <ThemeProvider defaultTheme="light" attribute="class">
-        <div className="flex flex-col h-screen overflow-auto lg:overflow-y-hidden justify-between z-auto">
-          <Component {...pageProps} />
-          <Navigation />
-        </div>
+        <Component {...pageProps} />
       </ThemeProvider>
-      <script src="https://cdn.jsdelivr.net/npm/datalist-css/dist/datalist-css.min.js" />
     </>
   );
 }

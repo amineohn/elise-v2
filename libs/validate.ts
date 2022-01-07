@@ -1,27 +1,5 @@
-import { configuration } from "../utils/configuration";
 export class Validate {
   constructor() {}
-  email(email: string) {
-    return configuration.regex.email.test(String(email).toLowerCase());
-  }
-  password(password: string) {
-    return configuration.regex.password.test(password);
-  }
-  phone(phone: string) {
-    return configuration.regex.phone.test(phone);
-  }
-  collectTime(collectTime: string) {
-    return configuration.regex.collectTime.test(collectTime);
-  }
-  adress(address: string) {
-    return configuration.regex.address.test(address);
-  }
-  name(name: string) {
-    return configuration.regex.name.test(name);
-  }
-  frequency(frequency: string) {
-    return configuration.regex.frequency.test(frequency);
-  }
   errors(code: string, message: string) {
     switch (code) {
       case "auth/email-already-in-use":
