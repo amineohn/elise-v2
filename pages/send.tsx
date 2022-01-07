@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { Firebase } from "../libs/firebase";
 
@@ -19,7 +20,7 @@ const Home: NextPage = () => {
       });
     }
   };
-
+  const router = useRouter();
   return (
     <>
       <div className="h-screen my-48 scale">
@@ -34,7 +35,18 @@ const Home: NextPage = () => {
           </div>
         )}
         <div className="flex flex-col py-5 px-1 space-y-2">
-          <div>
+          <div className="flex justify-center">
+            <svg
+              className="fill-current text-black w-5 h-5 mt-2 mr-1"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 448 512"
+              onClick={() => router.push("/chose")}
+            >
+              <path
+                fill="currentColor"
+                d="M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"
+              />
+            </svg>
             <h1 className="text-center font-bold text-2xl">Saisir un poids</h1>
           </div>
           <div className="flex justify-center items-center">
