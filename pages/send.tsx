@@ -22,9 +22,17 @@ const Home: NextPage = () => {
 
   return (
     <>
-      {success && <div className="text-center text-green-500">{success}</div>}
-      {error && <div>{error}</div>}
       <div className="h-screen my-48 scale">
+        {success && (
+          <div className="flex justify-center">
+            <div className="text-center text-green-500">{success}</div>
+          </div>
+        )}
+        {error && (
+          <div className="flex justify-center">
+            <div className="text-center text-red-500">{error}</div>
+          </div>
+        )}
         <div className="flex flex-col py-5 px-1 space-y-2">
           <div>
             <h1 className="text-center font-bold text-2xl">Saisir un poids</h1>
