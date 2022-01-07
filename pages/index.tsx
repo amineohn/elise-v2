@@ -6,7 +6,7 @@ const Home: NextPage = () => {
   const router = useRouter();
   return (
     <>
-      <div className="flex flex-col py-5 px-1">
+      <div className="flex flex-col py-5 px-1 my-48">
         <div>
           <h1 className="text-center font-bold text-2xl">
             Choisir une matière

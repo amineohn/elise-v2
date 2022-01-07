@@ -6,11 +6,11 @@ const Home: NextPage = () => {
   const router = useRouter();
   return (
     <>
-      <div className="flex flex-col py-5 px-1 space-y-2">
+      <div className="flex flex-col py-5 px-1 space-y-2 my-48">
         <div>
           <h1 className="text-center font-bold text-2xl">Choisir une benne</h1>
         </div>
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center ">
           <div className="grid grid-cols-1 space-y-1">
             <div>
               <div
