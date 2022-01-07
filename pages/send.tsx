@@ -9,6 +9,7 @@ const Home: NextPage = () => {
   const [success, setSuccess] = useState("");
   const text = "Papier > Benne > 200kg";
   const fire = new Firebase();
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (value === "") {
@@ -21,6 +22,7 @@ const Home: NextPage = () => {
     }
   };
   const router = useRouter();
+
   return (
     <>
       <div className="h-screen my-48 scale">
