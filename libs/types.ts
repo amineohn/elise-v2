@@ -4,3 +4,6 @@ export type Example = {
   status: number;
   success?: boolean;
 };
+export type Data = {
+  value: string;
+};
