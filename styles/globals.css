@@ -1,10 +1,6 @@
 html,
 body {
-  @apply font-default transition ease-in-out antialiased p-0 m-0 select-none overflow-hidden;
-}
-
-body {
-  @apply bg-white transition-all;
+  @apply font-default ease-in-out antialiased p-0 m-0 select-none overflow-hidden bg-white transition-all dark:bg-black h-screen;
 }
 
 a {

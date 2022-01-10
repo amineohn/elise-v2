@@ -67,9 +67,9 @@ const Home: NextPage = () => {
       {error && <Toaster />}
 
       <div className="flex flex-col">
-        <div className="border border-black w-10 h-10 ml-6 mt-5 rounded-full px-2.5 py-2">
+        <div className="border border-black dark:border-white w-10 h-10 ml-6 mt-5 rounded-full px-2.5 py-2">
           <svg
-            className="fill-current text-black w-5 h-5"
+            className="fill-current text-black dark:text-white w-5 h-5"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 448 512"
             onClick={() => router.push("/chose")}
@@ -80,7 +80,7 @@ const Home: NextPage = () => {
             />
           </svg>
         </div>
-        <div className="border border-black w-10 h-10 ml-6 mt-3 rounded-full px-2.5 py-2">
+        <div className="border border-black dark:border-white w-10 h-10 ml-6 mt-3 rounded-full px-2.5 py-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -98,7 +98,7 @@ const Home: NextPage = () => {
           </svg>
         </div>
       </div>
-      <div className="h-screen my-20 scale">
+      <div className="h-screen my-10 scale">
         <div className="flex flex-col py-5 px-1 space-y-2">
           <div className="flex justify-center">
             <h1 className="text-center font-bold text-2xl">Saisir un poids</h1>
@@ -109,7 +109,7 @@ const Home: NextPage = () => {
                 <span className="text-xl font-bold">{text}</span>
                 <input
                   type="text"
-                  className="py-3 px-4 rounded-lg border border-black font-bold"
+                  className="py-3 px-4 rounded-lg border border-black dark:border-white dark:bg-black font-bold"
                   value={value + " kg"}
                 />
                 <div>
@@ -117,7 +117,7 @@ const Home: NextPage = () => {
                     <div className="space-x-1">
                       <button type="button">
                         <div
-                          className="rounded-full w-20 h-20 border border-black bg-white"
+                          className="rounded-full w-20 h-20 border dark:text-white dark:bg-black border-black dark:border-white bg-white"
                           onClick={() => setValue(value + "1")}
                         >
                           <div className="my-5">
@@ -129,7 +129,7 @@ const Home: NextPage = () => {
                       </button>
                       <button type="button">
                         <div
-                          className="rounded-full w-20 h-20 border border-black bg-white"
+                          className="rounded-full w-20 h-20 border dark:text-white dark:bg-black border-black dark:border-white bg-white"
                           onClick={() => setValue(value + "2")}
                         >
                           <div className="my-5">
@@ -141,7 +141,7 @@ const Home: NextPage = () => {
                       </button>
                       <button type="button">
                         <div
-                          className="rounded-full w-20 h-20 border border-black bg-white"
+                          className="rounded-full w-20 h-20 border dark:text-white dark:bg-black border-black dark:border-white bg-white"
                           onClick={() => setValue(value + "3")}
                         >
                           <div className="my-5">
@@ -155,7 +155,7 @@ const Home: NextPage = () => {
                     <div className="space-x-1">
                       <button type="button">
                         <div
-                          className="rounded-full w-20 h-20 border border-black bg-white"
+                          className="rounded-full w-20 h-20 border dark:text-white dark:bg-black border-black dark:border-white bg-white"
                           onClick={() => setValue(value + "4")}
                         >
                           <div className="my-5">
@@ -167,7 +167,7 @@ const Home: NextPage = () => {
                       </button>
                       <button type="button">
                         <div
-                          className="rounded-full w-20 h-20 border border-black bg-white"
+                          className="rounded-full w-20 h-20 border dark:text-white dark:bg-black border-black dark:border-white bg-white"
                           onClick={() => setValue(value + "5")}
                         >
                           <div className="my-5">
@@ -179,7 +179,7 @@ const Home: NextPage = () => {
                       </button>
                       <button type="button">
                         <div
-                          className="rounded-full w-20 h-20 border border-black bg-white"
+                          className="rounded-full w-20 h-20 border dark:text-white dark:bg-black border-black dark:border-white bg-white"
                           onClick={() => setValue(value + "6")}
                         >
                           <div className="my-5">
@@ -193,7 +193,7 @@ const Home: NextPage = () => {
                     <div className="space-x-1">
                       <button type="button">
                         <div
-                          className="rounded-full w-20 h-20 border border-black bg-white"
+                          className="rounded-full w-20 h-20 border dark:text-white dark:bg-black border-black dark:border-white bg-white"
                           onClick={() => setValue(value + "7")}
                         >
                           <div className="my-5">
@@ -205,7 +205,7 @@ const Home: NextPage = () => {
                       </button>
                       <button type="button">
                         <div
-                          className="rounded-full w-20 h-20 border border-black bg-white"
+                          className="rounded-full w-20 h-20 border dark:text-white dark:bg-black border-black dark:border-white bg-white"
                           onClick={() => setValue(value + "8")}
                         >
                           <div className="my-5">
@@ -217,7 +217,7 @@ const Home: NextPage = () => {
                       </button>
                       <button type="button">
                         <div
-                          className="rounded-full w-20 h-20 border border-black bg-white"
+                          className="rounded-full w-20 h-20 border dark:text-white dark:bg-black border-black dark:border-white bg-white"
                           onClick={() => setValue(value + "9")}
                         >
                           <div className="my-5">
@@ -243,7 +243,7 @@ const Home: NextPage = () => {
                       </button>
                       <button type="button">
                         <div
-                          className="rounded-full w-20 h-20 border border-black bg-white"
+                          className="rounded-full w-20 h-20 border dark:text-white dark:bg-black border-black dark:border-white bg-white"
                           onClick={() => setValue(value + "0")}
                         >
                           <div className="p-5">

@@ -6,9 +6,9 @@ const Home: NextPage = () => {
   const router = useRouter();
   return (
     <>
-      <div className="border border-black w-10 h-10 ml-6 mt-5 rounded-full px-2.5 py-2">
+      <div className="border border-black dark:border-white w-10 h-10 ml-6 mt-5 rounded-full px-2.5 py-2">
         <svg
-          className="fill-current text-black w-5 h-5"
+          className="fill-current text-black dark:text-white w-5 h-5"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 448 512"
           onClick={() => router.push("/")}
@@ -27,7 +27,7 @@ const Home: NextPage = () => {
           <div className="grid grid-cols-1 space-y-1">
             <div>
               <div
-                className="w-72 max-w-xl h-36 border border-black flex justify-between"
+                className="w-72 max-w-xl h-36 border border-black dark:border-white flex justify-between"
                 onClick={() => router.push("/send")}
               >
                 <div className="flex justify-end items-end top-0">
@@ -35,7 +35,7 @@ const Home: NextPage = () => {
                     <span className="text-center font-bold text-xl">200kg</span>
                     <div
                       style={{ height: "10px" }}
-                      className="bg-black w-[286px] bottom-0"
+                      className="bg-black dark:bg-white w-[286px] bottom-0"
                     />
                   </div>
                 </div>
@@ -46,7 +46,7 @@ const Home: NextPage = () => {
             </div>
             <div>
               <div
-                className="w-72 max-w-xl h-36 border border-black flex justify-between"
+                className="w-72 max-w-xl h-36 border border-black dark:border-white flex justify-between"
                 onClick={() => router.push("/send")}
               >
                 <div className="flex justify-end items-end top-0">
@@ -54,7 +54,7 @@ const Home: NextPage = () => {
                     <span className="text-center font-bold text-xl">100kg</span>
                     <div
                       style={{ height: "5px" }}
-                      className="bg-black w-[286px] bottom-0"
+                      className="bg-black dark:bg-white w-[286px] bottom-0"
                     />
                   </div>
                 </div>

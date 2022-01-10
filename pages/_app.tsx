@@ -7,6 +7,7 @@ import { Capacitor } from "@capacitor/core";
 import { SplashScreen } from "@capacitor/splash-screen";
 import { NextSeo } from "next-seo";
 import { configuration } from "../utils/configuration";
+import { Switch } from "../components/switch";
 const isAvailable = Capacitor.isPluginAvailable("StatusBar");
 const isAvailable2 = Capacitor.isPluginAvailable("SplashScreen");
 
@@ -49,6 +50,9 @@ export default function MyApp({
         }}
       />
       <ThemeProvider defaultTheme="light" attribute="class">
+        <div className="ml-7 mt-2">
+          <Switch />
+        </div>
         <Component {...pageProps} />
       </ThemeProvider>
     </>
