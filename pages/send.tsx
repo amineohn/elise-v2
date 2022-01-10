@@ -65,18 +65,38 @@ const Home: NextPage = () => {
     <>
       {success && <Toaster />}
       {error && <Toaster />}
-      <div className="border border-black w-10 h-10 ml-6 mt-5 rounded-full px-2.5 py-2">
-        <svg
-          className="fill-current text-black w-5 h-5"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 448 512"
-          onClick={() => router.push("/chose")}
-        >
-          <path
-            fill="currentColor"
-            d="M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"
-          />
-        </svg>
+
+      <div className="flex flex-col">
+        <div className="border border-black w-10 h-10 ml-6 mt-5 rounded-full px-2.5 py-2">
+          <svg
+            className="fill-current text-black w-5 h-5"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 448 512"
+            onClick={() => router.push("/chose")}
+          >
+            <path
+              fill="currentColor"
+              d="M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"
+            />
+          </svg>
+        </div>
+        <div className="border border-black w-10 h-10 ml-6 mt-3 rounded-full px-2.5 py-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            className="w-5 h-5 mr-1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            onClick={download}
+          >
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+        </div>
       </div>
       <div className="h-screen my-20 scale">
         <div className="flex flex-col py-5 px-1 space-y-2">
