@@ -28,10 +28,10 @@ const Home: NextPage = () => {
     e.preventDefault();
     if (value === "") {
       setError("Veuillez entrer une valeur");
-      toast.error(error);
+      toast.error("Veuillez entrer une valeur");
     } else {
       setSuccess("Félicitation, vous avez bien été enregistré");
-      toast.success(success);
+      toast.success("Félicitation, vous avez bien été enregistré");
       fire.collection("test").add({
         value: value + " kg",
       });
