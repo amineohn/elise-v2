@@ -44,13 +44,13 @@ p {
 @keyframes myAnim {
   0% {
     opacity: 0;
-    animation-duration: 0.1ms;
+    animation-duration: 0.05ms;
     transform: translateX(-50px);
   }
 
   100% {
     opacity: 1;
-    animation-duration: 0.1ms;
+    animation-duration: 0.05ms;
     transform: translateX(0);
   }
 }
