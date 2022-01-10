@@ -17,7 +17,7 @@ const Home: NextPage = () => {
     } else {
       setSuccess("Félicitation, vous avez bien été enregistré");
       fire.collection("test").add({
-        value: value,
+        value: value + "kg",
       });
     }
   };
