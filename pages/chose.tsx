@@ -27,28 +27,41 @@ const Home: NextPage = () => {
           <div className="grid grid-cols-1 space-y-1">
             <div>
               <div
-                className="w-72 max-w-xl h-56 border border-black"
+                className="w-72 max-w-xl h-36 border border-black flex justify-between"
                 onClick={() => router.push("/send")}
               >
-                <div className="flex justify-end items-end">
-                  <div className="bg-black w-[286px] h-5 bottom-0" />
+                <div className="flex justify-end items-end top-0">
+                  <div className="flex flex-col">
+                    <span className="text-center font-bold text-xl">200kg</span>
+                    <div
+                      style={{ height: "10px" }}
+                      className="bg-black w-[286px] bottom-0"
+                    />
+                  </div>
                 </div>
               </div>
               <div className="flex justify-center">
-                <span className="text-center font-bold">Benne 1</span>
+                <span className="text-center font-bold text-xl">Benne 1</span>
               </div>
             </div>
             <div>
               <div
-                className="w-72 max-w-xl h-56 border border-black"
+                className="w-72 max-w-xl h-36 border border-black flex justify-between"
                 onClick={() => router.push("/send")}
               >
-                <div className="flex justify-end items-end">
-                  <div className="bg-black w-[286px] h-5 bottom-0" />
+                <div className="flex justify-end items-end top-0">
+                  <div className="flex flex-col">
+                    <span className="text-center font-bold text-xl">100kg</span>
+                    <div
+                      style={{ height: "5px" }}
+                      className="bg-black w-[286px] bottom-0"
+                    />
+                  </div>
                 </div>
               </div>
+
               <div className="flex justify-center">
-                <span className="text-center font-bold">Benne 2</span>
+                <span className="text-center font-bold text-xl">Benne 2</span>
               </div>
             </div>
           </div>
