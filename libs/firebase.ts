@@ -22,7 +22,6 @@ export class Firebase {
   }
   constructor() {
     firebase.initializeApp(this.settings());
-    console.log("Initialize Firebase app(s): %d", firebase.apps.length);
   }
 
   user() {
@@ -298,6 +297,10 @@ export class Firebase {
       default:
         break;
     }
+  }
+  // credntials
+  async credentialId(email: string, password: string) {
+    return await firebase.auth.EmailAuthProvider.credential(email, password);
   }
   interceptor(url: string, callback: (error: any) => void) {
     this.functions().httpsCallable(url).call(callback);
