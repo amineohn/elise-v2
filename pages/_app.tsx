@@ -50,7 +50,7 @@ export default function MyApp({
         }}
       />
       <ThemeProvider defaultTheme="light" attribute="class">
-        <div className="ml-7 mt-2">
+        <div className="ml-6 mt-3">
           <Switch />
         </div>
         <Component {...pageProps} />
