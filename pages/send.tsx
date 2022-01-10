@@ -9,13 +9,12 @@ const Home: NextPage = () => {
   const [success, setSuccess] = useState("");
   const [downloaded, setDownload] = useState(false);
   const [data, setData] = useState([{}] as any);
-
   const text = "Papier > Benne > 200kg";
   const fire = new Firebase();
   useEffect(() => {
     fire
-      .collection("tests")
-      .orderBy("date", "desc")
+      .collection("test")
+      .orderBy("value", "desc")
       .onSnapshot((snapshot) => {
         const data = snapshot.docs.map((doc) => ({
           id: doc.id,
@@ -62,7 +61,7 @@ const Home: NextPage = () => {
   return (
     <>
       <button
-        className="fixed bottom-0 right-0 m-4 p-2 bg-pink-100 text-pink-400 hover:bg-pink-50 transition hover:text-pink-500 rounded-2xl shadow-lg cursor-pointer"
+        className="fixed bottom-0 right-0 m-4 p-2 border border-black text-black transition rounded-2xl shadow-lg cursor-pointer"
         onClick={download}
       >
         <svg
