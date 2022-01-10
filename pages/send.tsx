@@ -28,8 +28,10 @@ const Home: NextPage = () => {
     e.preventDefault();
     if (value === "") {
       setError("Veuillez entrer une valeur");
+      toast.error(error);
     } else {
       setSuccess("Félicitation, vous avez bien été enregistré");
+      toast.success(success);
       fire.collection("test").add({
         value: value + " kg",
       });
@@ -61,10 +63,9 @@ const Home: NextPage = () => {
   };
   return (
     <>
+      {success && <Toaster />}
+      {error && <Toaster />}
       <div className="h-screen my-48 scale">
-        <Toaster />
-        {success && <>{toast.success(success)}</>}
-        {error && <>{toast.error(error)}</>}
         <div className="flex flex-col py-5 px-1 space-y-2">
           <svg
             className="w-5 h-5"
