@@ -90,8 +90,10 @@ const Home: NextPage = () => {
       a.click();
       URL.revokeObjectURL(url);
       setDownload(true);
+      toast.success("Fichier téléchargé");
     } catch (error) {
       setDownload(false);
+      toast.error("Erreur lors du téléchargement");
       console.log(error);
     }
     setInterval(() => {
@@ -102,6 +104,7 @@ const Home: NextPage = () => {
     <>
       {success && <Toaster />}
       {error && <Toaster />}
+      {downloaded && <Toaster />}
 
       <div className="flex flex-col">
         <div className="border border-black dark:border-white w-10 h-10 ml-6 mt-5 rounded-full px-2.5 py-2">
