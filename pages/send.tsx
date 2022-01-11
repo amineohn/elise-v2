@@ -4,11 +4,13 @@ import React, { useEffect, useState } from "react";
 import { Firebase } from "../libs/firebase";
 import toast, { Toaster } from "react-hot-toast";
 import { Data } from "../libs/types";
+import Loading from "../components/loading";
 const Home: NextPage = () => {
   const [value, setValue] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [downloaded, setDownload] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [data, setData] = useState([{}] as any);
   const text = "Papier > Benne > 200kg";
   const fire = new Firebase();
@@ -24,19 +26,32 @@ const Home: NextPage = () => {
         setData(data);
       });
   }, []);
+  // check if firebase is connected
+  useEffect(() => {
+    setLoading(true);
+    if (fire.isConnected()) {
+      setLoading(false);
+    }
+    // check form is valid and set loading to submit
+  }, [fire.isConnected()]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setLoading(true);
     // check to the database if the value is already in the database
     if (value.length === 0) {
       toast.error("Vous devez entrer une valeur");
+      setLoading(false);
       return;
+    } else {
+      toast.success("Valeur ajoutée");
     }
     fire
       .collection("test")
       .where("value" + " kg", "==", data)
       .get()
       .then((snapshot) => {
+        setLoading(false);
         if (snapshot.empty) {
           // if the value is not in the database, then add it
           fire
@@ -46,11 +61,9 @@ const Home: NextPage = () => {
             })
             .then(() => {
               setSuccess("Votre valeur a été ajoutée");
-              toast.success("Votre valeur a été ajoutée");
             })
             .catch((error) => {
               setError(error.message);
-              toast.error(error.message);
             });
         } else {
           // if the value is in the database, then show an error
@@ -58,6 +71,7 @@ const Home: NextPage = () => {
           toast.error("Votre valeur existe déjà");
         }
       });
+    setLoading(false);
   };
   const router = useRouter();
   const download = async () => {
@@ -123,6 +137,7 @@ const Home: NextPage = () => {
       <div className="h-screen my-10 scale">
         <div className="flex flex-col py-5 px-1 space-y-2">
           <div className="flex justify-center">
+            {loading && <Loading />}
             <h1 className="text-center font-bold text-2xl">Saisir un poids</h1>
           </div>
           <div className="flex justify-center items-center">
