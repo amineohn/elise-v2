@@ -24,27 +24,40 @@ const Home: NextPage = () => {
         setData(data);
       });
   }, []);
-  const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    setSubmitted(true);
     e.preventDefault();
-    if (value === "") {
-      setError("Veuillez entrer une valeur");
-      toast.error("Veuillez entrer une valeur");
-      setSubmitted(false);
-    } else {
-      if (!submitted) {
-        toast.error("Vous avez déjà envoyé votre demande");
-      } else {
-        setSuccess("Félicitation, vous avez bien été enregistré");
-        toast.success("Félicitation, vous avez bien été enregistré");
-        fire.collection("test").add({
-          value: value + " kg",
-        });
-        setSubmitted(false);
-      }
+    // check to the database if the value is already in the database
+    if (value.length === 0) {
+      toast.error("Vous devez entrer une valeur");
+      return;
     }
+    fire
+      .collection("test")
+      .where("value" + " kg", "==", data)
+      .get()
+      .then((snapshot) => {
+        if (snapshot.empty) {
+          // if the value is not in the database, then add it
+          fire
+            .collection("test")
+            .add({
+              value: value + " kg",
+            })
+            .then(() => {
+              setSuccess("Votre valeur a été ajoutée");
+              toast.success("Votre valeur a été ajoutée");
+            })
+            .catch((error) => {
+              setError(error.message);
+              toast.error(error.message);
+            });
+        } else {
+          // if the value is in the database, then show an error
+          setError("Votre valeur existe déjà");
+          toast.error("Votre valeur existe déjà");
+        }
+      });
   };
   const router = useRouter();
   const download = async () => {
@@ -73,7 +86,6 @@ const Home: NextPage = () => {
   return (
     <>
       {success && <Toaster />}
-      {submitted && <Toaster />}
       {error && <Toaster />}
 
       <div className="flex flex-col">
