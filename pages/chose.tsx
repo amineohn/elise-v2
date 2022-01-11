@@ -27,7 +27,7 @@ const Home: NextPage = () => {
           <div className="grid grid-cols-1 space-y-1">
             <div>
               <div
-                className="w-72 max-w-xl h-36 border border-black dark:border-white flex justify-between"
+                className="w-72 max-w-xl h-36 border border-black dark:border-white flex justify-between rounded"
                 onClick={() => router.push("/send")}
               >
                 <div className="flex justify-end items-end top-0">
@@ -35,7 +35,7 @@ const Home: NextPage = () => {
                     <span className="text-center font-bold text-xl">200kg</span>
                     <div
                       style={{ height: "10px" }}
-                      className="bg-black dark:bg-white w-[286px] bottom-0"
+                      className="bg-black dark:bg-white w-[286px] bottom-0 rounded-b"
                     />
                   </div>
                 </div>
@@ -46,7 +46,7 @@ const Home: NextPage = () => {
             </div>
             <div>
               <div
-                className="w-72 max-w-xl h-36 border border-black dark:border-white flex justify-between"
+                className="w-72 max-w-xl h-36 border border-black dark:border-white flex justify-between rounded"
                 onClick={() => router.push("/send")}
               >
                 <div className="flex justify-end items-end top-0">
@@ -54,7 +54,7 @@ const Home: NextPage = () => {
                     <span className="text-center font-bold text-xl">100kg</span>
                     <div
                       style={{ height: "5px" }}
-                      className="bg-black dark:bg-white w-[286px] bottom-0"
+                      className="bg-black dark:bg-white w-[286px] bottom-0 rounded-b"
                     />
                   </div>
                 </div>
