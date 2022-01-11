@@ -39,38 +39,39 @@ const Home: NextPage = () => {
     e.preventDefault();
     setLoading(true);
     // check to the database if the value is already in the database
-    if (value.length === 0) {
-      toast.error("Vous devez entrer une valeur");
+    if (value === "") {
+      setError("Veuillez entrer une valeur");
+      toast.error("Veuillez entrer une valeur");
       setLoading(false);
       return;
     } else {
       toast.success("Valeur ajoutée");
+      fire
+        .collection("test")
+        .where("value" + " kg", "==", data)
+        .get()
+        .then((snapshot) => {
+          setLoading(false);
+          if (snapshot.empty) {
+            // if the value is not in the database, then add it
+            fire
+              .collection("test")
+              .add({
+                value: value + " kg",
+              })
+              .then(() => {
+                setSuccess("Votre valeur a été ajoutée");
+              })
+              .catch((error) => {
+                setError(error.message);
+              });
+          } else {
+            // if the value is in the database, then show an error
+            setError("Votre valeur existe déjà");
+            toast.error("Votre valeur existe déjà");
+          }
+        });
     }
-    fire
-      .collection("test")
-      .where("value" + " kg", "==", data)
-      .get()
-      .then((snapshot) => {
-        setLoading(false);
-        if (snapshot.empty) {
-          // if the value is not in the database, then add it
-          fire
-            .collection("test")
-            .add({
-              value: value + " kg",
-            })
-            .then(() => {
-              setSuccess("Votre valeur a été ajoutée");
-            })
-            .catch((error) => {
-              setError(error.message);
-            });
-        } else {
-          // if the value is in the database, then show an error
-          setError("Votre valeur existe déjà");
-          toast.error("Votre valeur existe déjà");
-        }
-      });
     setLoading(false);
   };
   const router = useRouter();
