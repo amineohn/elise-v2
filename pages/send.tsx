@@ -24,17 +24,26 @@ const Home: NextPage = () => {
         setData(data);
       });
   }, []);
+  const [submitted, setSubmitted] = useState(false);
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    setSubmitted(true);
     e.preventDefault();
     if (value === "") {
       setError("Veuillez entrer une valeur");
       toast.error("Veuillez entrer une valeur");
+      setSubmitted(false);
     } else {
-      setSuccess("Félicitation, vous avez bien été enregistré");
-      toast.success("Félicitation, vous avez bien été enregistré");
-      fire.collection("test").add({
-        value: value + " kg",
-      });
+      if (!submitted) {
+        toast.error("Vous avez déjà envoyé votre demande");
+      } else {
+        setSuccess("Félicitation, vous avez bien été enregistré");
+        toast.success("Félicitation, vous avez bien été enregistré");
+        fire.collection("test").add({
+          value: value + " kg",
+        });
+        setSubmitted(false);
+      }
     }
   };
   const router = useRouter();
@@ -64,6 +73,7 @@ const Home: NextPage = () => {
   return (
     <>
       {success && <Toaster />}
+      {submitted && <Toaster />}
       {error && <Toaster />}
 
       <div className="flex flex-col">
