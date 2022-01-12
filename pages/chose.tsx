@@ -106,7 +106,7 @@ const Home: NextPage = () => {
                           200kg
                         </span>
                         <div
-                          style={{ height: width.length + "px" }}
+                          style={{ height: width.length / 1 + "px" }}
                           className="bg-black dark:bg-white w-[286px] bottom-0 rounded-b"
                         />
                       </div>
