@@ -21,11 +21,13 @@ const Home: NextPage = () => {
   }, [router.query.selected]);
 
   // check current values from the database and update the state with firebase
+
   useEffect(() => {
     const fire = new Firebase();
     fire.collection("test").onSnapshot((snapshot) => {
       const data = snapshot.docs.map((doc) => doc.data());
-      setWidth(data as any);
+      //setWidth(data as any);
+      setWidth(data);
     });
     if (width >= "1500") {
       console.log("tu ne dois pas dépasser 1500"); // test
@@ -106,7 +108,7 @@ const Home: NextPage = () => {
                           200kg
                         </span>
                         <div
-                          style={{ height: width.length / 1 + "px" }}
+                          style={{ height: width.length + "px" }}
                           className="bg-black dark:bg-white w-[286px] bottom-0 rounded-b"
                         />
                       </div>
