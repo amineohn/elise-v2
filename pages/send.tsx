@@ -14,6 +14,7 @@ const Home: NextPage = () => {
   const [data, setData] = useState([{}] as any);
   const text = "Papier > Benne > 200kg";
   const fire = new Firebase();
+
   useEffect(() => {
     fire
       .collection("test")
