@@ -23,8 +23,7 @@ const Home: NextPage = () => {
   // check current values from the database and update the state with firebase
   useEffect(() => {
     const fire = new Firebase();
-    const db = fire.getFireStore();
-    db.collection("test").onSnapshot((snapshot) => {
+    fire.collection("test").onSnapshot((snapshot) => {
       const data = snapshot.docs.map((doc) => doc.data());
       setWidth(data as any);
     });
