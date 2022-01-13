@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import React, { FormEvent, useEffect, useState } from "react";
 import { Firebase } from "../libs/firebase";
 import toast, { Toaster } from "react-hot-toast";
 import { Data } from "../libs/types";
@@ -39,7 +39,7 @@ const Home: NextPage = () => {
     // check form is valid and set loading to submit
   }, [fire.isConnected()]);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
     // check to the database if the value is already in the database
