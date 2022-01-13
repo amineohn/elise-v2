@@ -27,7 +27,7 @@ const Home: NextPage = () => {
     fire.collection("test").onSnapshot((snapshot) => {
       const data = snapshot.docs.map((doc) => doc.data());
       //setWidth(data as any);
-      setWidth(data);
+      setWidth(data as any);
     });
     if (width >= "1500") {
       console.log("tu ne dois pas dépasser 1500"); // test
