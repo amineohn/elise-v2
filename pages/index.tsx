@@ -4,6 +4,7 @@ import React from "react";
 
 const Home: NextPage = () => {
   const router = useRouter();
+
   return (
     <>
       <div className="flex flex-col py-5 px-1 my-48 scale">

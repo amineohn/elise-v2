@@ -273,31 +273,30 @@ export class Firebase {
     return await auth.signInWithPopup(provider);
   }
 
-  async signWith(sign: string) {
-    const auth = this.auth();
-    const provider = new firebase.auth.GoogleAuthProvider();
-    switch (sign) {
-      case "withPopup":
-        await auth.signInWithPopup(provider);
-        await firebase.auth().getRedirectResult();
-        break;
-      case "redirect":
-        await auth.signInWithRedirect(provider);
-        await firebase.auth().getRedirectResult();
-        break;
-      case "redirectAndLink":
-        await auth.signInWithRedirect(provider);
-        await firebase.auth().getRedirectResult();
-        break;
-      case "withGithub":
-        await this.signWithGithub();
-        await firebase.auth().getRedirectResult();
-        break;
+  // want be try this (?)
+  login = {
+    withPopup: async () => {
+      const auth = this.auth();
+      const provider = new firebase.auth.GoogleAuthProvider();
+      await firebase.auth().getRedirectResult();
+      return await auth.signInWithPopup(provider);
+    },
+    redirect: async () => {
+      const auth = this.auth();
+      const provider = new firebase.auth.GoogleAuthProvider();
+      await auth.signInWithRedirect(provider);
+      await firebase.auth().getRedirectResult();
+    },
+    withGoogle: async () => {
+      const auth = this.auth();
+      const provider = new firebase.auth.GoogleAuthProvider();
+      return await auth.signInWithPopup(provider);
+    },
+    withGithub: async () => {
+      return await this.signWithGithub();
+    },
+  };
 
-      default:
-        break;
-    }
-  }
   // credntials
   async credentialId(email: string, password: string) {
     return await firebase.auth.EmailAuthProvider.credential(email, password);
