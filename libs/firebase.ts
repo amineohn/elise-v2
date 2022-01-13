@@ -1,4 +1,6 @@
 import firebase from "firebase/compat/app";
+import router from "next/router";
+
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
 import "firebase/compat/storage";
@@ -6,8 +8,9 @@ import "firebase/compat/functions";
 import "firebase/compat/analytics";
 import "firebase/compat/performance";
 import "firebase/messaging";
-import router from "next/router";
+
 import { configuration } from "../utils/configuration";
+
 export class Firebase {
   settings() {
     return {

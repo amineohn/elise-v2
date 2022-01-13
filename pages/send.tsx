@@ -11,8 +11,11 @@ const Home: NextPage = () => {
   const [success, setSuccess] = useState("");
   const [downloaded, setDownload] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [weight, setWeight] = useState("");
+  const [matter, setMatter] = useState("");
+  const [dumpster, setDumpster] = useState("");
   const [data, setData] = useState([{}] as any);
-  const text = "Papier > Benne > 200kg";
+  const text = `${matter} > ${dumpster} > ${weight}kg`;
   const fire = new Firebase();
 
   useEffect(() => {
@@ -49,7 +52,7 @@ const Home: NextPage = () => {
       toast.success("Valeur ajoutée");
       fire
         .collection("test")
-        .where("value" + " kg", "==", data)
+        .where("value", "==", data)
         .get()
         .then((snapshot) => {
           setLoading(false);
@@ -58,7 +61,7 @@ const Home: NextPage = () => {
             fire
               .collection("test")
               .add({
-                value: value + " kg",
+                value: value,
               })
               .then(() => {
                 setSuccess("Votre valeur a été ajoutée");

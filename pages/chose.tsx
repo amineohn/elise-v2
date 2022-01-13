@@ -1,13 +1,14 @@
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 import { Firebase } from "../libs/firebase";
 
 const Home: NextPage = () => {
   const router = useRouter();
   const [dumpster, setDumpster] = useState({ [router.pathname]: true });
   const [selected, setSelected] = useState("");
-  const [width, setWidth] = useState("");
+  const [width, setWidth] = useState(0);
   useEffect(() => {
     if (router.query.dumpster) {
       setDumpster(router.query.dumpster as any);
@@ -25,15 +26,13 @@ const Home: NextPage = () => {
   useEffect(() => {
     const fire = new Firebase();
     fire.collection("test").onSnapshot((snapshot) => {
+      // calculate values form firebase and update the state
+      const values = snapshot.docs.map((doc) => doc.data().value);
+      const total = values.reduce((acc, cur) => acc + cur.value, 0) as any;
+
       const data = snapshot.docs.map((doc) => doc.data());
-      //setWidth(data as any);
       setWidth(data as any);
     });
-    if (width >= "1500") {
-      console.log("tu ne dois pas dépasser 1500"); // test
-    } else {
-      console.log("tu dois dépasser 1500"); // test
-    }
   }, []);
 
   return (
@@ -108,7 +107,7 @@ const Home: NextPage = () => {
                           200kg
                         </span>
                         <div
-                          style={{ height: width.length + "px" }}
+                          style={{ height: width + "px" }}
                           className="bg-black dark:bg-white w-[286px] bottom-0 rounded-b"
                         />
                       </div>
