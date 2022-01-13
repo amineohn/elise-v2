@@ -116,7 +116,7 @@ const Home: NextPage = () => {
             className="fill-current text-black dark:text-white w-5 h-5"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 448 512"
-            onClick={() => router.push("/chose")}
+            onClick={() => router.push("/choice")}
           >
             <path
               fill="currentColor"

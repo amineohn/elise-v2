@@ -74,7 +74,7 @@ const Home: NextPage = () => {
                 onClick={() => {
                   setSelected("1");
                   router.push({
-                    pathname: "/chose",
+                    pathname: "/choice",
                     query: {
                       selected: "1",
                       dumpster: true,

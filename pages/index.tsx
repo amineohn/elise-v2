@@ -36,7 +36,7 @@ const Home: NextPage = () => {
           <div className="grid grid-cols-1 space-y-5">
             <div className="space-x-4 space-y-5">
               {data.map((item: any) => (
-                <button onClick={() => router.push("/chose")}>
+                <button onClick={() => router.push("/choice")}>
                   <div className="rounded-full py-5 px-5 border border-black dark:border-white bg-white dark:bg-black">
                     <svg
                       className="text-black dark:text-white w-10 h-10"
