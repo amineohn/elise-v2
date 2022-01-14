@@ -28,7 +28,7 @@ const Home: NextPage = () => {
     <>
       <div className="flex flex-col py-5 px-1 my-48 scale">
         <div>
-          <h1 className="text-center font-bold text-2xl">
+          <h1 className="text-center font-bold text-3xl uppercase">
             Choisir une matière
           </h1>
         </div>

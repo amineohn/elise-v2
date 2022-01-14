@@ -46,114 +46,53 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <div className="border border-black dark:border-white w-10 h-10 ml-6 mt-5 rounded-full px-2.5 py-2">
-        <svg
-          className="fill-current text-black dark:text-white w-5 h-5"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 448 512"
-          onClick={() => router.push("/")}
-        >
-          <path
-            fill="currentColor"
-            d="M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"
-          />
-        </svg>
-      </div>
       <div className="flex flex-col py-5 px-1 space-y-2 my-20 scale">
         <div className="flex justify-center">
-          <h1 className="text-center font-bold text-2xl">Choisir une benne</h1>
+          <h1 className="text-center font-bold text-3xl uppercase">
+            Choisir une benne
+          </h1>
         </div>
-        <div className="flex justify-center items-center ">
-          <div className="grid grid-cols-1 space-y-1">
-            {selected === "1" ? (
-              <div className="bg-green-500 rounded-lg p-2">
-                <div className="flex justify-center">
-                  <svg
-                    className="fill-current text-white w-5 h-5"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 448 512"
-                  >
-                    <path fill="currentColor" d="" />
-                  </svg>
-                </div>
-              </div>
-            ) : (
+        <div className="flex justify-center items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 lg:space-x-4">
+            <div className="mt-10">
               <div
-                className="bg-white rounded-lg p-2"
-                onClick={() => {
-                  setSelected("1");
-                  router.push({
-                    pathname: "/choice",
-                    query: {
-                      selected: "1",
-                      dumpster: true,
-                    },
-                  });
-                }}
+                className="w-72 max-w-xl h-36 border-2 border-t-transparent border-l-black border-b-black border-r-black dark:border-white flex justify-between rounded"
+                onClick={() => router.push("/send")}
               >
-                <div className="flex justify-center">
-                  <svg
-                    className="fill-current text-green-500 w-5 h-5"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 448 512"
-                  >
-                    <path fill="currentColor" d="" />
-                  </svg>
+                <div className="flex justify-end items-end top-0">
+                  <div className="flex flex-col">
+                    <span className="text-center font-bold text-xl">200kg</span>
+                    <div
+                      style={{ height: 20 + "px" }}
+                      className="bg-black dark:bg-white w-[286px] bottom-0 rounded-b"
+                    />
+                  </div>
                 </div>
               </div>
-            )}
-
-            {dumpster[router.pathname] && (
-              <>
-                <div>
-                  <div
-                    className="w-72 max-w-xl h-36 border border-black dark:border-white flex justify-between rounded"
-                    onClick={() => router.push("/send")}
-                  >
-                    <div className="flex justify-end items-end top-0">
-                      <div className="flex flex-col">
-                        <span className="text-center font-bold text-xl">
-                          200kg
-                        </span>
-                        <div
-                          style={{ height: width + "px" }}
-                          className="bg-black dark:bg-white w-[286px] bottom-0 rounded-b"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex justify-center">
-                    <span className="text-center font-bold text-xl">
-                      Benne 1
-                    </span>
+              <div className="flex justify-center">
+                <span className="text-center font-bold text-xl">Benne 1</span>
+              </div>
+            </div>
+            <div className="mt-10">
+              <div
+                className="w-72 max-w-xl h-36 border-2 border-t-transparent border-l-black border-b-black border-r-black dark:border-white flex justify-between rounded"
+                onClick={() => router.push("/send")}
+              >
+                <div className="flex justify-end items-end top-0">
+                  <div className="flex flex-col">
+                    <span className="text-center font-bold text-xl">100kg</span>
+                    <div
+                      style={{ height: "5px" }}
+                      className="bg-black dark:bg-white w-[286px] bottom-0 rounded-b"
+                    />
                   </div>
                 </div>
-                <div>
-                  <div
-                    className="w-72 max-w-xl h-36 border border-black dark:border-white flex justify-between rounded"
-                    onClick={() => router.push("/send")}
-                  >
-                    <div className="flex justify-end items-end top-0">
-                      <div className="flex flex-col">
-                        <span className="text-center font-bold text-xl">
-                          100kg
-                        </span>
-                        <div
-                          style={{ height: "5px" }}
-                          className="bg-black dark:bg-white w-[286px] bottom-0 rounded-b"
-                        />
-                      </div>
-                    </div>
-                  </div>
+              </div>
 
-                  <div className="flex justify-center">
-                    <span className="text-center font-bold text-xl">
-                      Benne 2
-                    </span>
-                  </div>
-                </div>
-              </>
-            )}
+              <div className="flex justify-center">
+                <span className="text-center font-bold text-xl">Benne 2</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
