@@ -1,7 +1,6 @@
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import { Firebase } from "../libs/firebase";
 
 const Home: NextPage = () => {
@@ -23,17 +22,27 @@ const Home: NextPage = () => {
 
   // check current values from the database and update the state with firebase
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const fire = new Firebase();
     fire.collection("test").onSnapshot((snapshot) => {
       // calculate values form firebase and update the state
       const values = snapshot.docs.map((doc) => doc.data().value);
       const total = values.reduce((acc, cur) => acc + cur.value, 0) as any;
-
+      const average = total / values.length;
       const data = snapshot.docs.map((doc) => doc.data());
-      setWidth(data as any);
+      setWidth(average * 100);
+      console.log(data);
     });
   }, []);
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    const dumpster = e.target.value;
+    setDumpster({ [dumpster]: true });
+    setSelected(dumpster);
+
+    router.push(`/choice?dumpster=${dumpster}`);
+  };
 
   return (
     <>
