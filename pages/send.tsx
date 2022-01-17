@@ -11,13 +11,7 @@ const Home: NextPage = () => {
   const [success, setSuccess] = useState("");
   const [downloaded, setDownload] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [weight, setWeight] = useState("");
-  const [matter, setMatter] = useState("");
-  const [dumpster, setDumpster] = useState("");
-  const [validate, setValidate] = useState(false);
   const [data, setData] = useState([{}] as any);
-  const text = `Papier > Benne 1 > 300kg`;
-  const text2 = `Amine O. > Benne 1 > 300kg`;
   const fire = new Firebase();
 
   useEffect(() => {
@@ -31,6 +25,9 @@ const Home: NextPage = () => {
         }));
         setData(data);
       });
+    const mapped = data.map((item) => item.value * 1);
+    const total = mapped.reduce((acc, cur) => acc + cur, 0);
+    setData(total);
   }, []);
   // check if firebase is connected
   useEffect(() => {
@@ -40,14 +37,11 @@ const Home: NextPage = () => {
     }
     // check form is valid and set loading to submit
   }, [fire.isConnected()]);
-
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-    if (value >= "2000") {
-      setError("Vous avez dépassé le poids maximal");
-      toast.error("Vous avez dépassé le poids maximal");
-      setLoading(false);
+    if (data >= 2000) {
+      toast.error("Tu as dépasser la limite");
       return;
     }
     // check to the database if the value is already in the database
@@ -87,6 +81,8 @@ const Home: NextPage = () => {
     }
     setLoading(false);
   };
+  const text = `Papier > Benne 1 > 300kg`;
+
   const router = useRouter();
   const download = async () => {
     try {

@@ -31,20 +31,20 @@ const Home: NextPage = () => {
     toast.error(
       "Attention, vous êtes bientôt à la limite maximal de la benne !"
     );
-    val = "1500";
+    val = "1690";
   } else if (total > 1400) {
     color = "bg-orange-500";
-    val = "1000";
+    val = "1399";
   } else if (total > 1000) {
     color = "bg-yellow-500";
-    val = "1000";
-  } else if (total > 500) {
+    val = "1200";
+  } else if (total > 800) {
     color = "bg-green-500";
     toast.success("Vous pouvez ajouter du poids dans la benne.");
     val = "1000";
   } else if (total > 0) {
-    color = "bg-red-500";
-    val = "100";
+    color = "bg-green-500";
+    val = "740";
   }
 
   const foreal = total - 10 / 10 - val; // testing?
@@ -61,7 +61,7 @@ const Home: NextPage = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 lg:space-x-4">
             <div className="mt-10">
               <div
-                className="w-72 max-w-xl h-36 border-2 border-t-transparent border-l-black border-b-black border-r-black dark:border-white flex justify-between rounded"
+                className="hover:scale-105 hover:transform transition w-72 max-w-xl h-36 border-2 border-t-transparent border-l-black border-b-black border-r-black dark:border-white flex justify-between rounded"
                 onClick={() => router.push("/send")}
               >
                 <div className="flex justify-end items-end top-0">
@@ -74,7 +74,7 @@ const Home: NextPage = () => {
                       style={{
                         height: foreal + "px",
                       }} // temporary thing.
-                      className={`${color} w-[284px] bottom-0 rounded-b`}
+                      className={`${color} w-[284px] bottom-0 rounded-b !max-h-[140px]`}
                     />
                   </div>
                 </div>
