@@ -37,7 +37,7 @@ const Home: NextPage = () => {
     val = "1399";
   } else if (total > 1000) {
     color = "bg-yellow-500";
-    val = "1200";
+    val = "1300";
   } else if (total > 800) {
     color = "bg-green-500";
     toast.success("Vous pouvez ajouter du poids dans la benne.");
