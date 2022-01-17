@@ -23,11 +23,11 @@ const Home: NextPage = () => {
   let color: string = "bg-blue-500";
   let val: any = "2";
   if (total > 1900) {
-    color = "bg-red-800";
+    color = "bg-red-600";
     toast.error("Vous avez dépassé la limite de la benne.");
     val = "1859";
   } else if (total > 1500) {
-    color = "bg-orange-700";
+    color = "bg-orange-600";
     toast.error(
       "Attention, vous êtes bientôt à la limite maximal de la benne !"
     );
@@ -74,7 +74,7 @@ const Home: NextPage = () => {
                       style={{
                         height: foreal + "px",
                       }} // temporary thing.
-                      className={`${color} w-[284px] bottom-0 rounded-b !max-h-[140px]`}
+                      className={`${color} w-[284px] bottom-0 rounded-b-sm !max-h-[140px]`}
                     />
                   </div>
                 </div>
