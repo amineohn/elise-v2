@@ -267,7 +267,7 @@ const Home: NextPage = () => {
                         {value.length > 0 ? (
                           <button className="mr-0.5" type="button">
                             <div
-                              className="rounded-full w-20 h-20 bg-red-500"
+                              className="rounded-full w-20 h-20 bg-red-500 transition-colors"
                               onClick={() => setValue("")}
                             >
                               <div className="p-5">
@@ -280,7 +280,7 @@ const Home: NextPage = () => {
                         ) : (
                           <button className="mr-0.5" type="button" disabled>
                             <div
-                              className="rounded-full w-20 h-20 bg-neutral-300"
+                              className="rounded-full w-20 h-20 bg-neutral-300 transition-colors"
                               onClick={() => setValue("")}
                             >
                               <div className="p-5">
@@ -305,7 +305,7 @@ const Home: NextPage = () => {
                         </button>
                         {value.length > 0 ? (
                           <button type="submit">
-                            <div className="rounded-full w-20 h-20 bg-green-500">
+                            <div className="rounded-full w-20 h-20 bg-green-500 transition-colors">
                               <div className="p-5">
                                 <span className=" text-3xl font-bold text-white">
                                   V
@@ -315,7 +315,7 @@ const Home: NextPage = () => {
                           </button>
                         ) : (
                           <button type="submit" disabled>
-                            <div className="rounded-full w-20 h-20 bg-neutral-300">
+                            <div className="rounded-full w-20 h-20 bg-neutral-300 transition-colors">
                               <div className="p-5">
                                 <span className=" text-3xl font-bold text-white">
                                   V
