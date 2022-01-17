@@ -61,7 +61,7 @@ const Home: NextPage = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 lg:space-x-4">
             <div className="mt-10">
               <div
-                className="hover:scale-105 hover:transform transition w-72 max-w-xl h-36 border-2 border-t-transparent border-l-black border-b-black border-r-black dark:border-white flex justify-between rounded"
+                className="hover:scale-105 hover:transform transition w-72 max-w-xl h-36 border-2 border-t-transparent border-l-slate-900 border-b-slate-900 border-r-slate-900 dark:border-white flex justify-between rounded"
                 onClick={() => router.push("/send")}
               >
                 <div className="flex justify-end items-end top-0">

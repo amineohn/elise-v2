@@ -40,9 +40,9 @@ const Home: NextPage = () => {
                   onClick={() => router.push("/choice")}
                   className="hover:scale-105 hover:transform transition"
                 >
-                  <div className="rounded-full py-5 px-5 border border-black dark:border-white bg-white dark:bg-black">
+                  <div className="rounded-full py-5 px-5 border border-slate-900 dark:border-white bg-white dark:bg-slate-900">
                     <svg
-                      className="text-black dark:text-white w-10 h-10"
+                      className="text-slate-900 dark:text-white w-10 h-10"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 640 512"
                     >

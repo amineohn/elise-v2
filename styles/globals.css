@@ -1,6 +1,6 @@
 html,
 body {
-  @apply font-default ease-in-out antialiased p-0 m-0 select-none overflow-hidden bg-white transition-all dark:bg-black h-screen;
+  @apply font-default ease-in-out antialiased p-0 m-0 select-none overflow-hidden bg-white transition-all dark:bg-slate-900 h-screen;
 }
 
 a {
@@ -51,7 +51,7 @@ p {
   }
 }
 .go2072408551 {
-  @apply !bg-white dark:!bg-neutral-900 !text-black dark:!text-white;
+  @apply !bg-white dark:!bg-neutral-900 !text-slate-900 dark:!text-white;
 }
 @tailwind base;
 @tailwind components;
