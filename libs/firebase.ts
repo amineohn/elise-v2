@@ -192,6 +192,7 @@ export class Firebase {
       });
     });
   }
+
   async sign(email: string, password: string) {
     const auth = this.auth();
     return await auth.signInWithEmailAndPassword(email, password);

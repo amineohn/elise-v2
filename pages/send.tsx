@@ -44,6 +44,12 @@ const Home: NextPage = () => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
+    if (value >= "2000") {
+      setError("Vous avez dépassé le poids maximal");
+      toast.error("Vous avez dépassé le poids maximal");
+      setLoading(false);
+      return;
+    }
     // check to the database if the value is already in the database
     if (value === "") {
       setError("Veuillez entrer une valeur");
