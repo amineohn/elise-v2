@@ -5,6 +5,7 @@ import { Firebase } from "../libs/firebase";
 import toast, { Toaster } from "react-hot-toast";
 import { Data } from "../libs/types";
 import Loading from "../components/loading";
+import { Authentification } from "../libs/authentification";
 const Home: NextPage = () => {
   const [value, setValue] = useState("");
   const [error, setError] = useState("");
@@ -13,7 +14,7 @@ const Home: NextPage = () => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([{}] as any);
   const fire = new Firebase();
-
+  const auth = new Authentification();
   useEffect(() => {
     fire
       .collection("test")
@@ -32,11 +33,11 @@ const Home: NextPage = () => {
   // check if firebase is connected
   useEffect(() => {
     setLoading(true);
-    if (fire.isConnected()) {
+    if (auth.isConnected()) {
       setLoading(false);
     }
     // check form is valid and set loading to submit
-  }, [fire.isConnected()]);
+  }, [auth.isConnected()]);
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);

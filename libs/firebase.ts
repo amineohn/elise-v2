@@ -1,5 +1,4 @@
 import firebase from "firebase/compat/app";
-import router from "next/router";
 
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
@@ -59,20 +58,12 @@ export class Firebase {
     return this.getFireStore().collection("users").doc(this.user()?.uid);
   }
 
-  isConnected() {
-    return this.auth().currentUser !== null;
-  }
-
   getStorage() {
     return firebase.storage();
   }
 
   getFireStore() {
     return firebase.firestore();
-  }
-
-  auth() {
-    return firebase.auth();
   }
 
   messaging() {
@@ -105,9 +96,6 @@ export class Firebase {
   reference(ref: string, child: string) {
     return this.database().ref(ref).child(child);
   }
-  emptyString(str: string) {
-    return str === "";
-  }
   documentPath(collection: string, documentPath: string) {
     return this.collection(collection).doc(documentPath);
   }
@@ -122,11 +110,6 @@ export class Firebase {
 
   import(url: string) {
     return this.functions().httpsCallable(url);
-  }
-
-  stateChanged(callback: (user: firebase.User | null) => void) {
-    const auth = this.auth();
-    auth.onAuthStateChanged(callback);
   }
 
   currentPassword(currentPassword: string) {
@@ -155,57 +138,6 @@ export class Firebase {
       })
       .then((data) => data)
       .catch((error) => console.log("Error getting documents: ", error));
-  }
-
-  data(
-    phone: string,
-    name: string,
-    email: string,
-    frequency: string,
-    collectTime: string,
-    address: string,
-    collection: string
-  ) {
-    return {
-      id: this.collection(collection).doc().id,
-      phone: phone,
-      name: name,
-      email: email,
-      frequency: frequency,
-      collectTime: collectTime,
-      address: address,
-    };
-  }
-
-  async signIn(
-    email: string,
-    password: string,
-    collection: string,
-    url: string,
-    documentPath?: string | undefined
-  ) {
-    return await this.sign(email, password).then(async () => {
-      await router.push(url);
-      await this.collection(collection).doc(documentPath).set({
-        name: this.userName(),
-        email: this.email(),
-      });
-    });
-  }
-
-  async sign(email: string, password: string) {
-    const auth = this.auth();
-    return await auth.signInWithEmailAndPassword(email, password);
-  }
-
-  async emailVerification() {
-    const user = this.user();
-    await user?.sendEmailVerification();
-  }
-
-  async passwordResetEmail(email: string) {
-    const auth = this.auth();
-    await auth.sendPasswordResetEmail(email);
   }
 
   async update(collection: string, documentPath: string, data: any) {
@@ -264,60 +196,5 @@ export class Firebase {
         email: this.email(),
       });
     });
-  }
-
-  async signUp(email: string, password: string) {
-    const auth = this.auth();
-    await auth.createUserWithEmailAndPassword(email, password);
-  }
-
-  async signWithGithub() {
-    const auth = this.auth();
-    const provider = new firebase.auth.GithubAuthProvider();
-    return await auth.signInWithPopup(provider);
-  }
-
-  // want be try this (?)
-  login = {
-    withPopup: async () => {
-      const auth = this.auth();
-      const provider = new firebase.auth.GoogleAuthProvider();
-      await firebase.auth().getRedirectResult();
-      return await auth.signInWithPopup(provider);
-    },
-    redirect: async () => {
-      const auth = this.auth();
-      const provider = new firebase.auth.GoogleAuthProvider();
-      await auth.signInWithRedirect(provider);
-      await firebase.auth().getRedirectResult();
-    },
-    withGoogle: async () => {
-      const auth = this.auth();
-      const provider = new firebase.auth.GoogleAuthProvider();
-      return await auth.signInWithPopup(provider);
-    },
-    withGithub: async () => {
-      return await this.signWithGithub();
-    },
-  };
-
-  // credntials
-  async credentialId(email: string, password: string) {
-    return await firebase.auth.EmailAuthProvider.credential(email, password);
-  }
-  interceptor(url: string, callback: (error: any) => void) {
-    this.functions().httpsCallable(url).call(callback);
-  }
-  async phoneSignIn(
-    phoneNumber: string,
-    verificationCode: firebase.auth.ApplicationVerifier
-  ) {
-    const auth = this.auth();
-    await auth.signInWithPhoneNumber(phoneNumber, verificationCode);
-  }
-
-  async signOut() {
-    const auth = this.auth();
-    await auth.signOut();
   }
 }
