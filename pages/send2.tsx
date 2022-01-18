@@ -118,7 +118,6 @@ const Home: NextPage = () => {
       <div className="h-screen my-10 scale">
         <div className="flex flex-col py-5 px-1 space-y-3">
           <div className="flex justify-center">
-            {loading && <Loading />}
             <h1 className="text-center font-bold text-3xl uppercase">
               Saisir un poids
             </h1>
