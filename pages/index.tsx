@@ -19,9 +19,6 @@ const Home: NextPage = () => {
         }));
         setData(data);
       });
-    if (data.length != 0) {
-      setData(data.reverse());
-    }
   }, []);
 
   return (
@@ -37,7 +34,7 @@ const Home: NextPage = () => {
             <div className="space-x-4 space-y-5">
               {data.map((item: any) => (
                 <button
-                  onClick={() => router.push("/choice")}
+                  onClick={() => router.push("/dumpster")}
                   className="hover:scale-105 hover:transform transition"
                 >
                   <div className="rounded-full py-5 px-5 border border-slate-900 dark:border-white bg-white dark:bg-slate-900">
