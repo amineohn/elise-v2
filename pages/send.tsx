@@ -3,7 +3,6 @@ import React, { FormEvent, useEffect, useState } from "react";
 import { Firebase } from "../libs/firebase";
 import toast, { Toaster } from "react-hot-toast";
 import { Authentification } from "../libs/authentification";
-import Down from "../components/download";
 const Home: NextPage = () => {
   const [value, setValue] = useState("");
   const [error, setError] = useState("");
@@ -299,7 +298,6 @@ const Home: NextPage = () => {
               </div>
             </form>
           </div>
-          <Down />
         </div>
       </div>
     </>
