@@ -10,8 +10,8 @@ const Home: NextPage = () => {
   useEffect(() => {
     const fire = new Firebase();
     fire
-      .collection("matters")
-      .orderBy("name")
+      .collection("user")
+      .orderBy("firstname")
       .onSnapshot((snapshot) => {
         const data = snapshot.docs.map((doc) => ({
           id: doc.id ? doc.id : "no one exist? :/",
@@ -26,31 +26,37 @@ const Home: NextPage = () => {
       <div className="flex flex-col py-5 px-1 my-48 scale">
         <div>
           <h1 className="text-center font-bold text-3xl uppercase">
-            Choisir une matière
+            Choisir un utilisateur
           </h1>
         </div>
         <div className="flex justify-center items-center">
-          <div className="grid grid-cols-1 space-y-5">
-            <div className="space-x-4 space-y-5">
+          <div className="grid grid-cols-1">
+            <div className="space-y-1">
               {data.map((item: any) => (
-                <button
-                  onClick={() => router.push("/dumpster")}
-                  className="hover:scale-105 hover:transform transition"
-                >
-                  <div className="rounded-full py-5 px-5 border border-slate-900 dark:border-white bg-white dark:bg-slate-900">
-                    <svg
-                      className="text-slate-900 dark:text-white w-10 h-10"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 640 512"
+                <>
+                  <div className="flex flex-col justify-center items-center">
+                    <button
+                      onClick={() => router.push("/user")}
+                      className="hover:scale-105 hover:transform transition"
                     >
-                      <path
-                        fill="currentColor"
-                        d="M48 0C21.53 0 0 21.53 0 48v64c0 8.84 7.16 16 16 16h80V48C96 21.53 74.47 0 48 0zm208 412.57V352h288V96c0-52.94-43.06-96-96-96H111.59C121.74 13.41 128 29.92 128 48v368c0 38.87 34.65 69.65 74.75 63.12C234.22 474 256 444.46 256 412.57zM288 384v32c0 52.93-43.06 96-96 96h336c61.86 0 112-50.14 112-112 0-8.84-7.16-16-16-16H288z"
-                      />
-                    </svg>
+                      <div className="flex justify-center items-center my-5 rounded-full w-20 h-20 border border-slate-900 dark:border-white bg-white dark:bg-slate-900">
+                        <svg
+                          className="text-slate-900 dark:text-white w-10 h-10"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 448 512"
+                        >
+                          <path
+                            fill="currentColor"
+                            d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"
+                          ></path>
+                        </svg>
+                      </div>
+                    </button>
+                    <span className="text-xl font-bold text-start">
+                      {item.firstname} {item.lastname}
+                    </span>
                   </div>
-                  <span className="text-xl font-bold">{item.name}</span>
-                </button>
+                </>
               ))}
             </div>
           </div>

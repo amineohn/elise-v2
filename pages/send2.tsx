@@ -17,7 +17,7 @@ const Home: NextPage = () => {
   const auth = new Authentification();
   useEffect(() => {
     const fire = new Firebase();
-    fire.collection("test").onSnapshot((snapshot) => {
+    fire.collection("test2").onSnapshot((snapshot) => {
       const data = snapshot.docs.map((doc) => ({
         id: doc.id ? doc.id : "no one exist? :/",
         value: doc.data().value,
@@ -26,6 +26,7 @@ const Home: NextPage = () => {
       const mapped = data.map((item) => item.value * 1);
       const total = mapped.reduce((acc, cur) => acc + cur, 0);
       setData(total);
+      console.log(total);
     });
   }, []);
   // check if firebase is connected
@@ -53,7 +54,7 @@ const Home: NextPage = () => {
       toast.success("Valeur ajoutée");
       setValue("");
       fire
-        .collection("test")
+        .collection("test2")
         .where("value", "==", data)
         .get()
         .then((snapshot) => {
@@ -61,7 +62,7 @@ const Home: NextPage = () => {
           if (snapshot.empty) {
             // if the value is not in the database, then add it
             fire
-              .collection("test")
+              .collection("test2")
               .add({
                 value: value,
               })
@@ -80,7 +81,6 @@ const Home: NextPage = () => {
     }
     setLoading(false);
   };
-
   const router = useRouter();
   const download = async () => {
     try {
@@ -107,7 +107,8 @@ const Home: NextPage = () => {
       setDownload(false);
     }, 5000);
   };
-  const text = `Papier > Benne 1 > ${data} kg`;
+  const text = `Papier > Benne 2 > ${data} kg`;
+
   return (
     <>
       {success && <Toaster />}
