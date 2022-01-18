@@ -1,16 +1,13 @@
 import type { NextPage } from "next";
-import { useRouter } from "next/router";
 import React, { FormEvent, useEffect, useState } from "react";
 import { Firebase } from "../libs/firebase";
 import toast, { Toaster } from "react-hot-toast";
-import { Data } from "../libs/types";
-import Loading from "../components/loading";
 import { Authentification } from "../libs/authentification";
+import Down from "../components/download";
 const Home: NextPage = () => {
   const [value, setValue] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-  const [downloaded, setDownload] = useState(false);
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([{}] as any);
   const fire = new Firebase();
@@ -80,44 +77,16 @@ const Home: NextPage = () => {
     }
     setLoading(false);
   };
-
-  const router = useRouter();
-  const download = async () => {
-    try {
-      const csvData = await data.map((item: Data) => {
-        return `${item.value}`;
-      });
-      const csv = new Blob([csvData], {
-        type: "text/csv",
-      });
-      const url = URL.createObjectURL(csv);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "data.csv";
-      a.click();
-      URL.revokeObjectURL(url);
-      setDownload(true);
-      toast.success("Fichier téléchargé");
-    } catch (error) {
-      setDownload(false);
-      toast.error("Erreur lors du téléchargement");
-      console.log(error);
-    }
-    setInterval(() => {
-      setDownload(false);
-    }, 5000);
-  };
   const text = `Papier > Benne 1 > ${data} kg`;
+  // download button to download the data
   return (
     <>
       {success && <Toaster />}
       {error && <Toaster />}
-      {downloaded && <Toaster />}
 
       <div className="h-screen my-10 scale">
         <div className="flex flex-col py-5 px-1 space-y-3">
           <div className="flex justify-center">
-            {loading && <Loading />}
             <h1 className="text-center font-bold text-3xl uppercase">
               Saisir un poids
             </h1>
@@ -330,6 +299,7 @@ const Home: NextPage = () => {
               </div>
             </form>
           </div>
+          <Down />
         </div>
       </div>
     </>
