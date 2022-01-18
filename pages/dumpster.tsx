@@ -66,13 +66,9 @@ const Home: NextPage = () => {
 
   if (total2 > 1900) {
     color2 = "bg-red-600";
-    toast.error("Vous avez dépassé la limite de la benne.");
     val2 = "1859";
   } else if (total2 > 1500) {
     color2 = "bg-orange-600";
-    toast.error(
-      "Attention, vous êtes bientôt à la limite maximal de la benne 2 !"
-    );
     val2 = "1690";
   } else if (total2 > 1400) {
     color2 = "bg-orange-500";
@@ -82,7 +78,6 @@ const Home: NextPage = () => {
     val2 = "1300";
   } else if (total2 > 800) {
     color2 = "bg-green-500";
-    toast.success("Vous pouvez ajouter du poids dans la benne 2.");
     val2 = "1000";
   } else if (total2 > 0) {
     color2 = "bg-green-500";
@@ -125,7 +120,6 @@ const Home: NextPage = () => {
   return (
     <>
       {total && <Toaster />}
-      {total2 && <Toaster />}
       <div className="flex flex-col py-5 px-1 space-y-2 my-20 scale">
         <div className="flex justify-center">
           <h1 className="text-center font-bold text-3xl uppercase">
