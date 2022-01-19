@@ -2,15 +2,12 @@ import type { NextPage } from "next";
 import React, { FormEvent, useEffect, useState } from "react";
 import { Firebase } from "../libs/firebase";
 import toast, { Toaster } from "react-hot-toast";
-import { Authentification } from "../libs/authentification";
-const Home: NextPage = () => {
+const Send: NextPage = () => {
   const [value, setValue] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-  const [loading, setLoading] = useState(false);
   const [data, setData] = useState([{}] as any);
   const fire = new Firebase();
-  const auth = new Authentification();
   useEffect(() => {
     const fire = new Firebase();
     fire.collection("test").onSnapshot((snapshot) => {
@@ -24,17 +21,8 @@ const Home: NextPage = () => {
       setData(total);
     });
   }, []);
-  // check if firebase is connected
-  useEffect(() => {
-    setLoading(true);
-    if (auth.isConnected()) {
-      setLoading(false);
-    }
-    // check form is valid and set loading to submit
-  }, [auth.isConnected()]);
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setLoading(true);
     if (data >= 2000) {
       toast.error("Tu as dépasser la limite");
       return;
@@ -43,7 +31,6 @@ const Home: NextPage = () => {
     if (value === "") {
       setError("Veuillez entrer une valeur");
       toast.error("Veuillez entrer une valeur");
-      setLoading(false);
       return;
     } else {
       toast.success("Valeur ajoutée");
@@ -53,7 +40,6 @@ const Home: NextPage = () => {
         .where("value", "==", data)
         .get()
         .then((snapshot) => {
-          setLoading(false);
           if (snapshot.empty) {
             // if the value is not in the database, then add it
             fire
@@ -74,7 +60,6 @@ const Home: NextPage = () => {
           }
         });
     }
-    setLoading(false);
   };
   const text = `Papier > Benne 1 > ${data} kg`;
   // download button to download the data
@@ -303,4 +288,4 @@ const Home: NextPage = () => {
     </>
   );
 };
-export default Home;
+export default Send;
