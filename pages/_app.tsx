@@ -1,5 +1,5 @@
 import "../styles/globals.css";
-import React from "react";
+import React, { useEffect } from "react";
 import { ThemeProvider } from "next-themes";
 import { NextPage } from "next";
 import { StatusBar, Style } from "@capacitor/status-bar";
@@ -19,18 +19,20 @@ export default function MyApp({
   Component: NextPage;
   pageProps: any;
 }) {
-  if (Capacitor.isPluginAvailable("StatusBar")) {
-    if (!isAvailable) {
-      StatusBar.setOverlaysWebView({ overlay: true });
-      StatusBar.setStyle({ style: Style.Dark });
-      StatusBar.setBackgroundColor({ color: "#ffffff" });
+  useEffect(() => {
+    if (Capacitor.isPluginAvailable("StatusBar")) {
+      if (!isAvailable) {
+        StatusBar.setOverlaysWebView({ overlay: true });
+        StatusBar.setStyle({ style: Style.Dark });
+        StatusBar.setBackgroundColor({ color: "#ffffff" });
+      }
     }
-  }
-  if (Capacitor.isPluginAvailable("SplashScreen")) {
-    if (!isAvailable2) {
-      SplashScreen.hide();
+    if (Capacitor.isPluginAvailable("SplashScreen")) {
+      if (!isAvailable2) {
+        SplashScreen.hide();
+      }
     }
-  }
+  }, []);
 
   const router = useRouter();
   const routes = () => {
