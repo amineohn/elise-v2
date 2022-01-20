@@ -33,6 +33,18 @@ export default function MyApp({
   }
 
   const router = useRouter();
+  const routes = () => {
+    if (router.pathname === "/dumpster") {
+      router.push("/user");
+    } else if (router.pathname === "/user") {
+      router.push("/");
+    } else if (router.pathname === "/send") {
+      router.push("/dumpster");
+    } else if (router.pathname === "/send2") {
+      router.push("/dumpster");
+    }
+  };
+
   return (
     <>
       <NextSeo
@@ -60,7 +72,7 @@ export default function MyApp({
                 className="fill-current text-slate-900 dark:text-white w-5 h-5"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 448 512"
-                onClick={() => router.push("/")}
+                onClick={() => routes()}
               >
                 <path
                   fill="currentColor"
