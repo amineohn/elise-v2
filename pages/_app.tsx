@@ -34,14 +34,15 @@ export default function MyApp({
 
   const router = useRouter();
   const routes = () => {
-    if (router.pathname === "/dumpster") {
-      router.push("/user");
-    } else if (router.pathname === "/user") {
-      router.push("/");
-    } else if (router.pathname === "/send") {
-      router.push("/dumpster");
-    } else if (router.pathname === "/send2") {
-      router.push("/dumpster");
+    switch (router.pathname) {
+      case "/dumpster":
+        return router.push("/user");
+      case "/user":
+        return router.push("/");
+      case "/send":
+        return router.push("/dumpster");
+      case "/send2":
+        return router.push("/dumpster");
     }
   };
 
