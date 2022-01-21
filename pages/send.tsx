@@ -19,7 +19,17 @@ const Send: NextPage = () => {
       const mapped = data.map((item) => item.value * 1);
       const total = mapped.reduce((acc, cur) => acc + cur, 0);
       setData(total);
-      setData(value);
+      if (total > 1900) {
+        setError("Vous avez dépassé la limite de la benne.");
+      } else if (total > 1500) {
+        setError(
+          "Attention, vous êtes bientôt à la limite maximal de la benne !"
+        );
+      }
+      if (value === "") {
+      } else {
+        setData(value);
+      }
     });
   }, []);
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {

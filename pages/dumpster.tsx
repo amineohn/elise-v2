@@ -119,7 +119,7 @@ const Home: NextPage = () => {
   const foreal2 = total2 - 10 / 10 - val2; // testing?
   return (
     <>
-      {total && <Toaster />}
+      {total < 2000 && <Toaster />}
       <div className="flex flex-col py-5 px-1 space-y-2 my-20 scale">
         <div className="flex justify-center">
           <h1 className="text-center font-bold text-3xl uppercase">
