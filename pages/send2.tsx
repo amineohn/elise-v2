@@ -41,8 +41,6 @@ const Send: NextPage = () => {
     }
     // check to the database if the value is already in the database
     if (value === "") {
-      setError("Veuillez entrer une valeur");
-      toast.error("Veuillez entrer une valeur");
       return;
     } else {
       toast.success("Valeur ajoutée");
