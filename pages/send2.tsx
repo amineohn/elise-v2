@@ -19,6 +19,7 @@ const Send: NextPage = () => {
       const mapped = data.map((item) => item.value * 1);
       const total = mapped.reduce((acc, cur) => acc + cur, 0);
       setData(total);
+      setData(value);
     });
   }, []);
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -53,10 +54,6 @@ const Send: NextPage = () => {
               .catch((error) => {
                 setError(error.message);
               });
-          } else {
-            // if the value is in the database, then show an error
-            setError("Votre valeur existe déjà");
-            toast.error("Votre valeur existe déjà");
           }
         });
     }
