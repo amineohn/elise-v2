@@ -120,7 +120,7 @@ const Home: NextPage = () => {
   return (
     <>
       {total < 2000 && <Toaster />}
-      <div className="flex flex-col py-5 px-1 space-y-2 my-20 scale">
+      <div className="flex flex-col py-5 px-1 space-y-2 h-screen scale items-center justify-center">
         <div className="flex justify-center">
           <h1 className="text-center font-bold text-3xl uppercase">
             Choisir une benne
