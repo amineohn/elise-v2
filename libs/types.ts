@@ -8,11 +8,9 @@ export type Data = {
   value: string;
 };
 export type User = {
+  firstname: string;
+  lastname: string;
+};
+export type Matter = {
   name: string;
-  email: string;
-  photoURL: string;
-  validator: {
-    error: string;
-    success: string;
-  };
 };

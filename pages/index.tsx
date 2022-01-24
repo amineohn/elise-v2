@@ -2,6 +2,7 @@ import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { Firebase } from "../libs/firebase";
+import { User } from "../libs/types";
 
 const Home: NextPage = () => {
   const router = useRouter();
@@ -32,7 +33,7 @@ const Home: NextPage = () => {
         <div className="flex justify-center items-center">
           <div className="grid grid-cols-1">
             <div className="space-y-1">
-              {data.map((item: any) => (
+              {data.map((item: User) => (
                 <>
                   <div className="flex flex-col justify-center items-center">
                     <button
