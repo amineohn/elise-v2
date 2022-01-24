@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import React, { FormEvent, useEffect, useState } from "react";
-import { Firebase } from "../libs/firebase";
+import { Firebase } from "../../../libs/firebase";
 import toast, { Toaster } from "react-hot-toast";
 import { useRouter } from "next/router";
 const Send: NextPage = () => {

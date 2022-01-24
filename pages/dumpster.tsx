@@ -131,7 +131,7 @@ const Home: NextPage = () => {
             <div className="mt-10">
               <div
                 className="hover:scale-105 hover:transform transition w-72 max-w-xl h-36 border-2 border-t-red-600 border-l-slate-900 border-b-slate-900 border-r-slate-900 dark:border-l-white dark:border-b-white dark:border-r-white flex justify-between rounded"
-                onClick={() => router.push("/send")}
+                onClick={() => router.push("/add/one/content")}
               >
                 <div className="flex justify-end items-end top-0">
                   <div className="flex flex-col">
@@ -157,7 +157,7 @@ const Home: NextPage = () => {
             <div className="mt-10">
               <div
                 className="hover:scale-105 hover:transform transition w-72 max-w-xl h-36 border-2 border-t-red-600 border-l-slate-900 border-b-slate-900 border-r-slate-900 dark:border-l-white dark:border-b-white dark:border-r-white flex justify-between rounded"
-                onClick={() => router.push("/send2")}
+                onClick={() => router.push("/add/two/content")}
               >
                 <div className="flex justify-end items-end top-0">
                   <div className="flex flex-col">

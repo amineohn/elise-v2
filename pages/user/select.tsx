@@ -1,8 +1,8 @@
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import { Firebase } from "../libs/firebase";
-import { Matter } from "../libs/types";
+import { Firebase } from "../../libs/firebase";
+import { Matter } from "../../libs/types";
 
 const Home: NextPage = () => {
   const router = useRouter();
