@@ -2,12 +2,14 @@ import type { NextPage } from "next";
 import React, { FormEvent, useEffect, useState } from "react";
 import { Firebase } from "../libs/firebase";
 import toast, { Toaster } from "react-hot-toast";
+import { useRouter } from "next/router";
 const Send: NextPage = () => {
   const [value, setValue] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [data, setData] = useState([{}] as any);
   const fire = new Firebase();
+  const router = useRouter();
   useEffect(() => {
     const fire = new Firebase();
     fire.collection("test").onSnapshot((snapshot) => {
@@ -281,6 +283,14 @@ const Send: NextPage = () => {
                             </div>
                           </button>
                         )}
+                      </div>
+                      <div className="flex justify-center items-center mb-5">
+                        <a
+                          className="px-2 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 transition cursor-pointer"
+                          onClick={() => router.push("/code")}
+                        >
+                          Télécharger les données
+                        </a>
                       </div>
                     </div>
                   </div>

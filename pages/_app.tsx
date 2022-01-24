@@ -45,6 +45,8 @@ export default function MyApp({
         return router.push("/dumpster");
       case "/send2":
         return router.push("/dumpster");
+      case "/code":
+        return router.push("/");
     }
   };
 
