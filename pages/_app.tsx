@@ -38,8 +38,8 @@ export default function MyApp({
   const routes = () => {
     switch (router.pathname) {
       case "/dumpster":
-        return router.push("/user");
-      case "/user":
+        return router.push("/select");
+      case "/select":
         return router.push("/");
       case "/send":
         return router.push("/dumpster");

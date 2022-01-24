@@ -36,7 +36,7 @@ const Home: NextPage = () => {
                 <>
                   <div className="flex flex-col justify-center items-center">
                     <button
-                      onClick={() => router.push("/user")}
+                      onClick={() => router.push("/select")}
                       className="hover:scale-105 hover:transform transition"
                     >
                       <div className="flex justify-center items-center my-5 rounded-full w-20 h-20 border border-slate-900 dark:border-white bg-white dark:bg-slate-900">
