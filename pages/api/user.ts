@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { User, Users } from "../../libs/types";
+import { Users } from "../../libs/types";
 import { Firebase } from "../../libs/firebase";
 import { Authentification } from "../../libs/authentification";
 export default function handler(
