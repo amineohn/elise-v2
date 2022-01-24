@@ -22,7 +22,7 @@ const Send: NextPage = () => {
       const total = mapped.reduce((acc, cur) => acc + cur, 0);
       setData(total);
       if (total > 1900) {
-        setError("Vous avez dépassé la limite de la benne.");
+        toast.error("Vous avez dépassé la limite de la benne.");
       } else if (total > 1500) {
         setError(
           "Attention, vous êtes bientôt à la limite maximal de la benne !"

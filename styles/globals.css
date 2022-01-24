@@ -1,6 +1,6 @@
 html,
 body {
-  @apply font-default ease-in-out antialiased p-0 m-0 select-none overflow-hidden bg-white transition-all dark:bg-slate-900 h-screen;
+  @apply transition-all font-default ease-in-out antialiased p-0 m-0 select-none overflow-hidden bg-white dark:bg-slate-900 h-screen;
 }
 
 a {

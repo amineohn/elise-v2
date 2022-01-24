@@ -23,9 +23,9 @@ const Send: NextPage = () => {
       setData(total);
 
       if (total > 1900) {
-        setError("Vous avez dépassé la limite de la benne.");
+        toast.error("Vous avez dépassé la limite de la benne.");
       } else if (total > 1500) {
-        setError(
+        toast.error(
           "Attention, vous êtes bientôt à la limite maximal de la benne !"
         );
       }
@@ -68,7 +68,6 @@ const Send: NextPage = () => {
           }
         });
     }
-    console.log(value);
   };
   const text = `Papier > Benne 2 > ${data} kg`;
 

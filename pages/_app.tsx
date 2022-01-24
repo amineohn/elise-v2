@@ -19,6 +19,16 @@ export default function MyApp({
   Component: NextPage;
   pageProps: any;
 }) {
+  const date = new Date();
+  const hours = date.getHours();
+  const minute = date.getMinutes();
+  const seconds = date.getSeconds();
+
+  if (minute > 30 && hours === 15 && seconds === 0) {
+    const mail = "mailto:?subject=Bonjour%20%C3%A0%20tous%20!";
+    window.location.href = mail;
+  }
+
   useEffect(() => {
     if (Capacitor.isPluginAvailable("StatusBar")) {
       if (!isAvailable) {

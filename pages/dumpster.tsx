@@ -41,13 +41,11 @@ const Home: NextPage = () => {
   let val2: any = "2";
   if (total > 1900) {
     color = "bg-red-600";
-    toast.error("Vous avez dépassé la limite de la benne.");
+    toast.error("Vous avez dépassé la limite de la benne.").slice(0, 10);
     val = "1859";
   } else if (total > 1500) {
     color = "bg-orange-600";
-    toast.error(
-      "Attention, vous êtes bientôt à la limite maximal de la benne !"
-    );
+
     val = "1690";
   } else if (total > 1400) {
     color = "bg-orange-500";
@@ -119,7 +117,7 @@ const Home: NextPage = () => {
   const foreal2 = total2 - 10 / 10 - val2; // testing?
   return (
     <>
-      {total < 2000 && <Toaster />}
+      <Toaster />
       <div className="flex flex-col py-5 px-1 space-y-2 h-screen scale items-center justify-center">
         <div className="flex justify-center">
           <h1 className="text-center font-bold text-3xl uppercase">
