@@ -1,14 +1,11 @@
 export const configuration = {
   appId: "Demo-app",
   nameApp: "name-app",
-  server: {
-    url: "https://next-tailwind-firebase-capacitor-9ja7hw8uz-amineprojet7.vercel.app",
-  },
-  title: "title",
+  title: "Elise Production",
   description: "",
   openGraph: {
-    title: "title",
-    description: "description",
+    title: "Elise Production",
+    description: "",
     url: "url",
     image: "image",
     width: 600,
