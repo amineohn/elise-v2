@@ -113,8 +113,8 @@ const Home: NextPage = () => {
       },
     ]);
   }, []);
-  const foreal = total - 10 / 10 - val; // testing?
-  const foreal2 = total2 - 10 / 10 - val2; // testing?
+  const foreal = total - 10 / 10 - val;
+  const foreal2 = total2 - 10 / 10 - val2;
   return (
     <>
       <Toaster />
