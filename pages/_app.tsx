@@ -9,8 +9,8 @@ import { NextSeo } from "next-seo";
 import { configuration } from "../utils/configuration";
 import { Switch } from "../components/switch";
 import { useRouter } from "next/router";
-const isAvailable = Capacitor.isPluginAvailable("StatusBar");
-const isAvailable2 = Capacitor.isPluginAvailable("SplashScreen");
+const statusBar = Capacitor.isPluginAvailable("StatusBar");
+const splashScreen = Capacitor.isPluginAvailable("SplashScreen");
 
 export default function MyApp({
   Component,
@@ -19,26 +19,25 @@ export default function MyApp({
   Component: NextPage;
   pageProps: any;
 }) {
-  const date = new Date();
+  /* const date = new Date();
   const hours = date.getHours();
   const minute = date.getMinutes();
   const seconds = date.getSeconds();
 
-  if (minute > 30 && hours === 15 && seconds === 0) {
-    const mail = "mailto:?subject=Bonjour%20%C3%A0%20tous%20!";
-    window.location.href = mail;
-  }
+  if (minute > 20 && hours === 15 && seconds === 0) {
+    console.log("coucou");
+  }*/
 
   useEffect(() => {
     if (Capacitor.isPluginAvailable("StatusBar")) {
-      if (!isAvailable) {
+      if (!statusBar) {
         StatusBar.setOverlaysWebView({ overlay: true });
         StatusBar.setStyle({ style: Style.Dark });
         StatusBar.setBackgroundColor({ color: "#ffffff" });
       }
     }
     if (Capacitor.isPluginAvailable("SplashScreen")) {
-      if (!isAvailable2) {
+      if (!splashScreen) {
         SplashScreen.hide();
       }
     }
@@ -47,14 +46,14 @@ export default function MyApp({
   const router = useRouter();
   const routes = () => {
     switch (router.pathname) {
-      case "/dumpster":
+      case "/add/dumpster":
         return router.push("/user/select");
       case "/user/select":
         return router.push("/");
       case "/add/one/content":
-        return router.push("/dumpster");
+        return router.push("/add/dumpster");
       case "/add/two/content":
-        return router.push("/dumpster");
+        return router.push("/add/dumpster");
       case "/security/code":
         return router.push("/");
     }

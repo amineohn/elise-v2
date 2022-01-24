@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
-import { Firebase } from "../libs/firebase";
+import { Firebase } from "../../libs/firebase";
 
 const Home: NextPage = () => {
   const router = useRouter();
