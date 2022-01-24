@@ -2,6 +2,7 @@ import { FormEvent, useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { Firebase } from "../libs/firebase";
 import { Data } from "../libs/types";
+import { configuration } from "../utils/configuration";
 
 const Code = () => {
   const [code, setCode] = useState("");
@@ -25,10 +26,7 @@ const Code = () => {
       setError("Veuillez entrer un code valide.");
       toast.error("Veuillez entrer un code valide.");
     }
-    if (code === "12345") {
-      setSuccess("Code valide");
-      toast.success("Code valide");
-
+    if (code === configuration.code.pass) {
       try {
         const csvData = await data.map((item: Data) => {
           return `${item.value}`;
@@ -45,7 +43,6 @@ const Code = () => {
         toast.success("Fichier téléchargé");
       } catch (error) {
         toast.error("Erreur lors du téléchargement");
-        console.log(error);
       }
     }
   };

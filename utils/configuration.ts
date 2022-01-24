@@ -21,4 +21,7 @@ export const configuration = {
     appId: "1:300061913823:web:e6b954d7671f7260f9ef6a",
     measurementId: "G-WWSQ79NKM2",
   },
+  code: {
+    pass: "12345678",
+  },
 };
