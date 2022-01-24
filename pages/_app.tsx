@@ -45,7 +45,7 @@ export default function MyApp({
         return router.push("/dumpster");
       case "/add/two/content":
         return router.push("/dumpster");
-      case "/code":
+      case "/security/code":
         return router.push("/");
     }
   };

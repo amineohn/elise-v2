@@ -1,8 +1,8 @@
 import { FormEvent, useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
-import { Firebase } from "../libs/firebase";
-import { Data } from "../libs/types";
-import { configuration } from "../utils/configuration";
+import { Firebase } from "../../libs/firebase";
+import { Data } from "../../libs/types";
+import { configuration } from "../../utils/configuration";
 
 const Code = () => {
   const [code, setCode] = useState("");

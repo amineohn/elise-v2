@@ -292,7 +292,7 @@ const Send: NextPage = () => {
                               "Attention, uniquement le gérant d'exploitation peut télécharger les données"
                             );
                             setInterval(() => {
-                              router.push("/code");
+                              router.push("/security/code");
                             }, 3000);
                           }}
                         >
