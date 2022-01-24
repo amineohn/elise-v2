@@ -14,3 +14,12 @@ export type User = {
 export type Matter = {
   name: string;
 };
+export type Users = {
+  name: string;
+  email: string;
+  photoURL: string;
+  validator: {
+    error: string;
+    success: string;
+  };
+};

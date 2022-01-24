@@ -1,15 +1,17 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { User } from "../../libs/types";
+import { User, Users } from "../../libs/types";
 import { Firebase } from "../../libs/firebase";
+import { Authentification } from "../../libs/authentification";
 export default function handler(
   req: NextApiRequest,
-  res: NextApiResponse<User>
+  res: NextApiResponse<Users>
 ) {
   const fire = new Firebase();
+  const auth = new Authentification();
   if (fire.isUser()) {
-    fire.signOut();
+    auth.signOut();
   }
-  if (fire.isConnected()) {
+  if (auth.isConnected()) {
     res.status(200).json({
       name: `${fire.userName()}`,
       email: `${fire.email()}`,
@@ -21,7 +23,9 @@ export default function handler(
     });
   } else {
     res.status(200).json({
-      name: `${fire.userName() ? fire.userName() : `Non défini`}`,
+      name: `${
+        fire.userName() ? (fire.userName() as string) : `Non défini`
+      }` as string,
       email: `${fire.email() ? fire.email() : `Non défini`}`,
       photoURL: `${
         fire.photoUrl()
