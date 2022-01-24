@@ -286,10 +286,17 @@ const Send: NextPage = () => {
                           </button>
                         )}
                       </div>
-                      <div className="flex justify-center items-center mb-5">
+                      <div className="flex justify-center items-center !mt-3">
                         <a
-                          className="px-2 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 transition cursor-pointer"
-                          onClick={() => router.push("/code")}
+                          className="px-5 py-3 rounded-lg bg-red-600 hover:bg-red-700 transition cursor-pointer"
+                          onClick={() => {
+                            toast.error(
+                              "Attention, uniquement le gérant d'exploitation peut télécharger les données"
+                            );
+                            setInterval(() => {
+                              router.push("/code");
+                            }, 3000);
+                          }}
                         >
                           Télécharger les données
                         </a>
