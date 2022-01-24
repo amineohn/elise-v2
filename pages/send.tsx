@@ -286,7 +286,7 @@ const Send: NextPage = () => {
                       </div>
                       <div className="flex justify-center items-center !mt-3">
                         <a
-                          className="px-5 py-3 rounded-lg bg-red-600 hover:bg-red-700 transition cursor-pointer"
+                          className="px-5 py-3 rounded-lg border border-red-600 text-red-500 hover:border-red-700 transition cursor-pointer"
                           onClick={() => {
                             toast.error(
                               "Attention, uniquement le gérant d'exploitation peut télécharger les données"
