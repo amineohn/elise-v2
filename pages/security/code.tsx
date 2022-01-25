@@ -7,7 +7,7 @@ import { configuration } from "../../utils/configuration";
 const Code = () => {
   const [code, setCode] = useState("");
   const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
+  const [success] = useState("");
   const [data, setData] = useState([{}] as any);
   useEffect(() => {
     const fire = new Firebase();
@@ -20,30 +20,33 @@ const Code = () => {
       setData(data);
     });
   }, []);
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (code === "") {
-      setError("Veuillez entrer un code valide.");
-      toast.error("Veuillez entrer un code valide.");
-    }
-    if (code === configuration.code.pass) {
-      try {
-        const csvData = await data.map((item: Data) => {
-          return `${item.value}`;
-        });
-        const csv = new Blob([csvData], {
-          type: "text/csv",
-        });
-        const url = URL.createObjectURL(csv);
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = "data.csv";
-        a.click();
-        URL.revokeObjectURL(url);
-        toast.success("Fichier téléchargé");
-      } catch (error) {
-        toast.error("Erreur lors du téléchargement");
-      }
+    switch (code) {
+      case "":
+        setError("Veuillez entrer un code valide.");
+        toast.error("Veuillez entrer un code valide.");
+        break;
+      case configuration.code.pass:
+        try {
+          const csvData = await data.map((item: Data) => {
+            return `${item.value}`;
+          });
+          const csv = new Blob([csvData], {
+            type: "text/csv",
+          });
+          const url = URL.createObjectURL(csv);
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = "data.csv";
+          a.click();
+          URL.revokeObjectURL(url);
+          toast.success("Fichier téléchargé");
+        } catch (error) {
+          toast.error("Erreur lors du téléchargement");
+        }
+        break;
     }
   };
 
