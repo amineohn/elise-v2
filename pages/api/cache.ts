@@ -51,7 +51,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
         console.log(e);
       }
     });
-  }, 15000); // 4s
+  }, 15000); // 15s
 
   res.status(200).json({
     name: "Hello, there's is a api cache",
