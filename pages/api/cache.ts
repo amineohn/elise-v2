@@ -14,12 +14,14 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       }));
       const mapped = data.map((item) => item.value * 1);
       const total = mapped.reduce((acc, cur) => acc + cur, 0);
+      const weightbro = data.map((item) => item.value);
+
       try {
         fs.chmodSync(`./cache/data.json`, 0o777);
         fs.writeFileSync(
           `./cache/data.json`,
           JSON.stringify({
-            data: data,
+            data: weightbro,
             total: total + "kg",
           })
         );
@@ -35,12 +37,13 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       }));
       const mapped = data.map((item) => item.value * 1);
       const total = mapped.reduce((acc, cur) => acc + cur, 0);
+      const weightbro = data.map((item) => item.value);
       try {
         fs.chmodSync(`./cache/data2.json`, 0o777);
         fs.writeFileSync(
           `./cache/data2.json`,
           JSON.stringify({
-            data: data,
+            data: weightbro,
             total: total + "kg",
           })
         );
