@@ -60,7 +60,7 @@ const Code = () => {
           <form method="POST" onSubmit={handleSubmit} className="scale">
             <div className="flex justify-center items-center">
               <div className="flex flex-col space-y-2">
-                <div className="mb-4">
+                <div>
                   <label className="block mb-1" htmlFor="code">
                     Code
                   </label>
