@@ -195,7 +195,7 @@ const Code = () => {
                         {code.length > 0 ? (
                           <button className="mr-0.5" type="button">
                             <div
-                              className="rounded-full w-20 h-20 bg-red-500 transition-colors"
+                              className="rounded-full w-20 h-20 bg-rose-500 transition-colors"
                               onClick={() => setCode("")}
                             >
                               <div className="p-5">
@@ -208,7 +208,7 @@ const Code = () => {
                         ) : (
                           <button className="mr-0.5" type="button" disabled>
                             <div
-                              className="rounded-full w-20 h-20 bg-neutral-300 transition-colors"
+                              className="rounded-full w-20 h-20 bg-gray-800 transition-colors"
                               onClick={() => setCode("")}
                             >
                               <div className="p-5">
@@ -233,7 +233,7 @@ const Code = () => {
                         </button>
                         {code.length > 0 ? (
                           <button type="submit">
-                            <div className="rounded-full w-20 h-20 bg-green-500 transition-colors">
+                            <div className="rounded-full w-20 h-20 bg-lime-500 transition-colors">
                               <div className="p-5">
                                 <span className=" text-3xl font-bold text-white">
                                   V
@@ -243,7 +243,7 @@ const Code = () => {
                           </button>
                         ) : (
                           <button type="submit" disabled>
-                            <div className="rounded-full w-20 h-20 bg-neutral-300 transition-colors">
+                            <div className="rounded-full w-20 h-20 bg-gray-800 transition-colors">
                               <div className="p-5">
                                 <span className=" text-3xl font-bold text-white">
                                   V
