@@ -7,6 +7,7 @@ const Send: NextPage = () => {
   const [value, setValue] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const [prevent, setPrevent] = useState(false);
   const [data, setData] = useState([{}] as any);
   const fire = new Firebase();
   const router = useRouter();
@@ -32,6 +33,7 @@ const Send: NextPage = () => {
       } else {
         setData(value);
       }
+      setPrevent(true);
     });
   }, []);
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -72,9 +74,7 @@ const Send: NextPage = () => {
   // download button to download the data
   return (
     <>
-      {success && <Toaster />}
-      {error && <Toaster />}
-
+      <Toaster />
       <div className="h-screen my-10 scale">
         <div className="flex flex-col py-5 px-1 space-y-3">
           <div className="flex justify-center">
@@ -288,9 +288,12 @@ const Send: NextPage = () => {
                         <a
                           className="px-5 py-3 rounded-lg border border-red-600 text-red-500 hover:border-red-700 transition cursor-pointer"
                           onClick={() => {
-                            toast.error(
-                              "Attention, uniquement le gérant d'exploitation peut télécharger les données"
-                            );
+                            if (prevent) {
+                              toast.error(
+                                "Attention, uniquement le gérant d'exploitation peut télécharger les données"
+                              );
+                              return;
+                            }
                             setInterval(() => {
                               router.push("/security/code");
                             }, 3000);

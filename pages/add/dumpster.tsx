@@ -41,7 +41,7 @@ const Home: NextPage = () => {
   let val2: any = "2";
   if (total > 1900) {
     color = "bg-red-600";
-    toast.error("Vous avez dépassé la limite de la benne.").slice(0, 10);
+    toast.error("Vous avez dépassé la limite de la benne.");
     val = "1859";
   } else if (total > 1500) {
     color = "bg-orange-600";
