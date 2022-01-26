@@ -109,7 +109,7 @@ const Send: NextPage = () => {
                 <br />
                 <div>
                   <div className="flex justify-center items-center">
-                    <div className="grid grid-cols-1 space-y-1">
+                    <div className="grid grid-cols-1 space-y-2">
                       <div className="space-x-1">
                         <button type="button">
                           <div
