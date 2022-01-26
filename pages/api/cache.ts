@@ -20,10 +20,14 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
         fs.chmodSync(`./cache/data.json`, 0o777);
         fs.writeFileSync(
           `./cache/data.json`,
-          JSON.stringify({
-            data: weightbro,
-            total: total + "kg",
-          })
+          JSON.stringify(
+            {
+              data: weightbro,
+              total: total + "kg",
+            },
+            null,
+            2
+          )
         );
       } catch (e) {
         console.log(e);
@@ -42,10 +46,14 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
         fs.chmodSync(`./cache/data2.json`, 0o777);
         fs.writeFileSync(
           `./cache/data2.json`,
-          JSON.stringify({
-            data: weightbro,
-            total: total + "kg",
-          })
+          JSON.stringify(
+            {
+              data: weightbro,
+              total: total + "kg",
+            },
+            null,
+            2
+          )
         );
       } catch (e) {
         console.log(e);
