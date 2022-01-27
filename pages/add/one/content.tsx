@@ -286,7 +286,7 @@ const Send: NextPage = () => {
                           </button>
                         )}
                       </div>
-                      {value === "123456789" && (
+                      {value === "1234567890" && (
                         <div className="flex justify-center items-center !mt-3 slide-in-top">
                           <a
                             className="px-5 py-3 rounded-lg border border-red-600 text-red-500 hover:border-red-700 transition cursor-pointer"
@@ -300,7 +300,7 @@ const Send: NextPage = () => {
                           </a>
                         </div>
                       )}
-                      {value === "123456" && (
+                      {value === "1234560" && (
                         <div className="flex justify-center items-center !mt-3 slide-in-top">
                           <a
                             className="px-5 py-3 rounded-lg border border-rose-600 text-rose-500 hover:border-rose-700 transition cursor-pointer"
