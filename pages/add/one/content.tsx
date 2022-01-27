@@ -286,24 +286,20 @@ const Send: NextPage = () => {
                           </button>
                         )}
                       </div>
-                      <div className="flex justify-center items-center !mt-3">
-                        <a
-                          className="px-5 py-3 rounded-lg border border-red-600 text-red-500 hover:border-red-700 transition cursor-pointer"
-                          onClick={() => {
-                            if (prevent) {
-                              toast.error(
-                                "Attention, uniquement le gérant d'exploitation peut télécharger les données"
-                              );
-                              return;
-                            }
-                            setInterval(() => {
-                              router.push("/security/code");
-                            }, 3000);
-                          }}
-                        >
-                          Télécharger les données
-                        </a>
-                      </div>
+                      {value === "123456789" && (
+                        <div className="flex justify-center items-center !mt-3">
+                          <a
+                            className="px-5 py-3 rounded-lg border border-red-600 text-red-500 hover:border-red-700 transition cursor-pointer"
+                            onClick={() => {
+                              setInterval(() => {
+                                router.push("/security/code");
+                              }, 3000);
+                            }}
+                          >
+                            Télécharger les données
+                          </a>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
