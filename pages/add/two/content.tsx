@@ -17,6 +17,7 @@ const Send: NextPage = () => {
       const data = snapshot.docs.map((doc) => ({
         id: doc.id ? doc.id : "no one exist? :/",
         value: doc.data().value,
+        date: doc.data().date,
         ...doc.data(),
       }));
       const mapped = data.map((item) => item.value * 1);
@@ -60,6 +61,7 @@ const Send: NextPage = () => {
               .collection("test2")
               .add({
                 value: value,
+                date: new Date().toLocaleString(),
               })
               .then(() => {
                 setSuccess("Votre valeur a été ajoutée");
