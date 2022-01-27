@@ -63,6 +63,7 @@ const Send: NextPage = () => {
               .add({
                 value: value,
                 date: new Date().toLocaleString(),
+                dumpster: "Benne 2",
               })
               .then(() => {
                 setSuccess("Votre valeur a été ajoutée");

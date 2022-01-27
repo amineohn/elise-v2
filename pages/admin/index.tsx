@@ -10,22 +10,28 @@ const Index = () => {
   const [code, setCode] = useState("");
   const [error, setError] = useState("");
   useEffect(() => {
-    fire.collection("test").onSnapshot((snapshot) => {
-      const data = snapshot.docs.map((doc) => ({
-        id: doc.id ? doc.id : "no one exist? :/",
-        value: doc.data().value,
-        ...doc.data(),
-      }));
-      setData(data);
-    });
-    fire.collection("test2").onSnapshot((snapshot) => {
-      const data2 = snapshot.docs.map((doc) => ({
-        id: doc.id ? doc.id : "no one exist? :/",
-        value: doc.data().value,
-        ...doc.data(),
-      }));
-      setData2(data2);
-    });
+    fire
+      .collection("test")
+      .orderBy("date")
+      .onSnapshot((snapshot) => {
+        const data = snapshot.docs.map((doc) => ({
+          id: doc.id ? doc.id : "no one exist? :/",
+          value: doc.data().value,
+          ...doc.data(),
+        }));
+        setData(data);
+      });
+    fire
+      .collection("test2")
+      .orderBy("date")
+      .onSnapshot((snapshot) => {
+        const data2 = snapshot.docs.map((doc) => ({
+          id: doc.id ? doc.id : "no one exist? :/",
+          value: doc.data().value,
+          ...doc.data(),
+        }));
+        setData2(data2);
+      });
     setShow(true);
   }, []);
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -131,58 +137,8 @@ const Index = () => {
             </div>
           </div>
         </div>
-        <div className="relative md:ml-64">
-          <div className="relative md:pt-32 pb-5 pt-5">
-            <div className="px-4 md:px-10 mx-auto w-full">
-              <div className="flex flex-wrap space-x-0 space-y-2 md:space-y-0 sm:space-y-0 lg:space-y-0 lg:space-x-2">
-                <div className="bg-slate-600 w-80 px-5 py-5 rounded-xl">
-                  <p className="text-white font-bold">Gestion</p>
-                  <table className="font-light text-white">
-                    <tbody>
-                      <tr>
-                        <td>oui</td>
-                        <td>Supprimer</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <div className="bg-slate-600 w-80 px-5 py-5 rounded-xl">
-                  <p className="text-white font-bold">Gestion</p>
-                  <table className="font-light text-white">
-                    <tbody>
-                      <tr>
-                        <td>oui</td>
-                        <td>Supprimer</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <div className="bg-slate-600 w-80 px-5 py-5 rounded-xl">
-                  <p className="text-white font-bold">Gestion</p>
-                  <table className="font-light text-white">
-                    <tbody>
-                      <tr>
-                        <td>oui</td>
-                        <td>Supprimer</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <div className="bg-slate-600 w-80 px-5 py-5 rounded-xl">
-                  <p className="text-white font-bold">Gestion</p>
-                  <table className="font-light text-white">
-                    <tbody>
-                      <tr>
-                        <td>oui</td>
-                        <td>Supprimer</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="px-10 flex justify-center items-center">
+        <div className="relative md:ml-64 pt-20 max-w-xl">
+          <div className="px-10">
             <div className="bg-slate-600 rounded-xl px-4 py-4">
               <p className="text-white">
                 {data.map((item) => (
@@ -192,6 +148,7 @@ const Index = () => {
                         Poids: {item.value}
                         <span className="text-xs font-bold">kg</span>
                       </p>
+                      <p>{item.dumpster}</p>
                       <p>Date: {item.date}</p>
                     </div>
                   </div>
@@ -203,6 +160,7 @@ const Index = () => {
                         Poids: {item.value}
                         <span className="text-xs font-bold">kg</span>
                       </p>
+                      <p>{item.dumpster}</p>
                       <p>Date: {item.date}</p>
                     </div>
                   </div>
