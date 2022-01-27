@@ -57,7 +57,7 @@ const Index = () => {
         aria-hidden="true"
         className={`${
           show
-            ? "absolute justify-center items-center flex bg-black/95"
+            ? "absolute justify-center items-center flex bg-black/95 h-screen"
             : "hidden"
         } overflow-y-auto overflow-x-hidden right-0 left-0 top-4 z-50 justify-center items-center h-modal md:h-full md:inset-0`}
       >
@@ -138,7 +138,7 @@ const Index = () => {
           </div>
         </div>
         <div className="relative md:ml-64 pt-20 max-w-xl">
-          <div className="px-10 space-y-2 h-96 overflow-auto">
+          <div className="px-10 space-y-2 h-[450px] overflow-auto">
             {data.map((item) => (
               <div className="bg-slate-600 rounded-xl px-4 py-4">
                 <p className="text-white">
