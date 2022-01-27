@@ -38,12 +38,7 @@ const Code = () => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     switch (code) {
-      case "":
-        setError("Veuillez entrer un code valide.");
-        toast.error("Veuillez entrer un code valide.");
-        break;
       case configuration.code.pass:
-        toast.success("Code correct.");
         try {
           const csvData = await data.map((item: Data) => {
             return `${item.value}`;
@@ -70,9 +65,7 @@ const Code = () => {
 
   return (
     <>
-      {success && <Toaster />}
-      {error && <Toaster />}
-
+      <Toaster />
       <div className="w-full min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0">
         <div className="w-full sm:max-w-md p-5 mx-auto">
           <form method="POST" onSubmit={handleSubmit} className="scale">
