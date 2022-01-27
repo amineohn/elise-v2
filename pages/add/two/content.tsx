@@ -289,7 +289,7 @@ const Send: NextPage = () => {
                         )}
                       </div>
                       {value === "123456789" && (
-                        <div className="flex justify-center items-center !mt-3">
+                        <div className="flex justify-center items-center !mt-3 slide-in-top">
                           <a
                             className="px-5 py-3 rounded-lg border border-red-600 text-red-500 hover:border-red-700 transition cursor-pointer"
                             onClick={() => {
