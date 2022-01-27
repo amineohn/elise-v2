@@ -43,6 +43,18 @@ export default function MyApp({
     }
   }, []);
 
+  /*useEffect(() => {
+    // get code from local storage
+    const code = localStorage.getItem("code") as any;
+    // if code is not null
+    if (code) {
+      // if code is not equal to the code in the configuration file
+      if (code !== configuration.code) {
+        // redirect to the home page
+        router.push("/");
+      }
+    }
+  }, []);*/
   const router = useRouter();
   const routes = () => {
     switch (router.pathname) {
@@ -58,7 +70,6 @@ export default function MyApp({
         return router.push("/");
     }
   };
-
   return (
     <>
       {router.pathname === "/admin" && <Component {...pageProps} />}

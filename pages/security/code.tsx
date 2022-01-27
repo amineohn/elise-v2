@@ -19,6 +19,11 @@ const Code = () => {
       }));
       setData(data);
     });
+
+    // check if code is correct to local storage
+    if (code === configuration.code.pass) {
+      localStorage.setItem("code", code);
+    }
   }, []);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
