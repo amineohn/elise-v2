@@ -49,8 +49,8 @@ const Index = () => {
         aria-hidden="true"
         className={`${
           show
-            ? "absolute justify-center items-center flex bg-black/95 puff-in-center"
-            : "hidden slide-out-top"
+            ? "absolute justify-center items-center flex bg-black/95"
+            : "hidden"
         } overflow-y-auto overflow-x-hidden right-0 left-0 top-4 z-50 justify-center items-center h-modal md:h-full md:inset-0`}
       >
         <div className="relative px-4 w-full max-w-md h-full md:h-auto">
