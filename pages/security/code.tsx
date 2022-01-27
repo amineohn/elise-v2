@@ -85,7 +85,7 @@ const Code = () => {
                       <div className="space-x-1">
                         <button type="button">
                           <div
-                            className="rounded-full w-20 h-20 border dark:text-white dark:bg-slate-800 bg-slate-100 hover:bg-slate-700 hover:bg-slate-70 border-transparent dark:border-transparent"
+                            className="rounded-full w-20 h-20 border dark:text-white dark:bg-slate-800 bg-slate-100 hover:bg-slate-100 dark:hover:bg-slate-700 hover:bg-slate-70 border-transparent dark:border-transparent"
                             onClick={() => setCode(code + "1")}
                           >
                             <div className="my-5">
@@ -97,7 +97,7 @@ const Code = () => {
                         </button>
                         <button type="button">
                           <div
-                            className="rounded-full w-20 h-20 border dark:text-white dark:bg-slate-800 bg-slate-100 hover:bg-slate-700 border-transparent dark:border-transparent"
+                            className="rounded-full w-20 h-20 border dark:text-white dark:bg-slate-800 bg-slate-100 border-transparent dark:border-transparent"
                             onClick={() => setCode(code + "2")}
                           >
                             <div className="my-5">
@@ -109,7 +109,7 @@ const Code = () => {
                         </button>
                         <button type="button">
                           <div
-                            className="rounded-full w-20 h-20 border dark:text-white dark:bg-slate-800 bg-slate-100 hover:bg-slate-700 border-transparent dark:border-transparent"
+                            className="rounded-full w-20 h-20 border dark:text-white dark:bg-slate-800 bg-slate-100 hover:bg-slate-100 dark:hover:bg-slate-700 border-transparent dark:border-transparent"
                             onClick={() => setCode(code + "3")}
                           >
                             <div className="my-5">
@@ -123,7 +123,7 @@ const Code = () => {
                       <div className="space-x-1">
                         <button type="button">
                           <div
-                            className="rounded-full w-20 h-20 border dark:text-white dark:bg-slate-800 bg-slate-100 hover:bg-slate-700 border-transparent dark:border-transparent"
+                            className="rounded-full w-20 h-20 border dark:text-white dark:bg-slate-800 bg-slate-100 hover:bg-slate-100 dark:hover:bg-slate-700 border-transparent dark:border-transparent"
                             onClick={() => setCode(code + "4")}
                           >
                             <div className="my-5">
@@ -135,7 +135,7 @@ const Code = () => {
                         </button>
                         <button type="button">
                           <div
-                            className="rounded-full w-20 h-20 border dark:text-white dark:bg-slate-800 bg-slate-100 hover:bg-slate-700 border-transparent dark:border-transparent"
+                            className="rounded-full w-20 h-20 border dark:text-white dark:bg-slate-800 bg-slate-100 hover:bg-slate-100 dark:hover:bg-slate-700 border-transparent dark:border-transparent"
                             onClick={() => setCode(code + "5")}
                           >
                             <div className="my-5">
@@ -147,7 +147,7 @@ const Code = () => {
                         </button>
                         <button type="button">
                           <div
-                            className="rounded-full w-20 h-20 border dark:text-white dark:bg-slate-800 bg-slate-100 hover:bg-slate-700 border-transparent dark:border-transparent"
+                            className="rounded-full w-20 h-20 border dark:text-white dark:bg-slate-800 bg-slate-100 hover:bg-slate-100 dark:hover:bg-slate-700 border-transparent dark:border-transparent"
                             onClick={() => setCode(code + "6")}
                           >
                             <div className="my-5">
@@ -161,7 +161,7 @@ const Code = () => {
                       <div className="space-x-1">
                         <button type="button">
                           <div
-                            className="rounded-full w-20 h-20 border dark:text-white dark:bg-slate-800 bg-slate-100 hover:bg-slate-700 border-transparent dark:border-transparent"
+                            className="rounded-full w-20 h-20 border dark:text-white dark:bg-slate-800 bg-slate-100 hover:bg-slate-100 dark:hover:bg-slate-700 border-transparent dark:border-transparent"
                             onClick={() => setCode(code + "7")}
                           >
                             <div className="my-5">
@@ -173,7 +173,7 @@ const Code = () => {
                         </button>
                         <button type="button">
                           <div
-                            className="rounded-full w-20 h-20 border dark:text-white dark:bg-slate-800 bg-slate-100 hover:bg-slate-700 border-transparent dark:border-transparent"
+                            className="rounded-full w-20 h-20 border dark:text-white dark:bg-slate-800 bg-slate-100 hover:bg-slate-100 dark:hover:bg-slate-700 border-transparent dark:border-transparent"
                             onClick={() => setCode(code + "8")}
                           >
                             <div className="my-5">
@@ -185,7 +185,7 @@ const Code = () => {
                         </button>
                         <button type="button">
                           <div
-                            className="rounded-full w-20 h-20 border dark:text-white dark:bg-slate-800 bg-slate-100 hover:bg-slate-700 border-transparent dark:border-transparent"
+                            className="rounded-full w-20 h-20 border dark:text-white dark:bg-slate-800 bg-slate-100 hover:bg-slate-100 dark:hover:bg-slate-700 border-transparent dark:border-transparent"
                             onClick={() => setCode(code + "9")}
                           >
                             <div className="my-5">
@@ -213,11 +213,11 @@ const Code = () => {
                         ) : (
                           <button className="mr-0.5" type="button" disabled>
                             <div
-                              className="rounded-full w-20 h-20 bg-gray-800 transition-colors"
+                              className="rounded-full w-20 h-20 bg-gray-100 dark:bg-gray-800 transition-colors"
                               onClick={() => setCode("")}
                             >
                               <div className="p-5">
-                                <span className="text-3xl font-bold text-white">
+                                <span className="text-3xl font-bold text-black dark:text-white">
                                   A
                                 </span>
                               </div>
@@ -226,7 +226,7 @@ const Code = () => {
                         )}
                         <button type="button">
                           <div
-                            className="rounded-full w-20 h-20 border dark:text-white dark:bg-slate-800 bg-slate-100 hover:bg-slate-700 border-transparent dark:border-transparent"
+                            className="rounded-full w-20 h-20 border dark:text-white dark:bg-slate-800 bg-slate-100 hover:bg-slate-100 dark:hover:bg-slate-700 border-transparent dark:border-transparent"
                             onClick={() => setCode(code + "0")}
                           >
                             <div className="p-5">
@@ -248,9 +248,9 @@ const Code = () => {
                           </button>
                         ) : (
                           <button type="submit" disabled>
-                            <div className="rounded-full w-20 h-20 bg-gray-800 transition-colors">
+                            <div className="rounded-full w-20 h-20 bg-gray-100 dark:bg-gray-800 transition-colors">
                               <div className="p-5">
-                                <span className=" text-3xl font-bold text-white">
+                                <span className=" text-3xl font-bold text-black dark:text-white">
                                   V
                                 </span>
                               </div>
