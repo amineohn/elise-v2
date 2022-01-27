@@ -9,8 +9,17 @@ const Code = () => {
   const [error, setError] = useState("");
   const [success] = useState("");
   const [data, setData] = useState([{}] as any);
+  const [data2, setData2] = useState([{}] as any);
   useEffect(() => {
     const fire = new Firebase();
+    fire.collection("test2").onSnapshot((snapshot) => {
+      const data = snapshot.docs.map((doc) => ({
+        id: doc.id ? doc.id : "no one exist? :/",
+        value: doc.data().value,
+        ...doc.data(),
+      }));
+      setData2(data);
+    });
     fire.collection("test").onSnapshot((snapshot) => {
       const data = snapshot.docs.map((doc) => ({
         id: doc.id ? doc.id : "no one exist? :/",
@@ -38,7 +47,10 @@ const Code = () => {
           const csvData = await data.map((item: Data) => {
             return `${item.value}`;
           });
-          const csv = new Blob([csvData], {
+          const csvData2 = await data2.map((item: Data) => {
+            return `${item.value}`;
+          });
+          const csv = new Blob([csvData + csvData2], {
             type: "text/csv",
           });
           const url = URL.createObjectURL(csv);
