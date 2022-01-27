@@ -38,10 +38,8 @@ const Index = () => {
       case "Brazza33!":
         setShow(false);
         localStorage.setItem("code", code);
+        toast.success("Mot de passe correct.");
         break;
-    }
-    if (code !== "") {
-      toast.error("Mot de passe non valide.");
     }
   };
   return (

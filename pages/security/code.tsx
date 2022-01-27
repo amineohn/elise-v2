@@ -43,6 +43,7 @@ const Code = () => {
         toast.error("Veuillez entrer un code valide.");
         break;
       case configuration.code.pass:
+        toast.success("Code correct.");
         try {
           const csvData = await data.map((item: Data) => {
             return `${item.value}`;
@@ -64,9 +65,6 @@ const Code = () => {
           toast.error("Erreur lors du téléchargement");
         }
         break;
-    }
-    if (code !== "") {
-      toast.error("Code non valide.");
     }
   };
 
