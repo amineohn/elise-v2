@@ -291,9 +291,7 @@ const Send: NextPage = () => {
                           <a
                             className="px-5 py-3 rounded-lg border border-red-600 text-red-500 hover:border-red-700 transition cursor-pointer"
                             onClick={() => {
-                              setInterval(() => {
-                                router.push("/security/code");
-                              }, 3000);
+                              router.push("/security/code");
                             }}
                           >
                             Télécharger les données
@@ -305,9 +303,7 @@ const Send: NextPage = () => {
                           <a
                             className="px-5 py-3 rounded-lg border border-rose-600 text-rose-500 hover:border-rose-700 transition cursor-pointer"
                             onClick={() => {
-                              setInterval(() => {
-                                router.push("/admin");
-                              }, 3000);
+                              router.push("/admin");
                             }}
                           >
                             Administration
