@@ -6,8 +6,6 @@ import { configuration } from "../../utils/configuration";
 
 const Code = () => {
   const [code, setCode] = useState("");
-  const [error, setError] = useState("");
-  const [success] = useState("");
   const [data, setData] = useState([{}] as any);
   const [data2, setData2] = useState([{}] as any);
   useEffect(() => {
