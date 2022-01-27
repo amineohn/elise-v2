@@ -35,51 +35,53 @@ const Home: NextPage = () => {
     });
   }, []);
 
+  let totalPercent: any = (total / 2000) * 100;
+  let totalPercent2: any = (total2 / 2000) * 100;
   let color: string = "bg-blue-500";
-  let val: any = "2";
   let color2: string = "bg-blue-500";
-  let val2: any = "2";
-  if (total > 1900) {
+  if (totalPercent > 100) {
     color = "bg-red-600";
     //toast.error("Vous avez dépassé la limite de la benne.");
-    val = "1859";
-  } else if (total > 1500) {
+  } else if (totalPercent > 90) {
     color = "bg-orange-600";
-
-    val = "1690";
-  } else if (total > 1400) {
+  } else if (totalPercent > 80) {
     color = "bg-orange-500";
-    val = "1399";
-  } else if (total > 1000) {
+  } else if (totalPercent > 70) {
     color = "bg-yellow-500";
-    val = "1300";
-  } else if (total > 800) {
+  } else if (totalPercent > 60) {
     color = "bg-green-500";
-    //toast.success("Vous pouvez ajouter du poids dans la benne.");
-    val = "1000";
-  } else if (total > 0) {
+  } else if (totalPercent > 50) {
     color = "bg-green-500";
-    val = "740";
+  } else if (totalPercent > 40) {
+    color = "bg-green-500";
+  } else if (totalPercent > 30) {
+    color = "bg-green-500";
+  } else if (totalPercent > 20) {
+    color = "bg-green-500";
+  } else if (totalPercent > 10) {
+    color = "bg-green-500";
   }
-
-  if (total2 > 1900) {
-    color2 = "bg-red-600";
-    val2 = "1859";
-  } else if (total2 > 1500) {
-    color2 = "bg-orange-600";
-    val2 = "1690";
-  } else if (total2 > 1400) {
-    color2 = "bg-orange-500";
-    val2 = "1399";
-  } else if (total2 > 1000) {
-    color2 = "bg-yellow-500";
-    val2 = "1300";
-  } else if (total2 > 800) {
-    color2 = "bg-green-500";
-    val2 = "1000";
-  } else if (total2 > 0) {
-    color2 = "bg-green-500";
-    val2 = "740";
+  if (totalPercent2 > 100) {
+    color = "bg-red-600";
+    //toast.error("Vous avez dépassé la limite de la benne.");
+  } else if (totalPercent2 > 90) {
+    color = "bg-orange-600";
+  } else if (totalPercent2 > 80) {
+    color = "bg-orange-500";
+  } else if (totalPercent2 > 70) {
+    color = "bg-yellow-500";
+  } else if (totalPercent2 > 60) {
+    color = "bg-green-500";
+  } else if (totalPercent2 > 50) {
+    color = "bg-green-500";
+  } else if (totalPercent2 > 40) {
+    color = "bg-green-500";
+  } else if (totalPercent2 > 30) {
+    color = "bg-green-500";
+  } else if (totalPercent2 > 20) {
+    color = "bg-green-500";
+  } else if (totalPercent2 > 10) {
+    color = "bg-green-500";
   }
 
   const [dumpsters, setDumpsters] = useState([
@@ -113,8 +115,6 @@ const Home: NextPage = () => {
       },
     ]);
   }, []);
-  const foreal = total - 10 / 10 - val;
-  const foreal2 = total2 - 10 / 10 - val2;
   return (
     <>
       <Toaster />
@@ -138,9 +138,7 @@ const Home: NextPage = () => {
                     </span>
 
                     <div
-                      style={{
-                        height: foreal + "px",
-                      }} // temporary thing.
+                      style={{ height: totalPercent + "px" }} // temporary thing.
                       className={`${color} w-[284px] bottom-0 rounded-b-sm !max-h-[140px]`}
                     />
                   </div>
@@ -164,9 +162,7 @@ const Home: NextPage = () => {
                     </span>
 
                     <div
-                      style={{
-                        height: foreal2 + "px",
-                      }} // temporary thing.
+                      style={{ height: totalPercent2 + "px" }} // temporary thing.
                       className={`${color2} w-[284px] bottom-0 rounded-b-sm !max-h-[140px]`}
                     />
                   </div>
