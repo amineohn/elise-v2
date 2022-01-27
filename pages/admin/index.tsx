@@ -138,10 +138,10 @@ const Index = () => {
           </div>
         </div>
         <div className="relative md:ml-64 pt-20 max-w-xl">
-          <div className="px-10">
-            <div className="bg-slate-600 rounded-xl px-4 py-4">
-              <p className="text-white">
-                {data.map((item) => (
+          <div className="px-10 space-y-2 h-96 overflow-auto">
+            {data.map((item) => (
+              <div className="bg-slate-600 rounded-xl px-4 py-4">
+                <p className="text-white">
                   <div>
                     <div className="inline-flex space-x-2">
                       <p>
@@ -152,8 +152,12 @@ const Index = () => {
                       <p>Date: {item.date}</p>
                     </div>
                   </div>
-                ))}
-                {data2.map((item) => (
+                </p>
+              </div>
+            ))}
+            {data2.map((item) => (
+              <div className="bg-slate-600 rounded-xl px-4 py-4">
+                <p className="text-white">
                   <div>
                     <div className="inline-flex space-x-2">
                       <p>
@@ -164,9 +168,9 @@ const Index = () => {
                       <p>Date: {item.date}</p>
                     </div>
                   </div>
-                ))}
-              </p>
-            </div>
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </div>

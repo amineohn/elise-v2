@@ -62,26 +62,26 @@ const Home: NextPage = () => {
     color = "bg-green-500";
   }
   if (totalPercent2 > 100) {
-    color = "bg-red-600";
+    color2 = "bg-red-600";
     //toast.error("Vous avez dépassé la limite de la benne.");
   } else if (totalPercent2 > 90) {
-    color = "bg-orange-600";
+    color2 = "bg-orange-600";
   } else if (totalPercent2 > 80) {
-    color = "bg-orange-500";
+    color2 = "bg-orange-500";
   } else if (totalPercent2 > 70) {
-    color = "bg-yellow-500";
+    color2 = "bg-yellow-500";
   } else if (totalPercent2 > 60) {
-    color = "bg-green-500";
+    color2 = "bg-green-500";
   } else if (totalPercent2 > 50) {
-    color = "bg-green-500";
+    color2 = "bg-green-500";
   } else if (totalPercent2 > 40) {
-    color = "bg-green-500";
+    color2 = "bg-green-500";
   } else if (totalPercent2 > 30) {
-    color = "bg-green-500";
+    color2 = "bg-green-500";
   } else if (totalPercent2 > 20) {
-    color = "bg-green-500";
+    color2 = "bg-green-500";
   } else if (totalPercent2 > 10) {
-    color = "bg-green-500";
+    color2 = "bg-green-500";
   }
 
   const [dumpsters, setDumpsters] = useState([
