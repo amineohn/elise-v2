@@ -23,5 +23,8 @@ export const configuration = {
   },
   code: {
     pass: "12345678",
+    admin: "Btazza33!",
+    download: "1234567890",
+    access: "1234560",
   },
 };

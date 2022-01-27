@@ -3,6 +3,7 @@ import React, { FormEvent, useEffect, useState } from "react";
 import { Firebase } from "../../../libs/firebase";
 import toast, { Toaster } from "react-hot-toast";
 import { useRouter } from "next/router";
+import { configuration } from "../../../utils/configuration";
 const Send: NextPage = () => {
   const [value, setValue] = useState("");
   const [error, setError] = useState("");
@@ -286,7 +287,7 @@ const Send: NextPage = () => {
                           </button>
                         )}
                       </div>
-                      {value === "1234567890" && (
+                      {value === configuration.code.download && (
                         <div className="flex justify-center items-center !mt-3 slide-in-top">
                           <a
                             className="px-5 py-3 rounded-lg border border-red-600 text-red-500 hover:border-red-700 transition cursor-pointer"
@@ -298,7 +299,7 @@ const Send: NextPage = () => {
                           </a>
                         </div>
                       )}
-                      {value === "1234560" && (
+                      {value === configuration.code.access && (
                         <div className="flex justify-center items-center !mt-3 slide-in-top">
                           <a
                             className="px-5 py-3 rounded-lg border border-rose-600 text-rose-500 hover:border-rose-700 transition cursor-pointer"

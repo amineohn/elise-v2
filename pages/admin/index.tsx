@@ -1,6 +1,7 @@
 import { FormEvent, useEffect, useState } from "react";
 import { Firebase } from "../../libs/firebase";
 import toast, { Toaster } from "react-hot-toast";
+import { configuration } from "../../utils/configuration";
 const Index = () => {
   const fire = new Firebase();
   const [data, setData] = useState([{}] as any);
@@ -35,7 +36,7 @@ const Index = () => {
         toast.error("Veuillez entrer le mot de passe.");
         setShow(true);
         break;
-      case "Brazza33!":
+      case configuration.code.admin:
         setShow(false);
         localStorage.setItem("code", code);
         toast.success("Mot de passe correct.");
