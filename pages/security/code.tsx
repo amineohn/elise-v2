@@ -65,6 +65,9 @@ const Code = () => {
         }
         break;
     }
+    if (code !== "") {
+      toast.error("Code non valide.");
+    }
   };
 
   return (

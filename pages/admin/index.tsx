@@ -31,8 +31,8 @@ const Index = () => {
     e.preventDefault();
     switch (code) {
       case "":
-        setError("Veuillez entrer un code valide.");
-        toast.error("Veuillez entrer un code valide.");
+        setError("Veuillez entrer le mot de passe.");
+        toast.error("Veuillez entrer le mot de passe.");
         setShow(true);
         break;
       case "Brazza33!":
@@ -40,10 +40,13 @@ const Index = () => {
         localStorage.setItem("code", code);
         break;
     }
+    if (code !== "") {
+      toast.error("Mot de passe non valide.");
+    }
   };
   return (
     <>
-      <Toaster />
+      {error && <Toaster />}
       <div
         id="authentication-modal"
         aria-hidden="true"
