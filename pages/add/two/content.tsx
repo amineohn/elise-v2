@@ -41,7 +41,7 @@ const Send: NextPage = () => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (data >= 2000) {
-      toast.error("Tu as dépasser la limite");
+      toast.error("Vous avez dépassé la limite de la benne. [2000kg]");
       return;
     }
     // check to the database if the value is already in the database
