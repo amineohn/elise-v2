@@ -35,8 +35,8 @@ const Home: NextPage = () => {
     });
   }, []);
 
-  let totalPercent: any = (total / 2000) * 100;
-  let totalPercent2: any = (total2 / 2000) * 100;
+  let totalPercent: any = (total / 2000) * 100 + 40; // ?
+  let totalPercent2: any = (total2 / 2000) * 100 + 40; // ?
   let color: string = "bg-blue-500";
   let color2: string = "bg-blue-500";
   if (totalPercent > 140) {
