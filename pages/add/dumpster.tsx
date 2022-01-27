@@ -39,9 +39,16 @@ const Home: NextPage = () => {
   let totalPercent2: any = (total2 / 2000) * 100;
   let color: string = "bg-blue-500";
   let color2: string = "bg-blue-500";
-  if (totalPercent > 100) {
+  if (totalPercent > 140) {
+    color = "bg-red-900";
+  } else if (totalPercent > 130) {
+    color = "bg-red-800";
+  } else if (totalPercent > 120) {
+    color = "bg-red-700";
+  } else if (totalPercent > 110) {
     color = "bg-red-600";
-    //toast.error("Vous avez dépassé la limite de la benne.");
+  } else if (totalPercent > 100) {
+    color = "bg-red-700";
   } else if (totalPercent > 90) {
     color = "bg-orange-600";
   } else if (totalPercent > 80) {
@@ -61,9 +68,16 @@ const Home: NextPage = () => {
   } else if (totalPercent > 10) {
     color = "bg-green-500";
   }
-  if (totalPercent2 > 100) {
+  if (totalPercent2 > 140) {
+    color2 = "bg-red-900";
+  } else if (totalPercent2 > 130) {
+    color2 = "bg-red-800";
+  } else if (totalPercent2 > 120) {
+    color2 = "bg-red-700";
+  } else if (totalPercent2 > 110) {
     color2 = "bg-red-600";
-    //toast.error("Vous avez dépassé la limite de la benne.");
+  } else if (totalPercent2 > 100) {
+    color2 = "bg-red-700";
   } else if (totalPercent2 > 90) {
     color2 = "bg-orange-600";
   } else if (totalPercent2 > 80) {
