@@ -67,7 +67,7 @@ export default function MyApp({
       case "/add/two/content":
         return router.push("/add/dumpster");
       case "/security/code":
-        return router.push("/");
+        return router.push("/admin");
     }
   };
   return (
