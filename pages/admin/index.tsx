@@ -289,7 +289,7 @@ const Index = () => {
         <div className="relative md:ml-64 pt-20 items-center justify-center">
           <div className="px-10 overflow-auto grid grid-cols-1 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 h-[600px] gap-2">
             {data.map((item) => (
-              <div className="bg-slate-600 rounded-xl px-4 py-4 slide-in-elliptic-top-fwd h-[60px]">
+              <div className="bg-slate-600 rounded-xl px-4 py-4 slide-in-elliptic-top-fwd h-[80px] md:h-[100px] lg:h-[60px]">
                 <p className="text-white">
                   <div className="space-x-1">
                     <div className="inline-flex space-x-2">
@@ -305,7 +305,7 @@ const Index = () => {
               </div>
             ))}
             {data2.map((item) => (
-              <div className="bg-slate-600 rounded-xl px-4 py-4 slide-in-elliptic-top-fwd h-[60px]">
+              <div className="bg-slate-600 rounded-xl px-4 py-4 slide-in-elliptic-top-fwd h-[80px] md:h-[100px] lg:h-[60px]">
                 <p className="text-white">
                   <div className="space-x-1">
                     <div className="inline-flex space-x-2">
