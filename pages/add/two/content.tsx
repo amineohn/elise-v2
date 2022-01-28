@@ -24,14 +24,6 @@ const Send: NextPage = () => {
       const mapped = data.map((item) => item.value * 1);
       const total = mapped.reduce((acc, cur) => acc + cur, 0);
       setData(total);
-
-      if (total > 1900) {
-        toast.error("Vous avez dépassé la limite de la benne.");
-      } else if (total > 1500) {
-        toast.error(
-          "Attention, vous êtes bientôt à la limite maximal de la benne !"
-        );
-      }
       if (value === "") {
       } else {
         setData(value);
@@ -41,10 +33,6 @@ const Send: NextPage = () => {
   }, []);
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (data >= 2000) {
-      toast.error("Vous avez dépassé la limite de la benne. [2000kg]");
-      return;
-    }
     // check to the database if the value is already in the database
     if (value === "") {
       return;
