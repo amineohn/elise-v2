@@ -177,7 +177,7 @@ const Index = () => {
               </div>
             </div>
             <div className="flex justify-center items-center p-10">
-              <div className="grid grid-cols-1">
+              <div className="grid grid-cols-1 space-y-1">
                 <div className="space-y-1">
                   <div className="flex flex-col justify-center items-center space-y-2">
                     <button className="transition bg-slate-800 hover:bg-slate-800/60 hover:ring-2 hover:ring-black/10 rounded-xl w-52 py-2">
@@ -255,7 +255,7 @@ const Index = () => {
           </div>
         </div>
         <div className="relative md:ml-64 pt-20 items-center justify-center">
-          <div className="px-10 space-x-2 space-y-2 overflow-auto grid grid-cols-1 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 h-[600px]">
+          <div className="px-10 overflow-auto grid grid-cols-1 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 h-[600px] gap-2">
             {data.map((item) => (
               <div className="bg-slate-600 rounded-xl px-4 py-4 slide-in-elliptic-top-fwd h-[60px]">
                 <p className="text-white">
