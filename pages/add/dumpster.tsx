@@ -1,7 +1,6 @@
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
 import { Firebase } from "../../libs/firebase";
 
 const Home: NextPage = () => {
@@ -130,7 +129,6 @@ const Home: NextPage = () => {
   }, []);
   return (
     <>
-      <Toaster />
       <div className="flex flex-col py-5 px-1 space-y-2 h-screen scale items-center justify-center">
         <div className="flex justify-center">
           <h1 className="text-center font-bold text-3xl uppercase">
