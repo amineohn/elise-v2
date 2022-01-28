@@ -276,7 +276,7 @@ const Index = () => {
               <div className="bg-slate-600 rounded-xl px-4 py-4 slide-in-elliptic-top-fwd h-[60px]">
                 <p className="text-white">
                   <div className="space-x-1">
-                    <div className="inline-flex">
+                    <div className="inline-flex space-x-2">
                       <p>
                         Poids: {item.value}
                         <span className="text-xs font-bold">kg</span>
