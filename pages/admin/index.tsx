@@ -180,7 +180,13 @@ const Index = () => {
               <div className="grid grid-cols-1 space-y-1">
                 <div className="space-y-1">
                   <div className="flex flex-col justify-center items-center space-y-2">
-                    <button className="transition bg-slate-800 hover:bg-slate-800/60 hover:ring-2 hover:ring-black/10 rounded-xl w-52 py-2">
+                    <button
+                      className="transition bg-slate-800 hover:bg-slate-800/60 hover:ring-2 hover:ring-black/10 rounded-xl w-52 py-2"
+                      onClick={() => {
+                        router.push("/admin");
+                        setShowModal(false);
+                      }}
+                    >
                       <div className="inline-flex justify-center items-center space-x-2">
                         <svg
                           className="text-white w-5 h-5"
