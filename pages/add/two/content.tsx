@@ -290,18 +290,6 @@ const Send: NextPage = () => {
                           </button>
                         )}
                       </div>
-                      {value === configuration.code.download && (
-                        <div className="flex justify-center items-center !mt-3 slide-in-top">
-                          <a
-                            className="px-5 py-3 rounded-lg border border-red-600 text-red-500 hover:border-red-700 transition cursor-pointer"
-                            onClick={() => {
-                              router.push("/security/code");
-                            }}
-                          >
-                            Télécharger les données
-                          </a>
-                        </div>
-                      )}
                       {value === configuration.code.access && (
                         <div className="flex justify-center items-center !mt-3 slide-in-top">
                           <a
