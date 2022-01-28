@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lora&display=swap");
 html,
 body {
   @apply transition-all font-default ease-in-out overflow-hidden antialiased p-0 m-0 select-none bg-white dark:bg-slate-900 h-screen focus:outline-none;
@@ -36,6 +38,12 @@ p {
 }
 .scale {
   animation: myAnim 1s ease 0s 1 normal forwards;
+}
+.Madurai {
+  font-family: "Hind Madurai", sans-serif;
+}
+.Lora {
+  font-family: "Lora", serif;
 }
 @keyframes myAnim {
   0% {

@@ -105,7 +105,7 @@ const Index = () => {
           <div className="flex flex-col px-8 py-8">
             <div className="flex justify-center items-center ">
               <div className="">
-                <h1 className="text-white text-xl font-bold text-center uppercase">
+                <h1 className="text-white text-xl font-bold text-center uppercase Madurai">
                   Administration
                 </h1>
               </div>
