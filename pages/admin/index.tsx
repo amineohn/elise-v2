@@ -10,6 +10,7 @@ const Index = () => {
   const [show, setShow] = useState(false);
   const [code, setCode] = useState("");
   const [error, setError] = useState("");
+  const [showModal, setShowModal] = useState(false);
   const router = useRouter();
   useEffect(() => {
     fire
@@ -36,6 +37,26 @@ const Index = () => {
       });
     setShow(true);
   }, []);
+  const handleDelete = () => {
+    // delete all data in collection
+    fire
+      .collection("test")
+      .get()
+      .then((snapshot) => {
+        snapshot.forEach((doc) => {
+          doc.ref.delete();
+        });
+      });
+    fire
+      .collection("test2")
+      .get()
+      .then((snapshot) => {
+        snapshot.forEach((doc) => {
+          doc.ref.delete();
+        });
+      });
+  };
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     switch (code) {
@@ -54,53 +75,98 @@ const Index = () => {
   return (
     <>
       {error && <Toaster />}
-      <div
-        aria-hidden="true"
-        className={`${
-          show ? "absolute justify-center items-center flex h-screen" : "hidden"
-        } overflow-y-auto overflow-x-hidden right-0 left-0 top-4 z-50 justify-center items-center h-modal md:h-full md:inset-0`}
-      >
-        <div className="relative px-4 w-full max-w-md h-full md:h-auto">
-          <div className="relative bg-slate-900 rounded-lg slide-in-top">
-            <div className="flex justify-end p-4"></div>
-            <form
-              className="px-6 pb-4 space-y-6 lg:px-8 sm:pb-6 xl:pb-8"
-              onSubmit={handleSubmit}
-              method="POST"
-            >
-              <h3 className="text-xl font-medium text-white">
-                Securité Administrateur
-              </h3>
-              <div>
-                <label
-                  htmlFor="Code"
-                  className="block mb-2 text-sm font-medium text-gray-300"
-                >
-                  Code
-                </label>
-                <input
-                  type="text"
-                  name="code"
-                  id="code"
-                  onChange={(e) => setCode(e.target.value)}
-                  placeholder="••••••••"
-                  className="bg-gray-800 text-white text-sm rounded-lg block w-full p-2.5 focus:outline-none"
-                  autoComplete="off"
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full text-white bg-slate-700 hover:bg-slate-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+      {show && (
+        <div
+          aria-hidden="true"
+          className={`${
+            show
+              ? "absolute justify-center items-center flex h-screen"
+              : "hidden"
+          } overflow-y-auto overflow-x-hidden right-0 left-0 top-4 z-50 justify-center items-center h-modal md:h-full md:inset-0`}
+        >
+          <div className="relative px-4 w-full max-w-md h-full md:h-auto">
+            <div className="relative bg-slate-900 rounded-lg slide-in-top">
+              <div className="flex justify-end p-4"></div>
+              <form
+                className="px-6 pb-4 space-y-6 lg:px-8 sm:pb-6 xl:pb-8"
+                onSubmit={handleSubmit}
+                method="POST"
               >
-                Connexion
-              </button>
-            </form>
+                <h3 className="text-xl font-medium text-white">
+                  Securité Administrateur
+                </h3>
+                <div>
+                  <label
+                    htmlFor="Code"
+                    className="block mb-2 text-sm font-medium text-gray-300"
+                  >
+                    Code
+                  </label>
+                  <input
+                    type="text"
+                    name="code"
+                    id="code"
+                    onChange={(e) => setCode(e.target.value)}
+                    placeholder="••••••••"
+                    className="bg-gray-800 text-white text-sm rounded-lg block w-full p-2.5 focus:outline-none"
+                    autoComplete="off"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full text-white bg-slate-700 hover:bg-slate-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                >
+                  Connexion
+                </button>
+              </form>
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
       <div className="absolute bg-slate-100 w-full h-full">
+        {showModal && (
+          <div className="justify-center items-center flex h-screen z-50">
+            <div className="flex flex-col p-8 bg-white shadow-md hover:shodow-lg rounded-2xl slide-in-top items-center justify-center">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-16 h-16 rounded-2xl p-3 border border-blue-100 text-blue-400 bg-blue-50"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    ></path>
+                  </svg>
+                  <div className="flex flex-col ml-3">
+                    <div className="font-medium leading-none">
+                      Etes-vous sûr de vouloir supprimée les données ?
+                    </div>
+                    <p className="text-sm text-gray-600 leading-none mt-1">
+                      Attention, cette action est irréversible.
+                    </p>
+                  </div>
+                </div>
+                <button
+                  className="flex-no-shrink bg-red-500 px-5 ml-4 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-red-500 text-white rounded-full"
+                  onClick={() => {
+                    handleDelete();
+                    setShowModal(false);
+                  }}
+                >
+                  Supprimer
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
         <div className="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden flex flex-wrap items-center justify-between relative md:w-64 z-10 py-4 px-6 bg-slate-900 slide-in-left">
           <div className="flex flex-col px-8 py-8">
             <div className="flex justify-center items-center ">
@@ -154,6 +220,31 @@ const Index = () => {
                         </svg>
                         <span className="text-md font-normal text-start text-white">
                           Retour
+                        </span>
+                      </div>
+                    </button>
+                    <button
+                      className="hover:scale-105 hover:transform transition bg-rose-900 hover:ring-2 hover:ring-white/10 rounded-xl w-52 py-2"
+                      onClick={() => setShowModal(true)}
+                    >
+                      <div className="inline-flex justify-center items-center space-x-2">
+                        <svg
+                          aria-hidden="true"
+                          focusable="false"
+                          data-prefix="fal"
+                          data-icon="trash-alt"
+                          role="img"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 448 512"
+                          className="text-white w-5 h-5"
+                        >
+                          <path
+                            fill="currentColor"
+                            d="M296 432h16a8 8 0 0 0 8-8V152a8 8 0 0 0-8-8h-16a8 8 0 0 0-8 8v272a8 8 0 0 0 8 8zm-160 0h16a8 8 0 0 0 8-8V152a8 8 0 0 0-8-8h-16a8 8 0 0 0-8 8v272a8 8 0 0 0 8 8zM440 64H336l-33.6-44.8A48 48 0 0 0 264 0h-80a48 48 0 0 0-38.4 19.2L112 64H8a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8h24v368a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V96h24a8 8 0 0 0 8-8V72a8 8 0 0 0-8-8zM171.2 38.4A16.1 16.1 0 0 1 184 32h80a16.1 16.1 0 0 1 12.8 6.4L296 64H152zM384 464a16 16 0 0 1-16 16H80a16 16 0 0 1-16-16V96h320zm-168-32h16a8 8 0 0 0 8-8V152a8 8 0 0 0-8-8h-16a8 8 0 0 0-8 8v272a8 8 0 0 0 8 8z"
+                          ></path>
+                        </svg>
+                        <span className="text-md font-normal text-start text-white">
+                          Supprimer les données
                         </span>
                       </div>
                     </button>
