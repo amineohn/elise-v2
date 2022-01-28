@@ -146,7 +146,7 @@ const Index = () => {
                     ></path>
                   </svg>
                   <div className="flex flex-col ml-3">
-                    <div className="font-medium leading-none">
+                    <div className="font-medium leading-none text-neutral-900">
                       Etes-vous sûr de vouloir supprimée les données ?
                     </div>
                     <p className="text-sm text-gray-600 leading-none mt-1">
