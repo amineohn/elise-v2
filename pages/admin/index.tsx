@@ -180,7 +180,7 @@ const Index = () => {
               <div className="grid grid-cols-1">
                 <div className="space-y-1">
                   <div className="flex flex-col justify-center items-center space-y-2">
-                    <button className="hover:scale-105 hover:transform transition bg-slate-800 hover:ring-2 hover:ring-black/10 rounded-xl w-52 py-2">
+                    <button className="transition bg-slate-800 hover:bg-slate-800/60 hover:ring-2 hover:ring-black/10 rounded-xl w-52 py-2">
                       <div className="inline-flex justify-center items-center space-x-2">
                         <svg
                           className="text-white w-5 h-5"
@@ -199,7 +199,7 @@ const Index = () => {
                       </div>
                     </button>
                     <button
-                      className="hover:scale-105 hover:transform transition bg-rose-900 hover:ring-2 hover:ring-white/10 rounded-xl w-52 py-2"
+                      className="transition bg-rose-900 hover:bg-rose-900/90 hover:ring-2 hover:ring-white/10 rounded-xl w-52 py-2"
                       onClick={() => setShowModal(true)}
                     >
                       <div className="inline-flex justify-center items-center space-x-2">
@@ -224,7 +224,7 @@ const Index = () => {
                       </div>
                     </button>
                     <button
-                      className="hover:scale-105 hover:transform transition bg-rose-800 hover:ring-2 hover:ring-white/10 rounded-xl w-52 py-2"
+                      className="transition bg-rose-800 hover:bg-rose-800/90 hover:ring-2 hover:ring-white/10 rounded-xl w-52 py-2"
                       onClick={() => router.push("/")}
                     >
                       <div className="inline-flex justify-center items-center space-x-2">
