@@ -302,7 +302,7 @@ const Index = () => {
             {data.map((item, index) => (
               <div
                 key={index}
-                className="bg-neutral-600 rounded-xl px-4 py-4 slide-in-elliptic-top-fwd h-[80px] md:h-[100px] lg:h-[60px]"
+                className="bg-neutral-600 border-b-4 border-neutral-700 rounded-xl px-4 py-4 slide-in-elliptic-top-fwd h-[80px] md:h-[100px] lg:h-[60px]"
               >
                 <p className="text-white">
                   <div className="space-x-1">
@@ -321,7 +321,7 @@ const Index = () => {
             {data2.map((item, index) => (
               <div
                 key={index}
-                className="bg-neutral-600 rounded-xl px-4 py-4 slide-in-elliptic-top-fwd h-[80px] md:h-[100px] lg:h-[60px]"
+                className="bg-neutral-600 border-b-4 border-neutral-700 rounded-xl px-4 py-4 slide-in-elliptic-top-fwd h-[80px] md:h-[100px] lg:h-[60px]"
               >
                 <p className="text-white">
                   <div className="space-x-1">
