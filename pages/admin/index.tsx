@@ -4,6 +4,8 @@ import toast, { Toaster } from "react-hot-toast";
 import { configuration } from "../../utils/configuration";
 import { useRouter } from "next/router";
 import { Data } from "../../libs/types";
+import { Transition } from "@headlessui/react";
+
 const Index = () => {
   const fire = new Firebase();
   const [data, setData] = useState([{}] as any);
@@ -57,6 +59,36 @@ const Index = () => {
         });
       });
   };
+  // select data to edit from collection
+  const handleData = (id: string) => {
+    fire
+      .collection("test")
+      .doc(id)
+      .get()
+      .then((doc) => {
+        setCode(doc.data()?.value);
+      });
+    setShowModal(true);
+  };
+  // edit value in collection test
+  const handleEdit = (e: FormEvent) => {
+    e.preventDefault();
+    const fire = new Firebase();
+    fire
+      .collection("test")
+      .doc(code)
+      .update({
+        value: data[0].value * 1 + 1,
+      })
+      .then(() => {
+        setShowModal(false);
+        toast.success("Successfully updated");
+      })
+      .catch((error) => {
+        setError(error.message);
+        toast.error(error.message);
+      });
+  };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -77,9 +109,17 @@ const Index = () => {
     <>
       <title>Administration</title>
       {error && <Toaster />}
-      {showModal && (
+      <Transition
+        show={showModal}
+        enter="transition-opacity duration-300"
+        enterFrom="opacity-0"
+        enterTo="opacity-100"
+        leave="transition-opacity duration-200"
+        leaveFrom="opacity-100"
+        leaveTo="opacity-0"
+      >
         <div className="justify-center items-center flex z-50 h-screen bg-neutral-900/50">
-          <div className="flex flex-col p-8 bg-rose-500 border-b-4 border-rose-600 shadow-md hover:shodow-lg rounded-2xl slide-in-top items-center justify-center">
+          <div className="flex flex-col p-8 bg-rose-500 border-b-4 border-rose-600 shadow-md hover:shodow-lg rounded-2xl items-center justify-center">
             <div className="flex items-center justify-between">
               <div className="flex items-center">
                 <svg
@@ -127,18 +167,23 @@ const Index = () => {
             </div>
           </div>
         </div>
-      )}
-      {show && (
+      </Transition>
+
+      <Transition
+        show={show}
+        enter="transition-opacity duration-500"
+        enterFrom="opacity-0"
+        enterTo="opacity-100"
+        leave="transition-opacity duration-200"
+        leaveFrom="opacity-100"
+        leaveTo="opacity-0"
+      >
         <div
           aria-hidden="true"
-          className={`${
-            show
-              ? "absolute justify-center items-center flex h-screen"
-              : "hidden"
-          } overflow-y-auto overflow-x-hidden right-0 left-0 top-4 z-50 justify-center items-center h-modal md:h-full md:inset-0`}
+          className={`absolute flex h-screen overflow-y-auto overflow-x-hidden right-0 left-0 top-4 z-50 justify-center items-center h-modal md:h-full md:inset-0`}
         >
           <div className="relative px-4 w-full max-w-md h-full md:h-auto">
-            <div className="relative bg-neutral-900 rounded-lg slide-in-top">
+            <div className="relative bg-neutral-900 rounded-lg">
               <div className="flex justify-end p-4"></div>
               <form
                 className="px-6 pb-4 space-y-6 lg:px-8 sm:pb-6 xl:pb-8"
@@ -176,7 +221,7 @@ const Index = () => {
             </div>
           </div>
         </div>
-      )}
+      </Transition>
 
       <div className="absolute w-full h-full">
         <div className="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden flex flex-wrap items-center justify-center relative md:w-64 z-10 py-4 px-6 bg-neutral-900 slide-in-left">
