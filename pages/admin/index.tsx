@@ -79,7 +79,7 @@ const Index = () => {
       {error && <Toaster />}
       {showModal && (
         <div className="justify-center items-center flex z-50 h-screen bg-neutral-900/50">
-          <div className="flex flex-col p-8 bg-rose-500 shadow-md hover:shodow-lg rounded-2xl slide-in-top items-center justify-center">
+          <div className="flex flex-col p-8 bg-rose-500 border-b-4 border-rose-600 shadow-md hover:shodow-lg rounded-2xl slide-in-top items-center justify-center">
             <div className="flex items-center justify-between">
               <div className="flex items-center">
                 <svg
