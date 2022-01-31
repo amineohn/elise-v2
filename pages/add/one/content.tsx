@@ -280,7 +280,7 @@ const Send: NextPage = () => {
                       {value === configuration.code.access && (
                         <div className="flex justify-center items-center !mt-3 slide-in-top">
                           <a
-                            className="px-5 py-3 rounded-lg border border-rose-600 text-rose-500 hover:border-rose-700 transition cursor-pointer"
+                            className="px-5 py-3 rounded-lg border-b-2 hover:scale-105 bg-rose-500 text-rose-50 border-rose-600 transition cursor-pointer"
                             onClick={() => {
                               router.push("/admin");
                             }}
