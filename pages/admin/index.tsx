@@ -76,6 +76,57 @@ const Index = () => {
     <>
       <title>Administration</title>
       {error && <Toaster />}
+      {showModal && (
+        <div className="justify-center items-center flex z-50 h-screen bg-neutral-900/50">
+          <div className="flex flex-col p-8 bg-rose-500 shadow-md hover:shodow-lg rounded-2xl slide-in-top items-center justify-center">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-16 h-16 rounded-2xl p-3 border border-rose-700 text-rose-500 bg-rose-700"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  ></path>
+                </svg>
+                <div className="flex flex-col ml-3">
+                  <div className="font-medium leading-none text-neutral-50">
+                    Etes-vous sûr de vouloir supprimée les données ?
+                  </div>
+                  <p className="text-sm text-rose-200 leading-none mt-1">
+                    Attention, cette action est irréversible.
+                  </p>
+                </div>
+              </div>
+              <div className="flex flex-col space-y-2">
+                <button
+                  className="flex-no-shrink bg-rose-700 px-5 ml-4 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider border-b-2 border-rose-800 text-white rounded-xl"
+                  onClick={() => {
+                    handleDelete();
+                    setShowModal(false);
+                  }}
+                >
+                  Oui
+                </button>
+                <button
+                  className="flex-no-shrink bg-green-700 px-5 ml-4 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider border-b-2 border-green-800 text-white rounded-xl"
+                  onClick={() => {
+                    setShowModal(false);
+                  }}
+                >
+                  Non
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
       {show && (
         <div
           aria-hidden="true"
@@ -126,48 +177,7 @@ const Index = () => {
         </div>
       )}
 
-      <div className="absolute bg-neutral-100 w-full h-full">
-        {showModal && (
-          <div className="justify-center items-center flex h-screen z-50">
-            <div className="flex flex-col p-8 bg-white shadow-md hover:shodow-lg rounded-2xl slide-in-top items-center justify-center">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-16 h-16 rounded-2xl p-3 border border-blue-100 text-blue-400 bg-blue-50"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                    ></path>
-                  </svg>
-                  <div className="flex flex-col ml-3">
-                    <div className="font-medium leading-none text-neutral-900">
-                      Etes-vous sûr de vouloir supprimée les données ?
-                    </div>
-                    <p className="text-sm text-gray-600 leading-none mt-1">
-                      Attention, cette action est irréversible.
-                    </p>
-                  </div>
-                </div>
-                <button
-                  className="flex-no-shrink bg-red-500 px-5 ml-4 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-red-500 text-white rounded-full"
-                  onClick={() => {
-                    handleDelete();
-                    setShowModal(false);
-                  }}
-                >
-                  Supprimer
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
+      <div className="absolute w-full h-full">
         <div className="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden flex flex-wrap items-center justify-between relative md:w-64 z-10 py-4 px-6 bg-neutral-900 slide-in-left">
           <div className="flex flex-col px-8 py-8">
             <div className="flex justify-center items-center ">
@@ -179,7 +189,7 @@ const Index = () => {
             </div>
             <div className="flex justify-center items-center p-10">
               <div className="grid grid-cols-1 space-y-1">
-                <div className="space-y-1">
+                <div className="space-y-2">
                   <div className="flex flex-col justify-center items-center space-y-2">
                     <button
                       className="transition bg-neutral-800 hover:bg-neutral-800/60 hover:ring-2 hover:ring-black/10 rounded-xl w-52 py-2"
