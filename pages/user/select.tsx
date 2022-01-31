@@ -15,7 +15,7 @@ const Home: NextPage = () => {
       .orderBy("name")
       .onSnapshot((snapshot) => {
         const data = snapshot.docs.map((doc) => ({
-          id: doc.id ? doc.id : "no one exist? :/",
+          id: doc.id,
           ...doc.data(),
         }));
         setData(data);

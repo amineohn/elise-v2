@@ -18,7 +18,7 @@ const Index = () => {
       .orderBy("date")
       .onSnapshot((snapshot) => {
         const data = snapshot.docs.map((doc) => ({
-          id: doc.id ? doc.id : "no one exist? :/",
+          id: doc.id,
           value: doc.data().value,
           ...doc.data(),
         }));
@@ -29,7 +29,7 @@ const Index = () => {
       .orderBy("date")
       .onSnapshot((snapshot) => {
         const data2 = snapshot.docs.map((doc) => ({
-          id: doc.id ? doc.id : "no one exist? :/",
+          id: doc.id,
           value: doc.data().value,
           ...doc.data(),
         }));

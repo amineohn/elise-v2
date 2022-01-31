@@ -8,7 +8,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   setInterval(() => {
     fire.collection("test").onSnapshot((snapshot) => {
       const data = snapshot.docs.map((doc) => ({
-        id: doc.id ? doc.id : "no one exist? :/",
+        id: doc.id,
         value: doc.data().value,
         ...doc.data(),
       }));
@@ -35,7 +35,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     });
     fire.collection("test2").onSnapshot((snapshot) => {
       const data = snapshot.docs.map((doc) => ({
-        id: doc.id ? doc.id : "no one exist? :/",
+        id: doc.id,
         value: doc.data().value,
         ...doc.data(),
       }));

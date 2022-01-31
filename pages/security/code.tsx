@@ -12,7 +12,7 @@ const Code = () => {
     const fire = new Firebase();
     fire.collection("test2").onSnapshot((snapshot) => {
       const data = snapshot.docs.map((doc) => ({
-        id: doc.id ? doc.id : "no one exist? :/",
+        id: doc.id,
         value: doc.data().value,
         ...doc.data(),
       }));
@@ -20,7 +20,7 @@ const Code = () => {
     });
     fire.collection("test").onSnapshot((snapshot) => {
       const data = snapshot.docs.map((doc) => ({
-        id: doc.id ? doc.id : "no one exist? :/",
+        id: doc.id,
         value: doc.data().value,
         ...doc.data(),
       }));
