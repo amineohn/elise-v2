@@ -86,7 +86,7 @@ const Index = () => {
           } overflow-y-auto overflow-x-hidden right-0 left-0 top-4 z-50 justify-center items-center h-modal md:h-full md:inset-0`}
         >
           <div className="relative px-4 w-full max-w-md h-full md:h-auto">
-            <div className="relative bg-slate-900 rounded-lg slide-in-top">
+            <div className="relative bg-neutral-900 rounded-lg slide-in-top">
               <div className="flex justify-end p-4"></div>
               <form
                 className="px-6 pb-4 space-y-6 lg:px-8 sm:pb-6 xl:pb-8"
@@ -109,14 +109,14 @@ const Index = () => {
                     id="code"
                     onChange={(e) => setCode(e.target.value)}
                     placeholder="••••••••"
-                    className="bg-gray-800 text-white text-sm rounded-lg block w-full p-2.5 focus:outline-none"
+                    className="bg-neutral-800 text-white text-sm rounded-lg block w-full p-2.5 focus:outline-none"
                     autoComplete="off"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full text-white border-b-4 border-slate-800 bg-slate-700 hover:bg-slate-800 transition hover:border-b-4 hover:border-slate-900/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                  className="w-full text-white border-b-4 border-neutral-800 bg-neutral-700 hover:bg-neutral-800 transition hover:border-b-4 hover:border-neutral-900/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                 >
                   Connexion
                 </button>
@@ -126,7 +126,7 @@ const Index = () => {
         </div>
       )}
 
-      <div className="absolute bg-slate-100 w-full h-full">
+      <div className="absolute bg-neutral-100 w-full h-full">
         {showModal && (
           <div className="justify-center items-center flex h-screen z-50">
             <div className="flex flex-col p-8 bg-white shadow-md hover:shodow-lg rounded-2xl slide-in-top items-center justify-center">
@@ -168,7 +168,7 @@ const Index = () => {
             </div>
           </div>
         )}
-        <div className="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden flex flex-wrap items-center justify-between relative md:w-64 z-10 py-4 px-6 bg-slate-900 slide-in-left">
+        <div className="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden flex flex-wrap items-center justify-between relative md:w-64 z-10 py-4 px-6 bg-neutral-900 slide-in-left">
           <div className="flex flex-col px-8 py-8">
             <div className="flex justify-center items-center ">
               <div className="">
@@ -182,7 +182,7 @@ const Index = () => {
                 <div className="space-y-1">
                   <div className="flex flex-col justify-center items-center space-y-2">
                     <button
-                      className="transition bg-slate-800 hover:bg-slate-800/60 hover:ring-2 hover:ring-black/10 rounded-xl w-52 py-2"
+                      className="transition bg-neutral-800 hover:bg-neutral-800/60 hover:ring-2 hover:ring-black/10 rounded-xl w-52 py-2"
                       onClick={() => {
                         router.push("/admin");
                         setShowModal(false);
@@ -292,7 +292,7 @@ const Index = () => {
             {data.map((item, index) => (
               <div
                 key={index}
-                className="bg-slate-600 rounded-xl px-4 py-4 slide-in-elliptic-top-fwd h-[80px] md:h-[100px] lg:h-[60px]"
+                className="bg-neutral-600 rounded-xl px-4 py-4 slide-in-elliptic-top-fwd h-[80px] md:h-[100px] lg:h-[60px]"
               >
                 <p className="text-white">
                   <div className="space-x-1">
@@ -311,7 +311,7 @@ const Index = () => {
             {data2.map((item, index) => (
               <div
                 key={index}
-                className="bg-slate-600 rounded-xl px-4 py-4 slide-in-elliptic-top-fwd h-[80px] md:h-[100px] lg:h-[60px]"
+                className="bg-neutral-600 rounded-xl px-4 py-4 slide-in-elliptic-top-fwd h-[80px] md:h-[100px] lg:h-[60px]"
               >
                 <p className="text-white">
                   <div className="space-x-1">
