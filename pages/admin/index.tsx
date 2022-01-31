@@ -3,6 +3,7 @@ import { Firebase } from "../../libs/firebase";
 import toast, { Toaster } from "react-hot-toast";
 import { configuration } from "../../utils/configuration";
 import { useRouter } from "next/router";
+import { Data } from "../../libs/types";
 const Index = () => {
   const fire = new Firebase();
   const [data, setData] = useState([{}] as any);
@@ -299,7 +300,7 @@ const Index = () => {
         </div>
         <div className="relative md:ml-64 pt-20 items-center justify-center">
           <div className="px-10 overflow-auto grid grid-cols-1 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-2 h-[800px] lg:h-[600px]">
-            {data.map((item, index) => (
+            {data.map((item: Data, index: any) => (
               <div
                 key={index}
                 className="bg-neutral-600 border-b-4 border-neutral-700 rounded-xl px-4 py-4 slide-in-elliptic-top-fwd h-[80px] md:h-[100px] lg:h-[60px]"
@@ -318,7 +319,7 @@ const Index = () => {
                 </p>
               </div>
             ))}
-            {data2.map((item, index) => (
+            {data2.map((item: Data, index: any) => (
               <div
                 key={index}
                 className="bg-neutral-600 border-b-4 border-neutral-700 rounded-xl px-4 py-4 slide-in-elliptic-top-fwd h-[80px] md:h-[100px] lg:h-[60px]"

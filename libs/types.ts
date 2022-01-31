@@ -3,6 +3,8 @@ export type Example = {
 };
 export type Data = {
   value: string;
+  dumpster?: string;
+  date?: string;
 };
 export type User = {
   firstname: string;
