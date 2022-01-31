@@ -205,7 +205,7 @@ const Index = () => {
                       </div>
                     </button>
                     <button
-                      className="transition bg-rose-900 hover:bg-rose-900/90 hover:ring-2 hover:ring-white/10 rounded-xl w-52 py-2"
+                      className="transition bg-rose-900 hover:bg-rose-900/90 hover:ring-2 hover:ring-rose-900/20 rounded-xl w-52 py-2"
                       onClick={() => setShowModal(true)}
                     >
                       <div className="inline-flex justify-center items-center space-x-2">
@@ -230,7 +230,7 @@ const Index = () => {
                       </div>
                     </button>
                     <button
-                      className="transition bg-rose-500 hover:bg-rose-500/90 hover:ring-2 hover:ring-white/10 rounded-xl w-52 py-2"
+                      className="transition bg-rose-500 hover:bg-rose-500/90 hover:ring-2 hover:ring-rose-500/20 rounded-xl w-52 py-2"
                       onClick={() => router.push("/security/code")}
                     >
                       <div className="inline-flex justify-center items-center space-x-1">
@@ -256,7 +256,7 @@ const Index = () => {
                       </div>
                     </button>
                     <button
-                      className="transition bg-rose-800 hover:bg-rose-800/90 hover:ring-2 hover:ring-white/10 rounded-xl w-52 py-2"
+                      className="transition bg-rose-800 hover:bg-rose-800/90 hover:ring-2 hover:ring-rose-900/40  rounded-xl w-52 py-2"
                       onClick={() => router.push("/")}
                     >
                       <div className="inline-flex justify-center items-center space-x-2">
