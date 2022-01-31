@@ -5,6 +5,7 @@ import { configuration } from "../../utils/configuration";
 import { useRouter } from "next/router";
 import { Data } from "../../libs/types";
 import { Transition } from "@headlessui/react";
+import Code from "../../components/code";
 
 const Index = () => {
   const fire = new Firebase();
@@ -12,8 +13,10 @@ const Index = () => {
   const [data2, setData2] = useState([{}] as any);
   const [show, setShow] = useState(false);
   const [code, setCode] = useState("");
+
   const [error, setError] = useState("");
   const [showModal, setShowModal] = useState(false);
+  const [showCode, setShowCode] = useState(false);
   const router = useRouter();
   useEffect(() => {
     fire
@@ -222,6 +225,17 @@ const Index = () => {
           </div>
         </div>
       </Transition>
+      <Transition
+        show={showCode}
+        enter="transition-opacity duration-500"
+        enterFrom="opacity-0"
+        enterTo="opacity-100"
+        leave="transition-opacity duration-200"
+        leaveFrom="opacity-100"
+        leaveTo="opacity-0"
+      >
+        <Code exit={showCode} />
+      </Transition>
 
       <div className="absolute w-full h-full">
         <div className="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden flex flex-wrap items-center justify-center relative md:w-64 z-10 py-4 px-6 bg-neutral-900 slide-in-left">
@@ -288,7 +302,7 @@ const Index = () => {
                     </button>
                     <button
                       className="transition bg-rose-500 hover:bg-rose-500/90 hover:ring-2 hover:ring-rose-500/20 rounded-xl w-52 py-2"
-                      onClick={() => router.push("/security/code")}
+                      onClick={() => setShowCode(true)}
                     >
                       <div className="inline-flex justify-center items-center space-x-1">
                         <svg
