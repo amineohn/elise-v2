@@ -75,11 +75,12 @@ const Code = () => {
                   </label>
                   <input
                     id="code"
-                    type="text"
+                    type="number"
                     name="code"
                     value={code}
                     onChange={(e) => setCode(e.target.value)}
-                    className="py-2 px-3 border border-gray-300 focus:border-slate-300 focus:outline-none focus:ring focus:ring-slate-200 focus:ring-opacity-50 rounded-md shadow-sm disabled:bg-gray-100 mt-1 block w-full text-black placeholder:to-black transition bg-white"
+                    className="py-2 px-3 border border-gray-300 focus:border-slate-300 focus:outline-none focus:ring focus:ring-slate-200 focus:ring-opacity-50 rounded-md shadow-sm disabled:bg-white mt-1 block w-full text-black placeholder:to-black transition bg-white disabled:cursor-not-allowed"
+                    disabled
                   />
                 </div>
                 <br />
