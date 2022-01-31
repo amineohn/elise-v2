@@ -179,7 +179,7 @@ const Index = () => {
       )}
 
       <div className="absolute w-full h-full">
-        <div className="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden flex flex-wrap items-center justify-between relative md:w-64 z-10 py-4 px-6 bg-neutral-900 slide-in-left">
+        <div className="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden flex flex-wrap items-center justify-center relative md:w-64 z-10 py-4 px-6 bg-neutral-900 slide-in-left">
           <div className="flex flex-col px-8 py-8">
             <div className="flex justify-center items-center ">
               <div className="">
