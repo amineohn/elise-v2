@@ -115,7 +115,7 @@ const Index = () => {
 
                 <button
                   type="submit"
-                  className="w-full text-white border-b-4 border-slate-800 bg-slate-700 hover:bg-slate-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  className="w-full text-white border-b-4 border-slate-800 bg-slate-700 hover:bg-slate-800 transition hover:border-b-4 hover:border-slate-900/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                 >
                   Connexion
                 </button>
