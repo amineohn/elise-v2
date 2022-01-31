@@ -298,7 +298,7 @@ const Index = () => {
           </div>
         </div>
         <div className="relative md:ml-64 pt-20 items-center justify-center">
-          <div className="px-10 overflow-auto grid grid-cols-1 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 h-[600px] gap-2">
+          <div className="px-10 overflow-auto grid grid-cols-1 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-2 h-[600px]">
             {data.map((item, index) => (
               <div
                 key={index}
