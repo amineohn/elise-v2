@@ -197,4 +197,9 @@ export class Firebase {
       });
     });
   }
+  set(collection: string, documentPath: string, data: any) {
+    const collectionRef = this.collection(collection);
+    const documentRef = collectionRef.doc(documentPath);
+    return documentRef.set(data);
+  }
 }
