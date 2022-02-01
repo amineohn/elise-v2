@@ -9,6 +9,8 @@ import { NextSeo } from "next-seo";
 import { configuration } from "../utils/configuration";
 import { Switch } from "../components/switch";
 import { useRouter } from "next/router";
+import NextNProgress from "nextjs-progressbar";
+
 const statusBar = Capacitor.isPluginAvailable("StatusBar");
 const splashScreen = Capacitor.isPluginAvailable("SplashScreen");
 
@@ -70,11 +72,30 @@ export default function MyApp({
         return router.push("/admin");
     }
   };
+
   return (
     <>
-      {router.pathname === "/admin" && <Component {...pageProps} />}
+      {router.pathname === "/admin" && (
+        <>
+          <NextNProgress
+            color="#000"
+            startPosition={0.3}
+            stopDelayMs={200}
+            height={2.5}
+            showOnShallow={true}
+          />
+          <Component {...pageProps} />
+        </>
+      )}
       {router.pathname !== "/admin" && (
         <>
+          <NextNProgress
+            color="#000"
+            startPosition={0.3}
+            stopDelayMs={200}
+            height={2.5}
+            showOnShallow={true}
+          />
           <NextSeo
             title={configuration.title}
             description={configuration.description}
