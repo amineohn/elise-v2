@@ -17,7 +17,9 @@ const Index = () => {
   const [error, setError] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [showCode, setShowCode] = useState(false);
+  const [showed, setShowed] = useState(false);
   const router = useRouter();
+  const uri = "http://localhost:3000/api/cache";
   useEffect(() => {
     fire
       .collection("test")
@@ -93,6 +95,17 @@ const Index = () => {
       });
   };
 
+  const RefreshData = () => {
+    fetch(uri, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        key: true,
+      }),
+    }).then((res) => res.json());
+  };
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     switch (code) {
@@ -112,6 +125,7 @@ const Index = () => {
     <>
       <title>Administration</title>
       {error && <Toaster />}
+
       <Transition
         show={showModal}
         enter="transition-opacity duration-300"
@@ -165,6 +179,56 @@ const Index = () => {
                   }}
                 >
                   Non
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Transition>
+      <Transition
+        show={showed}
+        enter="transition-opacity duration-300"
+        enterFrom="opacity-0"
+        enterTo="opacity-100"
+        leave="transition-opacity duration-200"
+        leaveFrom="opacity-100"
+        leaveTo="opacity-0"
+      >
+        <div className="justify-center items-center flex z-50 h-screen bg-neutral-900/50">
+          <div className="flex flex-col p-8 bg-green-500 border-b-4 border-green-600 shadow-md hover:shodow-lg rounded-2xl items-center justify-center">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-16 h-16 rounded-2xl p-3 border border-green-700 text-green-500 bg-green-700"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  ></path>
+                </svg>
+                <div className="flex flex-col ml-3">
+                  <div className="font-medium leading-none text-neutral-50">
+                    Alerte
+                  </div>
+                  <p className="text-sm text-green-200 leading-none mt-1">
+                    Les données ont bien été actualiser
+                  </p>
+                </div>
+              </div>
+              <div className="flex flex-col space-y-2">
+                <button
+                  className="flex-no-shrink bg-green-700 px-5 ml-4 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider border-b-2 border-green-800 text-white rounded-xl"
+                  onClick={() => {
+                    setShowed(false);
+                  }}
+                >
+                  D'accord
                 </button>
               </div>
             </div>
@@ -323,6 +387,31 @@ const Index = () => {
 
                         <span className="text-md font-normal text-start text-white">
                           Télécharger les données
+                        </span>
+                      </div>
+                    </button>
+                    <button
+                      className="transition bg-sky-500 hover:bg-sky-500/90 hover:ring-2 hover:ring-sky-500/20 rounded-xl w-52 py-2"
+                      onClick={() => {
+                        RefreshData();
+                        setShowed(true);
+                      }}
+                    >
+                      <div className="inline-flex justify-center items-center space-x-1">
+                        <svg
+                          className="text-white w-5 h-5"
+                          role="img"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 512 512"
+                        >
+                          <path
+                            fill="currentColor"
+                            d="M304 48c0 26.51-21.49 48-48 48s-48-21.49-48-48 21.49-48 48-48 48 21.49 48 48zm-48 368c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zm208-208c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zM96 256c0-26.51-21.49-48-48-48S0 229.49 0 256s21.49 48 48 48 48-21.49 48-48zm12.922 99.078c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.491-48-48-48zm294.156 0c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.49-48-48-48zM108.922 60.922c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.491-48-48-48z"
+                          ></path>
+                        </svg>
+
+                        <span className="text-md font-normal text-start text-white">
+                          Actualiser les données
                         </span>
                       </div>
                     </button>
