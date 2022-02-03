@@ -68,6 +68,10 @@ export default function MyApp({
         return router.push("/add/dumpster");
       case "/add/two/content":
         return router.push("/add/dumpster");
+      case "/add/three/content":
+        return router.push("/add/dumpster");
+      case "/add/fourth/content":
+        return router.push("/add/dumpster");
       case "/security/code":
         return router.push("/admin");
     }
