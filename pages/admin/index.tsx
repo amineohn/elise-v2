@@ -15,7 +15,6 @@ const Index = () => {
   const [code, setCode] = useState("");
 
   const [error, setError] = useState("");
-  const [showModal, setShowModal] = useState(false);
   const [showCode, setShowCode] = useState(false);
   const [showed, setShowed] = useState(false);
   const [settings, setSettings] = useState(false);
@@ -78,17 +77,6 @@ const Index = () => {
           doc.ref.delete();
         });
       });
-  };
-  // select data to edit from collection
-  const handleData = (id: string) => {
-    fire
-      .collection("test")
-      .doc(id)
-      .get()
-      .then((doc) => {
-        setCode(doc.data()?.value);
-      });
-    setShowModal(true);
   };
 
   const RefreshData = () => {
@@ -154,65 +142,6 @@ const Index = () => {
     <>
       {error && <Toaster />}
 
-      <Transition
-        show={showModal}
-        enter="transition-opacity duration-300"
-        enterFrom="opacity-0"
-        enterTo="opacity-100"
-        leave="transition-opacity duration-200"
-        leaveFrom="opacity-100"
-        leaveTo="opacity-0"
-      >
-        <div className="justify-center items-center flex z-50 h-screen bg-neutral-900/50">
-          <div className="flex flex-col p-8 bg-rose-500 border-b-4 border-rose-600 shadow-md hover:shodow-lg rounded-2xl items-center justify-center">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-16 h-16 rounded-2xl p-3 border border-rose-700 text-rose-500 bg-rose-700"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                  ></path>
-                </svg>
-                <div className="flex flex-col ml-3">
-                  <div className="font-medium leading-none text-neutral-50">
-                    Etes-vous sûr de vouloir supprimée les données ?
-                  </div>
-                  <p className="text-sm text-rose-200 leading-none mt-1">
-                    Attention, cette action est irréversible.
-                  </p>
-                </div>
-              </div>
-              <div className="flex flex-col space-y-2">
-                <button
-                  className="flex-no-shrink bg-rose-700 px-5 ml-4 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider border-b-2 border-rose-800 text-white rounded-xl"
-                  onClick={() => {
-                    handleDelete();
-                    setShowModal(false);
-                  }}
-                >
-                  Oui
-                </button>
-                <button
-                  className="flex-no-shrink bg-green-700 px-5 ml-4 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider border-b-2 border-green-800 text-white rounded-xl"
-                  onClick={() => {
-                    setShowModal(false);
-                  }}
-                >
-                  Non
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </Transition>
       <Transition
         show={showed}
         enter="transition-opacity duration-300"
@@ -406,7 +335,6 @@ const Index = () => {
                       className="transition bg-neutral-800 hover:bg-neutral-800/60 hover:ring-2 hover:ring-black/10 rounded-xl w-52 py-2"
                       onClick={() => {
                         router.push("/admin");
-                        setShowModal(false);
                       }}
                     >
                       <div className="inline-flex justify-center items-center space-x-2">
@@ -446,31 +374,6 @@ const Index = () => {
                         </svg>
                         <span className="text-md font-normal text-start text-white">
                           Paramètre des bennes
-                        </span>
-                      </div>
-                    </button>
-                    <button
-                      className="transition bg-rose-900 hover:bg-rose-900/90 hover:ring-2 hover:ring-rose-900/20 rounded-xl w-52 py-2"
-                      onClick={() => setShowModal(true)}
-                    >
-                      <div className="inline-flex justify-center items-center space-x-2">
-                        <svg
-                          aria-hidden="true"
-                          focusable="false"
-                          data-prefix="fal"
-                          data-icon="trash-alt"
-                          role="img"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 448 512"
-                          className="text-white w-5 h-5"
-                        >
-                          <path
-                            fill="currentColor"
-                            d="M296 432h16a8 8 0 0 0 8-8V152a8 8 0 0 0-8-8h-16a8 8 0 0 0-8 8v272a8 8 0 0 0 8 8zm-160 0h16a8 8 0 0 0 8-8V152a8 8 0 0 0-8-8h-16a8 8 0 0 0-8 8v272a8 8 0 0 0 8 8zM440 64H336l-33.6-44.8A48 48 0 0 0 264 0h-80a48 48 0 0 0-38.4 19.2L112 64H8a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8h24v368a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V96h24a8 8 0 0 0 8-8V72a8 8 0 0 0-8-8zM171.2 38.4A16.1 16.1 0 0 1 184 32h80a16.1 16.1 0 0 1 12.8 6.4L296 64H152zM384 464a16 16 0 0 1-16 16H80a16 16 0 0 1-16-16V96h320zm-168-32h16a8 8 0 0 0 8-8V152a8 8 0 0 0-8-8h-16a8 8 0 0 0-8 8v272a8 8 0 0 0 8 8z"
-                          ></path>
-                        </svg>
-                        <span className="text-md font-normal text-start text-white">
-                          Supprimer les données
                         </span>
                       </div>
                     </button>

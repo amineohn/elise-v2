@@ -4,14 +4,16 @@ import { Firebase } from "../../../libs/firebase";
 import toast, { Toaster } from "react-hot-toast";
 import { useRouter } from "next/router";
 import { configuration } from "../../../utils/configuration";
+import { Transition } from "@headlessui/react";
 const Send: NextPage = () => {
   const [value, setValue] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-  const [data, setData] = useState([{}] as any);
   const [prevent, setPrevent] = useState(false);
-  const router = useRouter();
+  const [showModal, setShowModal] = useState(false);
+  const [data, setData] = useState([{}] as any);
   const fire = new Firebase();
+  const router = useRouter();
   useEffect(() => {
     const fire = new Firebase();
     fire.collection("test2").onSnapshot((snapshot) => {
@@ -80,12 +82,81 @@ const Send: NextPage = () => {
         });
     }
   };
+  const handleDelete = () => {
+    // delete all data in collection
+    fire
+      .collection("test2")
+      .get()
+      .then((snapshot) => {
+        snapshot.forEach((doc) => {
+          doc.ref.delete();
+        });
+      });
+  };
   const text = `Papier > Benne 2 > ${data} kg`;
-
+  // download button to download the data
   return (
     <>
+      <Transition
+        show={showModal}
+        enter="transition-opacity duration-300"
+        enterFrom="opacity-0"
+        enterTo="opacity-100"
+        leave="transition-opacity duration-200"
+        leaveFrom="opacity-100"
+        leaveTo="opacity-0"
+      >
+        <div className="justify-center items-center flex z-50 h-screen">
+          <div className="flex flex-col p-8 bg-rose-500 border-b-4 border-rose-600 shadow-md hover:shodow-lg rounded-2xl items-center justify-center">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-16 h-16 rounded-2xl p-3 border border-rose-700 text-rose-500 bg-rose-700"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  ></path>
+                </svg>
+                <div className="flex flex-col ml-3">
+                  <div className="font-medium leading-none text-neutral-50">
+                    Etes-vous sûr de vouloir supprimée les données ?
+                  </div>
+                  <p className="text-sm text-rose-200 leading-none mt-1">
+                    Attention, cette action est irréversible.
+                  </p>
+                </div>
+              </div>
+              <div className="flex flex-col space-y-2">
+                <button
+                  className="flex-no-shrink bg-rose-700 px-5 ml-4 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider border-b-2 border-rose-800 text-white rounded-xl"
+                  onClick={() => {
+                    handleDelete();
+                    setShowModal(false);
+                  }}
+                >
+                  Oui
+                </button>
+                <button
+                  className="flex-no-shrink bg-green-700 px-5 ml-4 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider border-b-2 border-green-800 text-white rounded-xl"
+                  onClick={() => {
+                    setShowModal(false);
+                  }}
+                >
+                  Non
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Transition>
       <Toaster />
-
       <div className="h-screen my-10 scale">
         <div className="flex flex-col py-5 px-1 space-y-3">
           <div className="flex justify-center">
@@ -304,6 +375,18 @@ const Send: NextPage = () => {
                             }}
                           >
                             Administration
+                          </a>
+                        </div>
+                      )}
+                      {value === "000000" && (
+                        <div className="flex justify-center items-center !mt-3 scale">
+                          <a
+                            className="px-5 py-3 rounded-lg border-b-2 hover:scale-105 bg-rose-500 text-rose-50 border-rose-600 transition cursor-pointer"
+                            onClick={() => {
+                              setShowModal(true);
+                            }}
+                          >
+                            Supprimer benne 2
                           </a>
                         </div>
                       )}
