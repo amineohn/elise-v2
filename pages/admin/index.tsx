@@ -19,7 +19,7 @@ const Index = () => {
   const [showed, setShowed] = useState(false);
   const [settings, setSettings] = useState(false);
   const router = useRouter();
-  const uri = `${window.location.hostname}/api/cache`;
+  const uri = `http://localhost:3000/api/cache`;
   const [maxWeight, setMaxWeight] = useState([{}] as any);
   const [editedWeight, setEditedWeight] = useState(maxWeight);
   useEffect(() => {
