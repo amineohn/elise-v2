@@ -103,6 +103,18 @@ export class Firebase {
   id() {
     return this.user()?.uid;
   }
+  // edit values in firebase from collection settings
+  async edit(data: any) {
+    // check if collection exists in firebase but if is not exist then create it
+    if (!this.collection(data.collection)) {
+      await this.create(data.collection, {});
+    }
+    const collectionRef = this.collection("settings");
+    const documentRef = collectionRef.doc("settings");
+    await documentRef.set(data);
+
+    //this.collection("settings").doc("settings").update({ max: data });
+  }
 
   performance() {
     return firebase.performance();

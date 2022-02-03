@@ -18,8 +18,23 @@ const Index = () => {
   const [showModal, setShowModal] = useState(false);
   const [showCode, setShowCode] = useState(false);
   const [showed, setShowed] = useState(false);
+  const [settings, setSettings] = useState(false);
   const router = useRouter();
   const uri = "http://localhost:3000/api/cache";
+  const [maxWeight, setMaxWeight] = useState([{}] as any);
+  const [editedWeight, setEditedWeight] = useState(maxWeight);
+  useEffect(() => {
+    const fire = new Firebase();
+    fire.collection("settings").onSnapshot((snapshot) => {
+      const data = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        weight: doc.data().weight,
+        ...doc.data(),
+      }));
+      const mapped = data.map((item) => item.weight);
+      setMaxWeight(mapped);
+    });
+  }, []);
   useEffect(() => {
     fire
       .collection("test")
@@ -75,25 +90,6 @@ const Index = () => {
       });
     setShowModal(true);
   };
-  // edit value in collection test
-  const handleEdit = (e: FormEvent) => {
-    e.preventDefault();
-    const fire = new Firebase();
-    fire
-      .collection("test")
-      .doc(code)
-      .update({
-        value: data[0].value * 1 + 1,
-      })
-      .then(() => {
-        setShowModal(false);
-        toast.success("Successfully updated");
-      })
-      .catch((error) => {
-        setError(error.message);
-        toast.error(error.message);
-      });
-  };
 
   const RefreshData = () => {
     fetch(uri, {
@@ -105,6 +101,39 @@ const Index = () => {
         key: true,
       }),
     }).then((res) => res.json());
+  };
+  const handleEdit = (e: any) => {
+    e.preventDefault();
+    const fire = new Firebase();
+    // update weight in collection and change value in database
+    fire
+      .collection("settings")
+      .doc("XrRO1duyVfWPy1ljq95Q")
+      .update({
+        weight: editedWeight,
+      })
+      .then(() => {
+        toast.success("Successfully updated");
+      })
+      .catch((err) => {
+        toast.error(err.message);
+      });
+
+    /*
+    fire
+      .collection("settings")
+      .doc(maxWeight)
+      .update({
+        weight: e.target.value * 1 + 1,
+      })
+      .then(() => {
+        setSettings(false);
+        toast.success("Successfully updated");
+      })
+      .catch((error) => {
+        setError(error.message);
+        toast.error(error.message);
+      });*/
   };
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -235,7 +264,63 @@ const Index = () => {
           </div>
         </div>
       </Transition>
+      <Transition
+        show={settings}
+        enter="transition-opacity duration-500"
+        enterFrom="opacity-0"
+        enterTo="opacity-100"
+        leave="transition-opacity duration-200"
+        leaveFrom="opacity-100"
+        leaveTo="opacity-0"
+      >
+        <div
+          aria-hidden="true"
+          className={`absolute flex h-screen overflow-y-auto overflow-x-hidden right-0 left-0 top-4 z-50 justify-center items-center h-modal md:h-full md:inset-0`}
+        >
+          <div className="relative px-4 w-full max-w-md h-full md:h-auto">
+            <div className="relative bg-neutral-900 rounded-lg">
+              <div className="flex justify-end p-4"></div>
+              <form
+                className="px-6 pb-4 space-y-6 lg:px-8 sm:pb-6 xl:pb-8"
+                onSubmit={handleEdit}
+                method="POST"
+              >
+                <h3 className="text-xl font-medium text-white">
+                  Editer le poids des bennes
+                </h3>
+                <span className="text-white text-md">
+                  le poids actuel est de: {maxWeight}{" "}
+                  <span className="font-bold text-white">kg</span>
+                </span>
+                <div>
+                  <label
+                    htmlFor="Settings"
+                    className="block mb-2 text-sm font-medium text-gray-300"
+                  >
+                    Editer
+                  </label>
+                  <input
+                    type="text"
+                    name="settings"
+                    id="settings"
+                    onChange={(e) => setEditedWeight(e.target.value as any)}
+                    placeholder="5000kg"
+                    className="bg-neutral-800 text-white text-sm rounded-lg block w-full p-2.5 focus:outline-none"
+                    autoComplete="off"
+                  />
+                </div>
 
+                <button
+                  type="submit"
+                  className="w-full text-white border-b-4 border-neutral-800 bg-neutral-700 hover:bg-neutral-800 transition hover:border-b-4 hover:border-neutral-900/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                >
+                  Connexion
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </Transition>
       <Transition
         show={show}
         enter="transition-opacity duration-500"
@@ -336,6 +421,29 @@ const Index = () => {
                         </svg>
                         <span className="text-md font-normal text-start text-white">
                           Gestion des données
+                        </span>
+                      </div>
+                    </button>
+                    <button
+                      className="transition bg-neutral-800 hover:bg-neutral-800/60 hover:ring-2 hover:ring-black/10 rounded-xl w-52 py-2"
+                      onClick={() => {
+                        setSettings(true);
+                      }}
+                    >
+                      <div className="inline-flex justify-center items-center space-x-2">
+                        <svg
+                          className="text-white w-5 h-5"
+                          role="img"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 512 512"
+                        >
+                          <path
+                            fill="currentColor"
+                            d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"
+                          ></path>
+                        </svg>
+                        <span className="text-md font-normal text-start text-white">
+                          Paramètre des bennes
                         </span>
                       </div>
                     </button>

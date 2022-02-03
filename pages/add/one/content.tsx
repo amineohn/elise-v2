@@ -28,6 +28,23 @@ const Send: NextPage = () => {
       } else {
         setData(value);
       }
+      if (total > 2500) {
+        toast.error(
+          "Attention, vous êtes à plus de 2500kg, Un mail sera directement envoyé au gérant de l'exploitation"
+        );
+        // send mail to admin
+        fetch("/api/send", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            to: "amineprojet7@gmail.com",
+            subject: "Alerte ELISE Production",
+            text: `Alerte: la benne est actuellement à 2500kg. Le poids actuel est de ${total}kg.`,
+          }),
+        });
+      }
       setPrevent(true);
     });
   }, []);

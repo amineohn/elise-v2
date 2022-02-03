@@ -7,6 +7,19 @@ const Home: NextPage = () => {
   const router = useRouter();
   const [total, setTotal] = useState([{}] as any);
   const [total2, setTotal2] = useState([{}] as any);
+  const [maxWeight, setMaxWeight] = useState([{}] as any);
+  useEffect(() => {
+    const fire = new Firebase();
+    fire.collection("settings").onSnapshot((snapshot) => {
+      const data = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        weight: doc.data().weight,
+        ...doc.data(),
+      }));
+      const mapped = data.map((item) => item.weight);
+      setMaxWeight(mapped);
+    });
+  }, []);
   useEffect(() => {
     const fire = new Firebase();
     fire.collection("test").onSnapshot((snapshot) => {
@@ -33,8 +46,8 @@ const Home: NextPage = () => {
       setTotal2(total2);
     });
   }, []);
-  let totalPercent: any = (total / 2000) * 100;
-  let totalPercent2: any = (total2 / 2000) * 100;
+  let totalPercent: any = (total / maxWeight) * 140;
+  let totalPercent2: any = (total2 / maxWeight) * 140;
   let color: string = "bg-green-500";
   let color2: string = "bg-green-500";
   if (totalPercent > 140) {

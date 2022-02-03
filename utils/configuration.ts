@@ -3,6 +3,11 @@ export const configuration = {
   nameApp: "name-app",
   title: "Elise Production",
   description: "",
+  app: {
+    max: {
+      weight: 5000,
+    },
+  },
   openGraph: {
     title: "Elise Production",
     description: "",
