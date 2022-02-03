@@ -277,7 +277,7 @@ const Index = () => {
           className={`absolute flex h-screen overflow-y-auto overflow-x-hidden right-0 left-0 top-4 z-50 justify-center items-center h-modal md:h-full md:inset-0`}
         >
           <div className="relative px-4 w-full max-w-md h-full md:h-auto">
-            <div className="relative bg-neutral-900 rounded-lg">
+            <div className="relative bg-rose-900 rounded-lg">
               <div className="flex justify-end p-4"></div>
               <form
                 className="px-6 pb-4 space-y-6 lg:px-8 sm:pb-6 xl:pb-8"
@@ -294,7 +294,7 @@ const Index = () => {
                 <div>
                   <label
                     htmlFor="Settings"
-                    className="block mb-2 text-sm font-medium text-gray-300"
+                    className="block mb-2 text-sm font-medium text-rose-300"
                   >
                     Editer
                   </label>
@@ -304,16 +304,19 @@ const Index = () => {
                     id="settings"
                     onChange={(e) => setEditedWeight(e.target.value as any)}
                     placeholder="5000kg"
-                    className="bg-neutral-800 text-white text-sm rounded-lg block w-full p-2.5 focus:outline-none"
+                    className="bg-rose-800 text-white text-sm rounded-lg block w-full p-2.5 focus:outline-none placeholder-rose-100"
                     autoComplete="off"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full text-white border-b-4 border-neutral-800 bg-neutral-700 hover:bg-neutral-800 transition hover:border-b-4 hover:border-neutral-900/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                  onClick={() => {
+                    setSettings(false);
+                  }}
+                  className="w-full text-white border-b-4 border-rose-800 bg-rose-700 hover:bg-rose-800 transition hover:border-b-4 hover:border-rose-900/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                 >
-                  Connexion
+                  Changer
                 </button>
               </form>
             </div>
