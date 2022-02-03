@@ -7,6 +7,8 @@ const Home: NextPage = () => {
   const router = useRouter();
   const [total, setTotal] = useState([{}] as any);
   const [total2, setTotal2] = useState([{}] as any);
+  const [total3, setTotal3] = useState([{}] as any);
+  const [total4, setTotal4] = useState([{}] as any);
   const [maxWeight, setMaxWeight] = useState([{}] as any);
   useEffect(() => {
     const fire = new Firebase();
@@ -46,10 +48,41 @@ const Home: NextPage = () => {
       setTotal2(total2);
     });
   }, []);
+  useEffect(() => {
+    const fire = new Firebase();
+    fire.collection("test3").onSnapshot((snapshot) => {
+      const data = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        value: doc.data().value,
+        ...doc.data(),
+      }));
+      const mapped = data.map((item) => item.value * 1);
+      const total3 = mapped.reduce((acc, cur) => acc + cur, 0);
+      setTotal3(total3);
+    });
+  }, []);
+  useEffect(() => {
+    const fire = new Firebase();
+    fire.collection("test4").onSnapshot((snapshot) => {
+      const data = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        value: doc.data().value,
+        ...doc.data(),
+      }));
+      const mapped = data.map((item) => item.value * 1);
+      const total4 = mapped.reduce((acc, cur) => acc + cur, 0);
+      setTotal4(total4);
+    });
+  }, []);
   let totalPercent: any = (total / maxWeight) * 140;
   let totalPercent2: any = (total2 / maxWeight) * 140;
+  let totalPercent3: any = (total3 / maxWeight) * 140;
+  let totalPercent4: any = (total4 / maxWeight) * 140;
+
   let color: string = "bg-green-500";
   let color2: string = "bg-green-500";
+  let color3: string = "bg-green-500";
+  let color4: string = "bg-green-500";
   if (totalPercent > 140) {
     color = "bg-red-900";
   } else if (totalPercent > 130) {
@@ -108,6 +141,64 @@ const Home: NextPage = () => {
   } else if (totalPercent2 > 10) {
     color2 = "bg-green-500";
   }
+  if (totalPercent3 > 140) {
+    color3 = "bg-red-900";
+  } else if (totalPercent3 > 130) {
+    color3 = "bg-red-800";
+  } else if (totalPercent3 > 120) {
+    color3 = "bg-red-700";
+  } else if (totalPercent3 > 110) {
+    color3 = "bg-red-600";
+  } else if (totalPercent3 > 100) {
+    color3 = "bg-red-700";
+  } else if (totalPercent3 > 90) {
+    color3 = "bg-orange-600";
+  } else if (totalPercent3 > 80) {
+    color3 = "bg-orange-500";
+  } else if (totalPercent3 > 70) {
+    color3 = "bg-yellow-500";
+  } else if (totalPercent3 > 60) {
+    color3 = "bg-green-500";
+  } else if (totalPercent3 > 50) {
+    color3 = "bg-green-500";
+  } else if (totalPercent3 > 40) {
+    color3 = "bg-green-500";
+  } else if (totalPercent3 > 30) {
+    color3 = "bg-green-500";
+  } else if (totalPercent3 > 20) {
+    color3 = "bg-green-5003";
+  } else if (totalPercent3 > 10) {
+    color3 = "bg-green-500";
+  }
+  if (totalPercent4 > 140) {
+    color4 = "bg-red-900";
+  } else if (totalPercent4 > 130) {
+    color4 = "bg-red-800";
+  } else if (totalPercent4 > 120) {
+    color4 = "bg-red-700";
+  } else if (totalPercent4 > 110) {
+    color4 = "bg-red-600";
+  } else if (totalPercent4 > 100) {
+    color4 = "bg-red-700";
+  } else if (totalPercent4 > 90) {
+    color4 = "bg-orange-600";
+  } else if (totalPercent4 > 80) {
+    color4 = "bg-orange-500";
+  } else if (totalPercent4 > 70) {
+    color4 = "bg-yellow-500";
+  } else if (totalPercent4 > 60) {
+    color4 = "bg-green-500";
+  } else if (totalPercent4 > 50) {
+    color4 = "bg-green-500";
+  } else if (totalPercent4 > 40) {
+    color4 = "bg-green-500";
+  } else if (totalPercent4 > 30) {
+    color4 = "bg-green-500";
+  } else if (totalPercent4 > 20) {
+    color4 = "bg-green-500";
+  } else if (totalPercent4 > 10) {
+    color4 = "bg-green-500";
+  }
 
   const [dumpsters, setDumpsters] = useState([
     {
@@ -119,6 +210,18 @@ const Home: NextPage = () => {
     {
       id: "2",
       name: "Blanc",
+      weight: "0",
+      color: "bg-blue-500",
+    },
+    {
+      id: "3",
+      name: "Blanc 2",
+      weight: "0",
+      color: "bg-blue-500",
+    },
+    {
+      id: "4",
+      name: "Blanc 3",
       weight: "0",
       color: "bg-blue-500",
     },
@@ -135,6 +238,18 @@ const Home: NextPage = () => {
       {
         id: "2",
         name: "Blanc",
+        weight: "0",
+        color: "bg-blue-500",
+      },
+      {
+        id: "3",
+        name: "Blanc 2",
+        weight: "0",
+        color: "bg-blue-500",
+      },
+      {
+        id: "4",
+        name: "Blanc 3",
         weight: "0",
         color: "bg-blue-500",
       },
@@ -195,6 +310,54 @@ const Home: NextPage = () => {
               <div className="flex justify-center">
                 <span className="text-center font-bold text-xl">
                   {dumpsters[0].name}
+                </span>
+              </div>
+            </div>
+            <div className="mt-10">
+              <div
+                className="hover:scale-105 hover:transform transition w-72 max-w-xl h-36 border-2 border-t-red-600 border-l-slate-900 border-b-slate-900 border-r-slate-900 dark:border-l-white dark:border-b-white dark:border-r-white flex justify-between rounded"
+                onClick={() => router.push("/add/three/content")}
+              >
+                <div className="flex justify-end items-end top-0">
+                  <div className="flex flex-col">
+                    <span className="text-center font-bold text-xl z-50">
+                      {total3 + " kg"}
+                    </span>
+
+                    <div
+                      style={{ height: totalPercent3 + "px" }} // temporary thing.
+                      className={`${color3} w-[284px] bottom-0 rounded-b-sm !max-h-[140px]`}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="flex justify-center">
+                <span className="text-center font-bold text-xl">
+                  {dumpsters[2].name}
+                </span>
+              </div>
+            </div>
+            <div className="mt-10">
+              <div
+                className="hover:scale-105 hover:transform transition w-72 max-w-xl h-36 border-2 border-t-red-600 border-l-slate-900 border-b-slate-900 border-r-slate-900 dark:border-l-white dark:border-b-white dark:border-r-white flex justify-between rounded"
+                onClick={() => router.push("/add/fourth/content")}
+              >
+                <div className="flex justify-end items-end top-0">
+                  <div className="flex flex-col">
+                    <span className="text-center font-bold text-xl z-50">
+                      {total4 + " kg"}
+                    </span>
+
+                    <div
+                      style={{ height: totalPercent4 + "px" }} // temporary thing.
+                      className={`${color4} w-[284px] bottom-0 rounded-b-sm !max-h-[140px]`}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="flex justify-center">
+                <span className="text-center font-bold text-xl">
+                  {dumpsters[3].name}
                 </span>
               </div>
             </div>
