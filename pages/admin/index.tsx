@@ -59,25 +59,6 @@ const Index = () => {
       });
     setShow(true);
   }, []);
-  const handleDelete = () => {
-    // delete all data in collection
-    fire
-      .collection("test")
-      .get()
-      .then((snapshot) => {
-        snapshot.forEach((doc) => {
-          doc.ref.delete();
-        });
-      });
-    fire
-      .collection("test2")
-      .get()
-      .then((snapshot) => {
-        snapshot.forEach((doc) => {
-          doc.ref.delete();
-        });
-      });
-  };
 
   const RefreshData = () => {
     fetch(uri, {
