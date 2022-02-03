@@ -2,8 +2,8 @@ import { CapacitorConfig } from "@capacitor/cli";
 import { configuration } from "./utils/configuration";
 
 const config: CapacitorConfig = {
-  appId: configuration.appId,
-  appName: configuration.nameApp,
+  appId: configuration.app.seo.appId,
+  appName: configuration.app.seo.name,
   webDir: "out",
   bundledWebRuntime: false,
   plugins: {

@@ -152,7 +152,6 @@ const Index = () => {
   };
   return (
     <>
-      <title>Administration</title>
       {error && <Toaster />}
 
       <Transition

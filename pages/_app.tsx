@@ -77,6 +77,7 @@ export default function MyApp({
     <>
       {router.pathname === "/admin" && (
         <>
+          <title>{configuration.app.seo.title}</title>
           <NextNProgress
             color="#000"
             startPosition={0.3}
@@ -89,6 +90,8 @@ export default function MyApp({
       )}
       {router.pathname !== "/admin" && (
         <>
+          <title>{configuration.app.seo.admin.title}</title>
+
           <NextNProgress
             color="#000"
             startPosition={0.3}
@@ -97,18 +100,18 @@ export default function MyApp({
             showOnShallow={true}
           />
           <NextSeo
-            title={configuration.title}
-            description={configuration.description}
+            title={configuration.app.seo.title}
+            description={configuration.app.seo.description}
             openGraph={{
-              url: configuration.openGraph.url,
-              title: configuration.openGraph.title,
-              description: configuration.openGraph.description,
+              url: configuration.app.seo.graph.url,
+              title: configuration.app.seo.graph.title,
+              description: configuration.app.seo.graph.description,
               images: [
                 {
-                  url: configuration.openGraph.image,
-                  width: configuration.openGraph.width,
-                  height: configuration.openGraph.height,
-                  alt: configuration.openGraph.alt,
+                  url: configuration.app.seo.graph.image,
+                  width: configuration.app.seo.graph.width,
+                  height: configuration.app.seo.graph.height,
+                  alt: configuration.app.seo.graph.alt,
                 },
               ],
             }}

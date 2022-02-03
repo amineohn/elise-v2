@@ -1,22 +1,28 @@
 export const configuration = {
-  appId: "Demo-app",
-  nameApp: "name-app",
-  title: "Elise Production",
-  description: "",
   app: {
+    seo: {
+      appId: "Demo-app",
+      name: "name-app",
+      title: "Elise Production",
+      description: "",
+      graph: {
+        title: "Elise Production",
+        description: "",
+        url: "url",
+        image: "image",
+        width: 600,
+        height: 600,
+        alt: "hello",
+      },
+      admin: {
+        title: "Administration",
+      },
+    },
     max: {
       weight: 5000,
     },
   },
-  openGraph: {
-    title: "Elise Production",
-    description: "",
-    url: "url",
-    image: "image",
-    width: 600,
-    height: 600,
-    alt: "hello",
-  },
+
   firebase: {
     apiKey: "AIzaSyDB6kaXHG4Hycn-C57tgXZkz2CQeIm0Cs8",
     authDomain: "fir-b57a9.firebaseapp.com",
