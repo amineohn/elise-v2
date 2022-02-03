@@ -70,7 +70,7 @@ const Send: NextPage = () => {
               .add({
                 value: value,
                 date: new Date().toLocaleString(),
-                dumpster: "Benne 2",
+                dumpster: "Benne 4",
               })
               .then(() => {
                 setSuccess("Votre valeur a été ajoutée");
@@ -93,7 +93,7 @@ const Send: NextPage = () => {
         });
       });
   };
-  const text = `Papier > Benne 2 > ${data} kg`;
+  const text = `Papier > Benne 4 > ${data} kg`;
   // download button to download the data
   return (
     <>
@@ -386,7 +386,7 @@ const Send: NextPage = () => {
                               setShowModal(true);
                             }}
                           >
-                            Supprimer benne 2
+                            Supprimer benne 4
                           </a>
                         </div>
                       )}
