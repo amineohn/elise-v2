@@ -1,5 +1,5 @@
 import "../styles/globals.css";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { ThemeProvider } from "next-themes";
 import { NextPage } from "next";
 import { StatusBar, Style } from "@capacitor/status-bar";
@@ -10,6 +10,7 @@ import { configuration } from "../utils/configuration";
 import { Switch } from "../components/switch";
 import { useRouter } from "next/router";
 import NextNProgress from "nextjs-progressbar";
+import { Transition } from "@headlessui/react";
 
 const statusBar = Capacitor.isPluginAvailable("StatusBar");
 const splashScreen = Capacitor.isPluginAvailable("SplashScreen");
@@ -76,7 +77,7 @@ export default function MyApp({
         return router.push("/admin");
     }
   };
-
+  const [advice, setAdvice] = useState(true);
   return (
     <>
       {router.pathname === "/admin" && (
@@ -141,6 +142,28 @@ export default function MyApp({
               )}
 
               <div className="flex justify-center items-center space-x-2">
+                <Transition
+                  show={advice}
+                  enter="transition ease-out duration-500"
+                  enterFrom="opacity-0"
+                  enterTo="opacity-100"
+                  leave="transition ease-in duration-500"
+                  leaveFrom="opacity-100"
+                  leaveTo="opacity-0"
+                >
+                  <div className="w-96 px-6 py-6 hidden lg:flex animate-pulse z-50 rounded-lg bg-rose-500">
+                    <span className="text-white font-normal">
+                      Attention, l'application est en cours de développement,
+                      merci de reporter tout problème à Jerôme.
+                    </span>
+                    <button
+                      onClick={() => setAdvice(false)}
+                      className="text-white bg-neutral-800 px-2 rounded-lg"
+                    >
+                      Fermer
+                    </button>
+                  </div>
+                </Transition>
                 <Switch />
               </div>
             </div>
