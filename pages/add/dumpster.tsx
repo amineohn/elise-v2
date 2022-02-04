@@ -83,6 +83,7 @@ const Home: NextPage = () => {
   let color2: string = "bg-green-500";
   let color3: string = "bg-green-500";
   let color4: string = "bg-green-500";
+
   if (totalPercent > 140) {
     color = "bg-red-900";
   } else if (totalPercent > 130) {
