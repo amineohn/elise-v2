@@ -41,7 +41,7 @@ const Send: NextPage = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            to: "amineprojet7@gmail.com",
+            to: "jdebeve@actes-atlantique.fr",
             subject: "Alerte ELISE Production",
             text: `Alerte: la benne est actuellement à 10000kg. Le poids actuel est de ${total}kg.`,
           }),
