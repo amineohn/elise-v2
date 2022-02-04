@@ -258,7 +258,7 @@ const Home: NextPage = () => {
   }, []);
   return (
     <>
-      <div className="flex flex-col py-5 px-1 space-y-2 h-screen scale items-center justify-center">
+      <div className="flex flex-col py-5 px-1 space-y-2 h-screen scale items-center justify-center !overflow-auto">
         <div className="flex justify-center">
           <h1 className="text-center font-bold text-3xl uppercase">
             Choisir une benne
