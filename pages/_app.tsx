@@ -158,7 +158,7 @@ export default function MyApp({
                     </span>
                     <button
                       onClick={() => setAdvice(false)}
-                      className="text-white bg-neutral-800 px-2 rounded-lg"
+                      className="text-white bg-green-700 border-b-4 border-green-800 px-2 rounded-lg"
                     >
                       Fermer
                     </button>
