@@ -9,14 +9,38 @@ const Code = ({ exit }) => {
   const [code, setCode] = useState("");
   const [data, setData] = useState([{}] as any);
   const [data2, setData2] = useState([{}] as any);
+  const [data3, setData3] = useState([{}] as any);
+  const [data4, setData4] = useState([{}] as any);
   const [modal, setModal] = useState(false);
   const [download, setDownload] = useState(false);
   useEffect(() => {
     const fire = new Firebase();
+    fire.collection("test4").onSnapshot((snapshot) => {
+      const data = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        value: doc.data().value,
+        date: doc.data().date,
+        dumpster: doc.data().dumpster,
+        ...doc.data(),
+      }));
+      setData4(data);
+    });
+    fire.collection("test3").onSnapshot((snapshot) => {
+      const data = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        value: doc.data().value,
+        date: doc.data().date,
+        dumpster: doc.data().dumpster,
+        ...doc.data(),
+      }));
+      setData3(data);
+    });
     fire.collection("test2").onSnapshot((snapshot) => {
       const data = snapshot.docs.map((doc) => ({
         id: doc.id,
         value: doc.data().value,
+        date: doc.data().date,
+        dumpster: doc.data().dumpster,
         ...doc.data(),
       }));
       setData2(data);
@@ -25,6 +49,8 @@ const Code = ({ exit }) => {
       const data = snapshot.docs.map((doc) => ({
         id: doc.id,
         value: doc.data().value,
+        date: doc.data().date,
+        dumpster: doc.data().dumpster,
         ...doc.data(),
       }));
       setData(data);
@@ -41,12 +67,18 @@ const Code = ({ exit }) => {
       case configuration.code.pass:
         try {
           const csvData = data.map((item: Data) => {
-            return `${item.value}`;
+            return `\n${item.dumpster}\n ${item.value + " kg"}\n ${item.date}`;
           });
           const csvData2 = data2.map((item: Data) => {
-            return `${item.value}`;
+            return `\n${item.dumpster}\n ${item.value + " kg"}\n ${item.date}`;
           });
-          const csv = new Blob([csvData + csvData2], {
+          const csvData3 = data3.map((item: Data) => {
+            return `\n${item.dumpster}\n ${item.value + " kg"}\n ${item.date}`;
+          });
+          const csvData4 = data4.map((item: Data) => {
+            return `\n${item.dumpster}\n ${item.value + " kg"}\n ${item.date}`;
+          });
+          const csv = new Blob([csvData + csvData2 + csvData3 + csvData4], {
             type: "text/csv",
           });
           const url = URL.createObjectURL(csv);
