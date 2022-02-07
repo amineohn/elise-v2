@@ -11,6 +11,8 @@ const Index = () => {
   const fire = new Firebase();
   const [data, setData] = useState([{}] as any);
   const [data2, setData2] = useState([{}] as any);
+  const [data3, setData3] = useState([{}] as any);
+  const [data4, setData4] = useState([{}] as any);
   const [show, setShow] = useState(false);
   const [code, setCode] = useState("");
 
@@ -56,6 +58,28 @@ const Index = () => {
           ...doc.data(),
         }));
         setData2(data2);
+      });
+    fire
+      .collection("test3")
+      .orderBy("date")
+      .onSnapshot((snapshot) => {
+        const data3 = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          value: doc.data().value,
+          ...doc.data(),
+        }));
+        setData3(data3);
+      });
+    fire
+      .collection("test4")
+      .orderBy("date")
+      .onSnapshot((snapshot) => {
+        const data4 = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          value: doc.data().value,
+          ...doc.data(),
+        }));
+        setData4(data4);
       });
     setShow(true);
   }, []);
@@ -119,6 +143,7 @@ const Index = () => {
         break;
     }
   };
+  const stored = JSON.parse(localStorage.getItem("users") || "[]");
   return (
     <>
       {error && <Toaster />}
@@ -445,7 +470,7 @@ const Index = () => {
             {data.map((item: Data, index: any) => (
               <div
                 key={index}
-                className="bg-neutral-600 border-b-4 border-neutral-700 rounded-xl px-4 py-4 slide-in-elliptic-top-fwd h-[80px] md:h-[100px] lg:h-[60px]"
+                className="bg-neutral-600 border-b-4 border-neutral-700 rounded-xl px-4 py-4 slide-in-elliptic-top-fwd h-[100px] md:h-[100px] lg:h-[100px]"
               >
                 <p className="text-white">
                   <div className="space-x-1">
@@ -456,6 +481,7 @@ const Index = () => {
                       </p>
                       <p> {item.dumpster}</p>
                       <p> Date: {item.date}</p>
+                      <p> User: {stored}</p>
                     </div>
                   </div>
                 </p>
@@ -464,7 +490,7 @@ const Index = () => {
             {data2.map((item: Data, index: any) => (
               <div
                 key={index}
-                className="bg-neutral-600 border-b-4 border-neutral-700 rounded-xl px-4 py-4 slide-in-elliptic-top-fwd h-[80px] md:h-[100px] lg:h-[60px]"
+                className="bg-neutral-600 border-b-4 border-neutral-700 rounded-xl px-4 py-4 slide-in-elliptic-top-fwd h-[80px] md:h-[100px] lg:h-[100px]"
               >
                 <p className="text-white">
                   <div className="space-x-1">
@@ -475,6 +501,47 @@ const Index = () => {
                       </p>
                       <p> {item.dumpster}</p>
                       <p> Date: {item.date}</p>
+                      <p> User: {stored}</p>
+                    </div>
+                  </div>
+                </p>
+              </div>
+            ))}
+            {data3.map((item: Data, index: any) => (
+              <div
+                key={index}
+                className="bg-neutral-600 border-b-4 border-neutral-700 rounded-xl px-4 py-4 slide-in-elliptic-top-fwd h-[80px] md:h-[100px] lg:h-[100px]"
+              >
+                <p className="text-white">
+                  <div className="space-x-1">
+                    <div className="inline-flex space-x-2">
+                      <p>
+                        Poids: {item.value}
+                        <span className="text-xs font-bold">kg</span>
+                      </p>
+                      <p> {item.dumpster}</p>
+                      <p> Date: {item.date}</p>
+                      <p> User: {stored}</p>
+                    </div>
+                  </div>
+                </p>
+              </div>
+            ))}
+            {data4.map((item: Data, index: any) => (
+              <div
+                key={index}
+                className="bg-neutral-600 border-b-4 border-neutral-700 rounded-xl px-4 py-4 slide-in-elliptic-top-fwd h-[80px] md:h-[100px] lg:h-[100px]"
+              >
+                <p className="text-white">
+                  <div className="space-x-1">
+                    <div className="inline-flex space-x-2">
+                      <p>
+                        Poids: {item.value}
+                        <span className="text-xs font-bold">kg</span>
+                      </p>
+                      <p> {item.dumpster}</p>
+                      <p> Date: {item.date}</p>
+                      <p> User: {stored}</p>
                     </div>
                   </div>
                 </p>

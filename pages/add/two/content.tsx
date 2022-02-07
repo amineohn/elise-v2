@@ -25,6 +25,7 @@ const Send: NextPage = () => {
       }));
       const mapped = data.map((item) => item.value * 1);
       const total = mapped.reduce((acc, cur) => acc + cur, 0);
+
       localStorage.setItem("total", JSON.stringify(total));
       setData(total);
       if (value === "") {
