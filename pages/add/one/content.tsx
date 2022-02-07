@@ -32,7 +32,7 @@ const Send: NextPage = () => {
       }
       if (total > 10000) {
         toast.error(
-          "Attention, vous êtes à plus de 10000kg, Un mail sera directement envoyé au gérant de l'exploitation"
+          "Attention, vous êtes à plus de 10000kg, Un mail sera directement envoyé à Jerome."
         );
         // send mail to admin
         fetch("/api/send", {
