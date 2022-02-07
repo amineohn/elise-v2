@@ -25,27 +25,34 @@ const Send: NextPage = () => {
       }));
       const mapped = data.map((item) => item.value * 1);
       const total = mapped.reduce((acc, cur) => acc + cur, 0);
+      localStorage.setItem("total", JSON.stringify(total));
       setData(total);
       if (value === "") {
       } else {
         setData(value);
       }
+
       if (total > 10000) {
         toast.error(
           "Attention, vous êtes à plus de 10000kg, Un mail sera directement envoyé à Jerome."
         );
-        // send mail to admin
-        fetch("/api/send", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            to: "jdebeve@actes-atlantique.fr",
-            subject: "Alerte ELISE Production",
-            text: `Alerte: la benne est actuellement à 10000kg. Le poids actuel est de ${total}kg.`,
-          }),
-        });
+        // check if is stored in localStorage and if not, send mail
+        if (localStorage.getItem("total") === null) {
+          console.log("not stored");
+        } else {
+          console.log("ok");
+          fetch("/api/send", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              to: "aouhani@actes-atlantique.fr",
+              subject: "Alerte ELISE Production",
+              text: `Alerte: la benne est actuellement à 10000kg. Le poids actuel est de ${total}kg.`,
+            }),
+          });
+        }
       }
       setPrevent(true);
     });
