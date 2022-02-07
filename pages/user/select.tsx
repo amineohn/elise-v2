@@ -8,6 +8,7 @@ const Home: NextPage = () => {
   const router = useRouter();
 
   const [data, setData] = useState([{}] as any);
+  const [user, setUser] = useState("");
   useEffect(() => {
     const fire = new Firebase();
     fire
@@ -20,11 +21,15 @@ const Home: NextPage = () => {
         }));
         setData(data);
       });
+    setUser(JSON.parse(localStorage.getItem("users") || "[]"));
   }, []);
 
   return (
     <>
       <div className="flex flex-col py-5 px-1 h-screen items-center justify-center scale">
+        <h1 className="text-center font-bold text-3xl uppercase pb-2">
+          Bonjour {user}
+        </h1>
         <div>
           <h1 className="text-center font-bold text-3xl uppercase">
             Choisir une matière

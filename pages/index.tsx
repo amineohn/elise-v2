@@ -6,7 +6,6 @@ import { User } from "../libs/types";
 
 const Home: NextPage = () => {
   const router = useRouter();
-
   const [data, setData] = useState([{}] as any);
   useEffect(() => {
     const fire = new Firebase();
@@ -16,9 +15,13 @@ const Home: NextPage = () => {
       .onSnapshot((snapshot) => {
         const data = snapshot.docs.map((doc) => ({
           id: doc.id,
+          firstname: doc.data().firstname,
+          lastname: doc.data().lastname,
           ...doc.data(),
         }));
         setData(data);
+        const users = data.map((user) => user.firstname + " " + user.lastname);
+        localStorage.setItem("users", JSON.stringify(users));
       });
   }, []);
 
