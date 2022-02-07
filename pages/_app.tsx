@@ -150,6 +150,7 @@ export default function MyApp({
                   leave="transition ease-in duration-500"
                   leaveFrom="opacity-100"
                   leaveTo="opacity-0"
+                  className="hidden"
                 >
                   <div className="w-96 px-6 py-6 hidden lg:flex animate-pulse z-50 rounded-lg bg-rose-500">
                     <span className="text-white font-normal">
