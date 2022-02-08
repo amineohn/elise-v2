@@ -17,6 +17,8 @@ const Home: NextPage = () => {
       .onSnapshot((snapshot) => {
         const data = snapshot.docs.map((doc) => ({
           id: doc.id,
+          firstname: doc.data().firstname,
+          lastname: doc.data().lastname,
           ...doc.data(),
         }));
         setData(data);
