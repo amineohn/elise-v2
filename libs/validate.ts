@@ -71,8 +71,7 @@ export class Validate {
           "The custom token format is incorrect. Please check the documentation.";
       case "auth/custom-token-mismatch":
         message = "The custom token corresponds to a different audience.";
-      case "auth/invalid-credential":
-        message = "The supplied auth credential is malformed or has expired.";
+      
       case "auth/invalid-message-payload":
         message =
           "The email template corresponding to this action contains invalid characters in its message. Please fix by going to the Auth email templates section in the Firebase Console.";
