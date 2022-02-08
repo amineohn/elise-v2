@@ -50,7 +50,7 @@ const Error: NextPage = () => {
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <rect width="1440" height="1024" fill="white"></rect>
+              <rect width="1440" height="1024" fill="white" />
               <path
                 fillRule="evenodd"
                 clipRule="evenodd"
