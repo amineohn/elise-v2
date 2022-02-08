@@ -109,6 +109,32 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
           console.log(e);
         }
       });
+
+      fire.collection("user").onSnapshot((snapshot) => {
+        const data2 = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          firstname: doc.data().firstname,
+          lastname: doc.data().lastname,
+        }));
+        const stringify = data2.map(
+          (item) => item.firstname + " " + item.lastname
+        );
+        try {
+          fs.chmodSync(`./cache/user.json`, 0o777);
+          fs.writeFileSync(
+            `./cache/user.json`,
+            JSON.stringify(
+              {
+                user: stringify,
+              },
+              null,
+              2
+            )
+          );
+        } catch (e) {
+          console.log(e);
+        }
+      });
     });
   }, 15000); // 15s
 
