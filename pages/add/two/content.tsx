@@ -80,7 +80,7 @@ const Send: NextPage = () => {
                 date: new Date().toLocaleString(),
                 user: JSON.parse(localStorage.getItem(`users`) || "[]"),
                 matter: JSON.parse(localStorage.getItem(`matters`) || "[]"),
-                dumpster: JSON.parse(localStorage.getItem(`dumpster`) || "[]"),
+                dumpster: JSON.parse(localStorage.getItem(`dumpsters`) || "[]"),
               })
               .then(() => {
                 setSuccess("Votre valeur a été ajoutée");

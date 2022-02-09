@@ -5,6 +5,8 @@ export type Data = {
   value: string;
   dumpster?: string;
   date?: string;
+  user?: string;
+  matter?: string;
 };
 export type User = {
   firstname: string;

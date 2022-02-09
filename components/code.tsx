@@ -20,7 +20,9 @@ const Code = ({ exit }) => {
         id: doc.id,
         value: doc.data().value,
         date: doc.data().date,
+        user: doc.data().user,
         dumpster: doc.data().dumpster,
+        matter: doc.data().matter,
         ...doc.data(),
       }));
       setData4(data);
@@ -30,7 +32,9 @@ const Code = ({ exit }) => {
         id: doc.id,
         value: doc.data().value,
         date: doc.data().date,
+        user: doc.data().user,
         dumpster: doc.data().dumpster,
+        matter: doc.data().matter,
         ...doc.data(),
       }));
       setData3(data);
@@ -40,7 +44,9 @@ const Code = ({ exit }) => {
         id: doc.id,
         value: doc.data().value,
         date: doc.data().date,
+        user: doc.data().user,
         dumpster: doc.data().dumpster,
+        matter: doc.data().matter,
         ...doc.data(),
       }));
       setData2(data);
@@ -50,7 +56,9 @@ const Code = ({ exit }) => {
         id: doc.id,
         value: doc.data().value,
         date: doc.data().date,
+        user: doc.data().user,
         dumpster: doc.data().dumpster,
+        matter: doc.data().matter,
         ...doc.data(),
       }));
       setData(data);
@@ -67,16 +75,24 @@ const Code = ({ exit }) => {
       case configuration.code.pass:
         try {
           const csvData = data.map((item: Data) => {
-            return `\n${item.dumpster}\n ${item.value + " kg"}\n ${item.date}`;
+            return `\n${item.user}\n${item.matter}\n${item.dumpster}\n ${
+              item.value + " kg"
+            }\n ${item.date}`;
           });
           const csvData2 = data2.map((item: Data) => {
-            return `\n${item.dumpster}\n ${item.value + " kg"}\n ${item.date}`;
+            return `\n${item.user}\n${item.matter}\n${item.dumpster}\n ${
+              item.value + " kg"
+            }\n ${item.date}`;
           });
           const csvData3 = data3.map((item: Data) => {
-            return `\n${item.dumpster}\n ${item.value + " kg"}\n ${item.date}`;
+            return `\n${item.user}\n${item.matter}\n${item.dumpster}\n ${
+              item.value + " kg"
+            }\n ${item.date}`;
           });
           const csvData4 = data4.map((item: Data) => {
-            return `\n${item.dumpster}\n ${item.value + " kg"}\n ${item.date}`;
+            return `\n${item.user}\n${item.matter}\n${item.dumpster}\n ${
+              item.value + " kg"
+            }\n ${item.date}`;
           });
           const csv = new Blob([csvData + csvData2 + csvData3 + csvData4], {
             type: "text/csv",
@@ -270,7 +286,7 @@ const Code = ({ exit }) => {
                                   <path
                                     fill="currentColor"
                                     d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"
-                                   />
+                                  />
                                 </svg>
                               </div>
                             </span>
@@ -295,7 +311,7 @@ const Code = ({ exit }) => {
                                   <path
                                     fill="currentColor"
                                     d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"
-                                   />
+                                  />
                                 </svg>
                               </div>
                             </span>
@@ -330,7 +346,7 @@ const Code = ({ exit }) => {
                                   <path
                                     fill="currentColor"
                                     d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"
-                                   />
+                                  />
                                 </svg>
                               </div>
                             </span>
@@ -352,7 +368,7 @@ const Code = ({ exit }) => {
                                   <path
                                     fill="currentColor"
                                     d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"
-                                   />
+                                  />
                                 </svg>
                               </div>
                             </span>
@@ -392,7 +408,7 @@ const Code = ({ exit }) => {
                     strokeLinejoin="round"
                     strokeWidth="2"
                     d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                   />
+                  />
                 </svg>
                 <div className="flex flex-col ml-3">
                   <div className="font-medium leading-none text-neutral-50">
