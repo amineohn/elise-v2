@@ -39,7 +39,7 @@ const Index = () => {
   useEffect(() => {
     fire
       .collection("test")
-      .orderBy("date")
+      .orderBy("matter")
       .onSnapshot((snapshot) => {
         const data = snapshot.docs.map((doc) => ({
           id: doc.id,
@@ -50,7 +50,7 @@ const Index = () => {
       });
     fire
       .collection("test2")
-      .orderBy("date")
+      .orderBy("matter")
       .onSnapshot((snapshot) => {
         const data2 = snapshot.docs.map((doc) => ({
           id: doc.id,
@@ -61,7 +61,7 @@ const Index = () => {
       });
     fire
       .collection("test3")
-      .orderBy("date")
+      .orderBy("matter")
       .onSnapshot((snapshot) => {
         const data3 = snapshot.docs.map((doc) => ({
           id: doc.id,
@@ -72,7 +72,7 @@ const Index = () => {
       });
     fire
       .collection("test4")
-      .orderBy("date")
+      .orderBy("matter")
       .onSnapshot((snapshot) => {
         const data4 = snapshot.docs.map((doc) => ({
           id: doc.id,
@@ -138,14 +138,10 @@ const Index = () => {
         break;
       case configuration.code.admin:
         setShow(false);
-        localStorage.setItem("code", code);
         toast.success("Mot de passe correct.");
         break;
     }
   };
-  const stored = JSON.parse(localStorage.getItem("users") || "[]");
-  const matters = JSON.parse(localStorage.getItem("matters") || "[]");
-  const dumpsters = JSON.parse(localStorage.getItem("dumpsters") || "[]");
   return (
     <>
       {error && <Toaster />}
@@ -483,9 +479,9 @@ const Index = () => {
                       </p>
                       <p> {item.dumpster}</p>
                       <p> Date: {item.date}</p>
-                      <p> User: {stored}</p>
-                      <p> Matter: {matters}</p>
-                      <p> Dumpster: {dumpsters}</p>
+                      <p> User: {item.user}</p>
+                      <p> Matter: {item.matter}</p>
+                      <p> Dumpster: {item.dumpster}</p>
                     </div>
                   </div>
                 </p>
@@ -505,9 +501,9 @@ const Index = () => {
                       </p>
                       <p> {item.dumpster}</p>
                       <p> Date: {item.date}</p>
-                      <p> User: {stored}</p>
-                      <p> Matter: {matters}</p>
-                      <p> Dumpster: {dumpsters}</p>
+                      <p> User: {item.user}</p>
+                      <p> Matter: {item.matter}</p>
+                      <p> Dumpster: {item.dumpster}</p>
                     </div>
                   </div>
                 </p>
@@ -527,9 +523,9 @@ const Index = () => {
                       </p>
                       <p> {item.dumpster}</p>
                       <p> Date: {item.date}</p>
-                      <p> User: {stored}</p>
-                      <p> Matter: {matters}</p>
-                      <p> Dumpster: {dumpsters}</p>
+                      <p> User: {item.user}</p>
+                      <p> Matter: {item.matter}</p>
+                      <p> Dumpster: {item.dumpster}</p>
                     </div>
                   </div>
                 </p>
@@ -549,9 +545,9 @@ const Index = () => {
                       </p>
                       <p> {item.dumpster}</p>
                       <p> Date: {item.date}</p>
-                      <p> User: {stored}</p>
-                      <p> Matter: {matters}</p>
-                      <p> Dumpster: {dumpsters}</p>
+                      <p> User: {item.user}</p>
+                      <p> Matter: {item.matter}</p>
+                      <p> Dumpster: {item.dumpster}</p>
                     </div>
                   </div>
                 </p>
