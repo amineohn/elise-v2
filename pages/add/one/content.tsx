@@ -100,7 +100,9 @@ const Send: NextPage = () => {
         });
       });
   };
-  const text = `${localStorage.getItem(`matters`)} > Benne 1 > ${data} kg`;
+  const text = `${localStorage.getItem(`matters`)} > ${localStorage.getItem(
+    `dumpsters`
+  )}  > ${data} kg`;
   // download button to download the data
   return (
     <>
