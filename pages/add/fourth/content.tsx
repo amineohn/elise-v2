@@ -77,7 +77,9 @@ const Send: NextPage = () => {
               .add({
                 value: value,
                 date: new Date().toLocaleString(),
-                dumpster: "Benne 4",
+                user: JSON.parse(localStorage.getItem(`users`) || "[]"),
+                matter: JSON.parse(localStorage.getItem(`matters`) || "[]"),
+                dumpster: JSON.parse(localStorage.getItem(`dumpster`) || "[]"),
               })
               .then(() => {
                 setSuccess("Votre valeur a été ajoutée");
@@ -100,9 +102,9 @@ const Send: NextPage = () => {
         });
       });
   };
-  const text = `${localStorage.getItem(`matters`)} > ${localStorage.getItem(
-    `dumpsters`
-  )} > ${data} kg`;
+  const text = `${JSON.parse(
+    localStorage.getItem(`matters`) || "[]"
+  )} > ${JSON.parse(localStorage.getItem(`dumpsters`) || "[]")}  > ${data} kg`;
   // download button to download the data
   return (
     <>
