@@ -43,7 +43,13 @@ const Home: NextPage = () => {
               {data.map((item: Matter) => (
                 <>
                   <button
-                    onClick={() => router.push("/add/dumpster")}
+                    onClick={() => {
+                      router.push("/add/dumpster");
+                      localStorage.setItem(
+                        "matters",
+                        JSON.stringify(item.name)
+                      );
+                    }}
                     className="hover:scale-105 hover:transform transition"
                   >
                     <div className="rounded-full py-5 px-5 border border-slate-900 dark:border-white bg-white dark:bg-slate-900">
