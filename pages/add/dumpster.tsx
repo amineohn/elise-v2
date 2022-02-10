@@ -959,7 +959,7 @@ const Home: NextPage = () => {
               <div
                 className="hover:scale-105 hover:transform transition  max-w-xl h-36 border-2 border-transparent rounded-tl-none rounded-tr-none border-l-slate-900 border-b-slate-900 border-r-slate-900 dark:border-l-white dark:border-b-white dark:border-r-white flex justify-between rounded"
                 onClick={() => {
-                  router.push("/add/eight/content");
+                  router.push("/add/teen/content");
                   if (typeof window !== "undefined") {
                     localStorage.setItem(
                       "dumpsters",
