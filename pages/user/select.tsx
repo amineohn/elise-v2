@@ -23,7 +23,13 @@ const Home: NextPage = () => {
         }));
         setData(data);
       });
-    setUser(JSON.parse(localStorage.getItem("users") || "[]"));
+    setUser(
+      JSON.parse(
+        (typeof window !== "undefined"
+          ? localStorage.getItem("users")
+          : null) || "[]"
+      )
+    );
   }, []);
 
   return (

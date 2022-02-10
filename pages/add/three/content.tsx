@@ -25,7 +25,9 @@ const Send: NextPage = () => {
       }));
       const mapped = data.map((item) => item.value * 1);
       const total = mapped.reduce((acc, cur) => acc + cur, 0);
-      localStorage.setItem("total", JSON.stringify(total));
+      if (typeof window !== "undefined") {
+        localStorage.setItem("total", JSON.stringify(total));
+      }
       setData(total);
       if (value === "") {
       } else {
@@ -37,21 +39,23 @@ const Send: NextPage = () => {
           "Attention, vous êtes à plus de 10000kg, Un mail sera directement envoyé à Jerome."
         );
         // check if is stored in localStorage and if not, send mail
-        if (localStorage.getItem("total") === null) {
-          console.log("not stored");
-        } else {
-          console.log("ok");
-          fetch("/api/send", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              to: "aouhani@actes-atlantique.fr",
-              subject: "Alerte ELISE Production",
-              text: `Alerte: la benne est actuellement à 10000kg. Le poids actuel est de ${total}kg.`,
-            }),
-          });
+        if (typeof window !== "undefined") {
+          if (localStorage.getItem("total") === null) {
+            console.log("not stored");
+          } else {
+            console.log("ok");
+            fetch("/api/send", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                to: "aouhani@actes-atlantique.fr",
+                subject: "Alerte ELISE Production",
+                text: `Alerte: la benne est actuellement à 10000kg. Le poids actuel est de ${total}kg.`,
+              }),
+            });
+          }
         }
       }
       setPrevent(true);
@@ -77,9 +81,21 @@ const Send: NextPage = () => {
               .add({
                 value: value,
                 date: new Date().toLocaleString(),
-                user: JSON.parse(localStorage.getItem(`users`) || "[]"),
-                matter: JSON.parse(localStorage.getItem(`matters`) || "[]"),
-                dumpster: JSON.parse(localStorage.getItem(`dumpsters`) || "[]"),
+                user: JSON.parse(
+                  (typeof window !== "undefined"
+                    ? localStorage.getItem(`users`)
+                    : null) || "[]"
+                ),
+                matter: JSON.parse(
+                  (typeof window !== "undefined"
+                    ? localStorage.getItem(`matters`)
+                    : null) || "[]"
+                ),
+                dumpster: JSON.parse(
+                  (typeof window !== "undefined"
+                    ? localStorage.getItem(`dumpsters`)
+                    : null) || "[]"
+                ),
               })
               .then(() => {
                 setSuccess("Votre valeur a été ajoutée");
@@ -103,8 +119,13 @@ const Send: NextPage = () => {
       });
   };
   const text = `${JSON.parse(
-    localStorage.getItem(`matters`) || "[]"
-  )} > ${JSON.parse(localStorage.getItem(`dumpsters`) || "[]")}  > ${data} kg`;
+    (typeof window !== "undefined" ? localStorage.getItem(`matters`) : null) ||
+      "[]"
+  )} > ${JSON.parse(
+    (typeof window !== "undefined"
+      ? localStorage.getItem(`dumpsters`)
+      : null) || "[]"
+  )}  > ${data} kg`;
   // download button to download the data
   return (
     <>

@@ -271,10 +271,12 @@ const Home: NextPage = () => {
                 className="hover:scale-105 hover:transform transition w-72 ml-0 lg:ml-4 max-w-xl h-36 border-2 border-transparent rounded-tl-none rounded-tr-none border-l-slate-900 border-b-slate-900 border-r-slate-900 dark:border-l-white dark:border-b-white dark:border-r-white flex justify-between rounded"
                 onClick={() => {
                   router.push("/add/one/content");
-                  localStorage.setItem(
-                    "dumpsters",
-                    JSON.stringify(dumpsters[1].name)
-                  );
+                  if (typeof window !== "undefined") {
+                    localStorage.setItem(
+                      "dumpsters",
+                      JSON.stringify(dumpsters[1].name)
+                    );
+                  }
                 }}
               >
                 <div className="flex justify-end items-end top-0">
@@ -301,10 +303,12 @@ const Home: NextPage = () => {
                 className="hover:scale-105 hover:transform transition max-w-xl h-36 border-2 border-transparent rounded-tl-none rounded-tr-none border-l-slate-900 border-b-slate-900 border-r-slate-900 dark:border-l-white dark:border-b-white dark:border-r-white flex justify-between rounded"
                 onClick={() => {
                   router.push("/add/two/content");
-                  localStorage.setItem(
-                    "dumpsters",
-                    JSON.stringify(dumpsters[0].name)
-                  );
+                  if (typeof window !== "undefined") {
+                    localStorage.setItem(
+                      "dumpsters",
+                      JSON.stringify(dumpsters[0].name)
+                    );
+                  }
                 }}
               >
                 <div className="flex justify-end items-end top-0">
@@ -331,10 +335,12 @@ const Home: NextPage = () => {
                 className="hover:scale-105 hover:transform transition max-w-xl h-36 border-2 border-transparent rounded-tl-none rounded-tr-none border-l-slate-900 border-b-slate-900 border-r-slate-900 dark:border-l-white dark:border-b-white dark:border-r-white flex justify-between rounded"
                 onClick={() => {
                   router.push("/add/three/content");
-                  localStorage.setItem(
-                    "dumpsters",
-                    JSON.stringify(dumpsters[2].name)
-                  );
+                  if (typeof window !== "undefined") {
+                    localStorage.setItem(
+                      "dumpsters",
+                      JSON.stringify(dumpsters[2].name)
+                    );
+                  }
                 }}
               >
                 <div className="flex justify-end items-end top-0">
@@ -361,10 +367,12 @@ const Home: NextPage = () => {
                 className="hover:scale-105 hover:transform transition  max-w-xl h-36 border-2 border-transparent rounded-tl-none rounded-tr-none border-l-slate-900 border-b-slate-900 border-r-slate-900 dark:border-l-white dark:border-b-white dark:border-r-white flex justify-between rounded"
                 onClick={() => {
                   router.push("/add/fourth/content");
-                  localStorage.setItem(
-                    "dumpsters",
-                    JSON.stringify(dumpsters[3].name)
-                  );
+                  if (typeof window !== "undefined") {
+                    localStorage.setItem(
+                      "dumpsters",
+                      JSON.stringify(dumpsters[3].name)
+                    );
+                  }
                 }}
               >
                 <div className="flex justify-end items-end top-0">

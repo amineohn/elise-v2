@@ -42,10 +42,12 @@ const Home: NextPage = () => {
                     <button
                       onClick={() => {
                         router.push("/user/select");
-                        localStorage.setItem(
-                          "users",
-                          JSON.stringify(item.firstname)
-                        );
+                        if (typeof window !== "undefined") {
+                          localStorage.setItem(
+                            "users",
+                            JSON.stringify(item.firstname)
+                          );
+                        }
                       }}
                       className="hover:scale-105 hover:transform transition"
                     >
