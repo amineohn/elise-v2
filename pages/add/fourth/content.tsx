@@ -120,8 +120,13 @@ const Send: NextPage = () => {
       });
   };
   const text = `${JSON.parse(
-    localStorage.getItem(`matters`) || "[]"
-  )} > ${JSON.parse(localStorage.getItem(`dumpsters`) || "[]")}  > ${data} kg`;
+    (typeof window !== "undefined" ? localStorage.getItem(`matters`) : null) ||
+      "[]"
+  )} > ${JSON.parse(
+    (typeof window !== "undefined"
+      ? localStorage.getItem(`dumpsters`)
+      : null) || "[]"
+  )}  > ${data} kg`;
   // download button to download the data
   return (
     <>

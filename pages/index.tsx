@@ -21,7 +21,9 @@ const Home: NextPage = () => {
         }));
         setData(data);
         const users = data.map((user) => user.firstname + " " + user.lastname);
-        localStorage.setItem("users", JSON.stringify(users));
+        if (typeof window !== "undefined") {
+          localStorage.setItem("users", JSON.stringify(users));
+        }
       });
   }, []);
 
