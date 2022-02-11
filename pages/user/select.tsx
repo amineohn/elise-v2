@@ -9,7 +9,6 @@ const Home: NextPage = () => {
 
   const [data, setData] = useState([{}] as any);
   const [user, setUser] = useState("");
-  const [mat, setMat] = useState("");
   useEffect(() => {
     const fire = new Firebase();
     fire

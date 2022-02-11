@@ -19,6 +19,80 @@ const Home: NextPage = () => {
   const [total11, setTotal11] = useState([{}] as any);
   const [maxWeight, setMaxWeight] = useState([{}] as any);
   const [data, setData] = useState([{}] as any);
+  const [dumpsters, setDumpsters] = useState([
+    {
+      id: "1",
+      name: "Écrit couleur",
+      weight: "0",
+      color: "bg-blue-500",
+    },
+    {
+      id: "2",
+      name: "Blanc",
+      weight: "0",
+      color: "bg-blue-500",
+    },
+    {
+      id: "3",
+      name: "Blanc 2",
+      weight: "0",
+      color: "bg-blue-500",
+    },
+    {
+      id: "4",
+      name: "Blanc 3",
+      weight: "0",
+      color: "bg-blue-500",
+    },
+    {
+      id: "5",
+      name: "Blanc 4",
+      weight: "0",
+      color: "bg-blue-500",
+    },
+    {
+      id: "6",
+      name: "Blanc 5",
+      weight: "0",
+      color: "bg-blue-500",
+    },
+    {
+      id: "7",
+      name: "Blanc 6",
+      weight: "0",
+      color: "bg-blue-500",
+    },
+    {
+      id: "8",
+      name: "Blanc 7",
+      weight: "0",
+      color: "bg-blue-500",
+    },
+    {
+      id: "9",
+      name: "Blanc 8",
+      weight: "0",
+      color: "bg-blue-500",
+    },
+    {
+      id: "10",
+      name: "Blanc 9",
+      weight: "0",
+      color: "bg-blue-500",
+    },
+    {
+      id: "11",
+      name: "Blanc 10",
+      weight: "0",
+      color: "bg-blue-500",
+    },
+    {
+      id: "12",
+      name: "Blanc 11",
+      weight: "0",
+      color: "bg-blue-500",
+    },
+  ]);
   useEffect(() => {
     const fire = new Firebase();
     fire
@@ -189,47 +263,6 @@ const Home: NextPage = () => {
     });
   }, []);
 
-  const dumpster = (
-    item: any,
-    type: any,
-    dumpsters: any,
-    directory: any,
-    percent: any,
-    colors: any,
-    totalValue: any
-  ) => {
-    if (item !== type) {
-      return (
-        <div>
-          <div
-            className="hover:scale-105 hover:transform transition w-72 ml-0 lg:ml-4 max-w-xl h-36 border-2 border-transparent rounded-tl-none rounded-tr-none border-l-slate-900 border-b-slate-900 border-r-slate-900 dark:border-l-white dark:border-b-white dark:border-r-white flex justify-between rounded"
-            onClick={() => {
-              router.push(directory);
-              if (typeof window !== "undefined") {
-                localStorage.setItem("dumpsters", JSON.stringify(dumpsters));
-              }
-            }}
-          >
-            <div className="flex justify-end items-end top-0">
-              <div className="flex flex-col">
-                <span className="text-center font-bold text-xl z-50">
-                  {totalValue + " kg"}
-                </span>
-
-                <div
-                  style={{ height: percent + "px" }}
-                  className={`${colors} w-[284px] bottom-0 rounded-b-sm !max-h-[140px]`}
-                />
-              </div>
-            </div>
-          </div>
-          <div className="flex justify-center">
-            <span className="text-center font-bold text-xl">{dumpsters}</span>
-          </div>
-        </div>
-      );
-    }
-  };
   let totalPercent: any = (total / maxWeight) * 140;
   let totalPercent2: any = (total2 / maxWeight) * 140;
   let totalPercent3: any = (total3 / maxWeight) * 140;
@@ -575,80 +608,6 @@ const Home: NextPage = () => {
   } else if (totalPercent11 > 10) {
     color11 = "bg-green-500";
   }
-  const [dumpsters, setDumpsters] = useState([
-    {
-      id: "1",
-      name: "Écrit couleur",
-      weight: "0",
-      color: "bg-blue-500",
-    },
-    {
-      id: "2",
-      name: "Blanc",
-      weight: "0",
-      color: "bg-blue-500",
-    },
-    {
-      id: "3",
-      name: "Blanc 2",
-      weight: "0",
-      color: "bg-blue-500",
-    },
-    {
-      id: "4",
-      name: "Blanc 3",
-      weight: "0",
-      color: "bg-blue-500",
-    },
-    {
-      id: "5",
-      name: "Blanc 4",
-      weight: "0",
-      color: "bg-blue-500",
-    },
-    {
-      id: "6",
-      name: "Blanc 5",
-      weight: "0",
-      color: "bg-blue-500",
-    },
-    {
-      id: "7",
-      name: "Blanc 6",
-      weight: "0",
-      color: "bg-blue-500",
-    },
-    {
-      id: "8",
-      name: "Blanc 7",
-      weight: "0",
-      color: "bg-blue-500",
-    },
-    {
-      id: "9",
-      name: "Blanc 8",
-      weight: "0",
-      color: "bg-blue-500",
-    },
-    {
-      id: "10",
-      name: "Blanc 9",
-      weight: "0",
-      color: "bg-blue-500",
-    },
-    {
-      id: "11",
-      name: "Blanc 10",
-      weight: "0",
-      color: "bg-blue-500",
-    },
-    {
-      id: "12",
-      name: "Blanc 11",
-      weight: "0",
-      color: "bg-blue-500",
-    },
-  ]);
 
   useEffect(() => {
     setDumpsters([
@@ -726,6 +685,48 @@ const Home: NextPage = () => {
       },
     ]);
   }, []);
+
+  const dumpster = (
+    item: any,
+    type: any,
+    dumpsters: any,
+    directory: any,
+    percent: any,
+    colors: any,
+    totalValue: any
+  ) => {
+    if (item !== type) {
+      return (
+        <div>
+          <div
+            className="hover:scale-105 hover:transform transition w-72 ml-0 lg:ml-4 max-w-xl h-36 border-2 border-transparent rounded-tl-none rounded-tr-none border-l-slate-900 border-b-slate-900 border-r-slate-900 dark:border-l-white dark:border-b-white dark:border-r-white flex justify-between rounded"
+            onClick={() => {
+              router.push(directory);
+              if (typeof window !== "undefined") {
+                localStorage.setItem("dumpsters", JSON.stringify(dumpsters));
+              }
+            }}
+          >
+            <div className="flex justify-end items-end top-0">
+              <div className="flex flex-col">
+                <span className="text-center font-bold text-xl z-50">
+                  {totalValue + " kg"}
+                </span>
+
+                <div
+                  style={{ height: percent + "px" }}
+                  className={`${colors} w-[284px] bottom-0 rounded-b-sm !max-h-[140px]`}
+                />
+              </div>
+            </div>
+          </div>
+          <div className="flex justify-center">
+            <span className="text-center font-bold text-xl">{dumpsters}</span>
+          </div>
+        </div>
+      );
+    }
+  };
   return (
     <>
       <div className="flex flex-col py-5 px-1 space-y-2 h-screen scale items-center justify-center !overflow-auto">
