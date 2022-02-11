@@ -687,7 +687,7 @@ const Home: NextPage = () => {
                     </span>
 
                     <div
-                      style={{ height: totalPercent + "px" }} // temporary thing.
+                      style={{ height: totalPercent + "px" }}
                       className={`${color} w-[284px] bottom-0 rounded-b-sm !max-h-[140px]`}
                     />
                   </div>
@@ -719,7 +719,7 @@ const Home: NextPage = () => {
                     </span>
 
                     <div
-                      style={{ height: totalPercent2 + "px" }} // temporary thing.
+                      style={{ height: totalPercent2 + "px" }}
                       className={`${color2} w-[284px] bottom-0 rounded-b-sm !max-h-[140px]`}
                     />
                   </div>
@@ -751,7 +751,7 @@ const Home: NextPage = () => {
                     </span>
 
                     <div
-                      style={{ height: totalPercent3 + "px" }} // temporary thing.
+                      style={{ height: totalPercent3 + "px" }}
                       className={`${color3} w-[284px] bottom-0 rounded-b-sm !max-h-[140px]`}
                     />
                   </div>
@@ -783,7 +783,7 @@ const Home: NextPage = () => {
                     </span>
 
                     <div
-                      style={{ height: totalPercent4 + "px" }} // temporary thing.
+                      style={{ height: totalPercent4 + "px" }}
                       className={`${color4} w-[284px] bottom-0 rounded-b-sm !max-h-[140px]`}
                     />
                   </div>
@@ -815,7 +815,7 @@ const Home: NextPage = () => {
                     </span>
 
                     <div
-                      style={{ height: totalPercent5 + "px" }} // temporary thing.
+                      style={{ height: totalPercent5 + "px" }}
                       className={`${color5} w-[284px] bottom-0 rounded-b-sm !max-h-[140px]`}
                     />
                   </div>
@@ -847,7 +847,7 @@ const Home: NextPage = () => {
                     </span>
 
                     <div
-                      style={{ height: totalPercent6 + "px" }} // temporary thing.
+                      style={{ height: totalPercent6 + "px" }}
                       className={`${color6} w-[284px] bottom-0 rounded-b-sm !max-h-[140px]`}
                     />
                   </div>
@@ -879,7 +879,7 @@ const Home: NextPage = () => {
                     </span>
 
                     <div
-                      style={{ height: totalPercent7 + "px" }} // temporary thing.
+                      style={{ height: totalPercent7 + "px" }}
                       className={`${color7} w-[284px] bottom-0 rounded-b-sm !max-h-[140px]`}
                     />
                   </div>
@@ -911,7 +911,7 @@ const Home: NextPage = () => {
                     </span>
 
                     <div
-                      style={{ height: totalPercent8 + "px" }} // temporary thing.
+                      style={{ height: totalPercent8 + "px" }}
                       className={`${color8} w-[284px] bottom-0 rounded-b-sm !max-h-[140px]`}
                     />
                   </div>
@@ -943,7 +943,7 @@ const Home: NextPage = () => {
                     </span>
 
                     <div
-                      style={{ height: totalPercent9 + "px" }} // temporary thing.
+                      style={{ height: totalPercent9 + "px" }}
                       className={`${color9} w-[284px] bottom-0 rounded-b-sm !max-h-[140px]`}
                     />
                   </div>
@@ -975,7 +975,7 @@ const Home: NextPage = () => {
                     </span>
 
                     <div
-                      style={{ height: totalPercent10 + "px" }} // temporary thing.
+                      style={{ height: totalPercent10 + "px" }}
                       className={`${color10} w-[284px] bottom-0 rounded-b-sm !max-h-[140px]`}
                     />
                   </div>
@@ -1007,7 +1007,7 @@ const Home: NextPage = () => {
                     </span>
 
                     <div
-                      style={{ height: totalPercent11 + "px" }} // temporary thing.
+                      style={{ height: totalPercent11 + "px" }}
                       className={`${color11} w-[284px] bottom-0 rounded-b-sm !max-h-[140px]`}
                     />
                   </div>
