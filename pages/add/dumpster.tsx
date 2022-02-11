@@ -93,6 +93,83 @@ const Home: NextPage = () => {
       color: "bg-blue-500",
     },
   ]);
+
+  useEffect(() => {
+    setDumpsters([
+      {
+        id: "1",
+        name: "Écrit couleur",
+        weight: "0",
+        color: "bg-blue-500",
+      },
+      {
+        id: "2",
+        name: "Blanc",
+        weight: "0",
+        color: "bg-blue-500",
+      },
+      {
+        id: "3",
+        name: "Blanc 2",
+        weight: "0",
+        color: "bg-blue-500",
+      },
+      {
+        id: "4",
+        name: "Blanc 3",
+        weight: "0",
+        color: "bg-blue-500",
+      },
+      {
+        id: "5",
+        name: "Blanc 4",
+        weight: "0",
+        color: "bg-blue-500",
+      },
+      {
+        id: "6",
+        name: "Blanc 5",
+        weight: "0",
+        color: "bg-blue-500",
+      },
+      {
+        id: "7",
+        name: "Blanc 6",
+        weight: "0",
+        color: "bg-blue-500",
+      },
+      {
+        id: "8",
+        name: "Blanc 7",
+        weight: "0",
+        color: "bg-blue-500",
+      },
+      {
+        id: "9",
+        name: "Blanc 8",
+        weight: "0",
+        color: "bg-blue-500",
+      },
+      {
+        id: "10",
+        name: "Blanc 9",
+        weight: "0",
+        color: "bg-blue-500",
+      },
+      {
+        id: "11",
+        name: "Blanc 10",
+        weight: "0",
+        color: "bg-blue-500",
+      },
+      {
+        id: "12",
+        name: "Blanc 11",
+        weight: "0",
+        color: "bg-blue-500",
+      },
+    ]);
+  }, []);
   useEffect(() => {
     const fire = new Firebase();
     fire
@@ -608,83 +685,6 @@ const Home: NextPage = () => {
   } else if (totalPercent11 > 10) {
     color11 = "bg-green-500";
   }
-
-  useEffect(() => {
-    setDumpsters([
-      {
-        id: "1",
-        name: "Écrit couleur",
-        weight: "0",
-        color: "bg-blue-500",
-      },
-      {
-        id: "2",
-        name: "Blanc",
-        weight: "0",
-        color: "bg-blue-500",
-      },
-      {
-        id: "3",
-        name: "Blanc 2",
-        weight: "0",
-        color: "bg-blue-500",
-      },
-      {
-        id: "4",
-        name: "Blanc 3",
-        weight: "0",
-        color: "bg-blue-500",
-      },
-      {
-        id: "5",
-        name: "Blanc 4",
-        weight: "0",
-        color: "bg-blue-500",
-      },
-      {
-        id: "6",
-        name: "Blanc 5",
-        weight: "0",
-        color: "bg-blue-500",
-      },
-      {
-        id: "7",
-        name: "Blanc 6",
-        weight: "0",
-        color: "bg-blue-500",
-      },
-      {
-        id: "8",
-        name: "Blanc 7",
-        weight: "0",
-        color: "bg-blue-500",
-      },
-      {
-        id: "9",
-        name: "Blanc 8",
-        weight: "0",
-        color: "bg-blue-500",
-      },
-      {
-        id: "10",
-        name: "Blanc 9",
-        weight: "0",
-        color: "bg-blue-500",
-      },
-      {
-        id: "11",
-        name: "Blanc 10",
-        weight: "0",
-        color: "bg-blue-500",
-      },
-      {
-        id: "12",
-        name: "Blanc 11",
-        weight: "0",
-        color: "bg-blue-500",
-      },
-    ]);
-  }, []);
 
   const dumpster = (
     item: any,
