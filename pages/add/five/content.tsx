@@ -11,9 +11,69 @@ const Send: NextPage = () => {
   const [success, setSuccess] = useState("");
   const [prevent, setPrevent] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [total, setTotal] = useState([{}] as any);
   const [data, setData] = useState([{}] as any);
+  const [maxWeight, setMaxWeight] = useState([{}] as any);
   const fire = new Firebase();
   const router = useRouter();
+  useEffect(() => {
+    const fire = new Firebase();
+    fire.collection("test5").onSnapshot((snapshot) => {
+      const data = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        value: doc.data().value,
+        ...doc.data(),
+      }));
+      const mapped = data.map((item) => item.value * 1);
+      const total = mapped.reduce((acc, cur) => acc + cur, 0);
+      setTotal(total);
+    });
+  }, []);
+
+  let totalPercent: any = (total / maxWeight) * 140;
+  useEffect(() => {
+    const fire = new Firebase();
+    fire.collection("settings").onSnapshot((snapshot) => {
+      const data = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        weight: doc.data().weight,
+        ...doc.data(),
+      }));
+      const mapped = data.map((item) => item.weight);
+      setMaxWeight(mapped);
+    });
+  }, []);
+  let color: string = "bg-green-500";
+
+  if (totalPercent > 140) {
+    color = "bg-red-900";
+  } else if (totalPercent > 130) {
+    color = "bg-red-800";
+  } else if (totalPercent > 120) {
+    color = "bg-red-700";
+  } else if (totalPercent > 110) {
+    color = "bg-red-600";
+  } else if (totalPercent > 100) {
+    color = "bg-red-700";
+  } else if (totalPercent > 90) {
+    color = "bg-orange-600";
+  } else if (totalPercent > 80) {
+    color = "bg-orange-500";
+  } else if (totalPercent > 70) {
+    color = "bg-yellow-500";
+  } else if (totalPercent > 60) {
+    color = "bg-green-500";
+  } else if (totalPercent > 50) {
+    color = "bg-green-500";
+  } else if (totalPercent > 40) {
+    color = "bg-green-500";
+  } else if (totalPercent > 30) {
+    color = "bg-green-500";
+  } else if (totalPercent > 20) {
+    color = "bg-green-500";
+  } else if (totalPercent > 10) {
+    color = "bg-green-500";
+  }
   useEffect(() => {
     const fire = new Firebase();
     fire.collection("test5").onSnapshot((snapshot) => {
@@ -38,9 +98,8 @@ const Send: NextPage = () => {
         toast.error(
           "Attention, vous êtes à plus de 10000kg, Un mail sera directement envoyé à Jerome."
         );
-        // check if is stored in localStorage and if not, send mail
-
         if (typeof window !== "undefined") {
+          // check if is stored in localStorage and if not, send mail
           if (localStorage.getItem("total") === null) {
             console.log("not stored");
           } else {
@@ -221,7 +280,7 @@ const Send: NextPage = () => {
                 </div>
                 <br />
                 <div>
-                  <div className="flex justify-center items-center">
+                  <div className="flex flex-col space-y-4 justify-center items-center">
                     <div className="grid grid-cols-1 space-y-2">
                       <div className="space-x-1">
                         <button type="button">
@@ -419,10 +478,35 @@ const Send: NextPage = () => {
                               setShowModal(true);
                             }}
                           >
-                            Supprimer benne 4
+                            Supprimer benne 1
                           </a>
                         </div>
                       )}
+                    </div>
+                    <div className="flex flex-col justify-center items-center mr-4">
+                      <div className="transition w-72 ml-0 lg:ml-4 max-w-xl h-36 border-2 border-transparent rounded-tl-none rounded-tr-none border-l-slate-900 border-b-slate-900 border-r-slate-900 dark:border-l-white dark:border-b-white dark:border-r-white flex justify-between rounded">
+                        <div className="flex justify-end items-end top-0">
+                          <div className="flex flex-col">
+                            <span className="text-center font-bold text-xl z-50">
+                              {total + " kg"}
+                            </span>
+
+                            <div
+                              style={{ height: totalPercent + "px" }}
+                              className={`${color} w-[284px] bottom-0 rounded-b-sm !max-h-[140px]`}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex justify-center">
+                        <span className="text-center font-bold text-xl">
+                          {JSON.parse(
+                            (typeof window !== "undefined"
+                              ? localStorage.getItem(`dumpsters`)
+                              : null) || "[]"
+                          )}
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>

@@ -2,6 +2,7 @@ import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { Firebase } from "../../libs/firebase";
+import { User } from "../../libs/types";
 
 const Home: NextPage = () => {
   const router = useRouter();
@@ -17,6 +18,21 @@ const Home: NextPage = () => {
   const [total10, setTotal10] = useState([{}] as any);
   const [total11, setTotal11] = useState([{}] as any);
   const [maxWeight, setMaxWeight] = useState([{}] as any);
+  const [data, setData] = useState([{}] as any);
+  useEffect(() => {
+    const fire = new Firebase();
+    fire
+      .collection("matters")
+      .orderBy("name")
+      .onSnapshot((snapshot) => {
+        const data = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        const matters = data.map((matter: any) => matter.name);
+        setData(matters);
+      });
+  }, []);
   useEffect(() => {
     const fire = new Firebase();
     fire.collection("settings").onSnapshot((snapshot) => {
@@ -173,6 +189,47 @@ const Home: NextPage = () => {
     });
   }, []);
 
+  const dumpster = (
+    item: any,
+    type: any,
+    dumpsters: any,
+    directory: any,
+    percent: any,
+    colors: any,
+    totalValue: any
+  ) => {
+    if (item !== type) {
+      return (
+        <div>
+          <div
+            className="hover:scale-105 hover:transform transition w-72 ml-0 lg:ml-4 max-w-xl h-36 border-2 border-transparent rounded-tl-none rounded-tr-none border-l-slate-900 border-b-slate-900 border-r-slate-900 dark:border-l-white dark:border-b-white dark:border-r-white flex justify-between rounded"
+            onClick={() => {
+              router.push(directory);
+              if (typeof window !== "undefined") {
+                localStorage.setItem("dumpsters", JSON.stringify(dumpsters));
+              }
+            }}
+          >
+            <div className="flex justify-end items-end top-0">
+              <div className="flex flex-col">
+                <span className="text-center font-bold text-xl z-50">
+                  {totalValue + " kg"}
+                </span>
+
+                <div
+                  style={{ height: percent + "px" }}
+                  className={`${colors} w-[284px] bottom-0 rounded-b-sm !max-h-[140px]`}
+                />
+              </div>
+            </div>
+          </div>
+          <div className="flex justify-center">
+            <span className="text-center font-bold text-xl">{dumpsters}</span>
+          </div>
+        </div>
+      );
+    }
+  };
   let totalPercent: any = (total / maxWeight) * 140;
   let totalPercent2: any = (total2 / maxWeight) * 140;
   let totalPercent3: any = (total3 / maxWeight) * 140;
@@ -585,6 +642,12 @@ const Home: NextPage = () => {
       weight: "0",
       color: "bg-blue-500",
     },
+    {
+      id: "12",
+      name: "Blanc 11",
+      weight: "0",
+      color: "bg-blue-500",
+    },
   ]);
 
   useEffect(() => {
@@ -655,6 +718,12 @@ const Home: NextPage = () => {
         weight: "0",
         color: "bg-blue-500",
       },
+      {
+        id: "12",
+        name: "Blanc 11",
+        weight: "0",
+        color: "bg-blue-500",
+      },
     ]);
   }, []);
   return (
@@ -667,358 +736,149 @@ const Home: NextPage = () => {
         </div>
         <div className="h-[400px] overflow-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 lg:space-x-4 mt-10 gap-4">
-            <div>
-              <div
-                className="hover:scale-105 hover:transform transition w-72 ml-0 lg:ml-4 max-w-xl h-36 border-2 border-transparent rounded-tl-none rounded-tr-none border-l-slate-900 border-b-slate-900 border-r-slate-900 dark:border-l-white dark:border-b-white dark:border-r-white flex justify-between rounded"
-                onClick={() => {
-                  router.push("/add/one/content");
-                  if (typeof window !== "undefined") {
-                    localStorage.setItem(
-                      "dumpsters",
-                      JSON.stringify(dumpsters[1].name)
-                    );
-                  }
-                }}
-              >
-                <div className="flex justify-end items-end top-0">
-                  <div className="flex flex-col">
-                    <span className="text-center font-bold text-xl z-50">
-                      {total + " kg"}
-                    </span>
-
-                    <div
-                      style={{ height: totalPercent + "px" }}
-                      className={`${color} w-[284px] bottom-0 rounded-b-sm !max-h-[140px]`}
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="flex justify-center">
-                <span className="text-center font-bold text-xl">
-                  {dumpsters[1].name}
-                </span>
-              </div>
-            </div>
-            <div>
-              <div
-                className="hover:scale-105 hover:transform transition max-w-xl h-36 border-2 border-transparent rounded-tl-none rounded-tr-none border-l-slate-900 border-b-slate-900 border-r-slate-900 dark:border-l-white dark:border-b-white dark:border-r-white flex justify-between rounded"
-                onClick={() => {
-                  router.push("/add/two/content");
-                  if (typeof window !== "undefined") {
-                    localStorage.setItem(
-                      "dumpsters",
-                      JSON.stringify(dumpsters[0].name)
-                    );
-                  }
-                }}
-              >
-                <div className="flex justify-end items-end top-0">
-                  <div className="flex flex-col">
-                    <span className="text-center font-bold text-xl z-50">
-                      {total2 + " kg"}
-                    </span>
-
-                    <div
-                      style={{ height: totalPercent2 + "px" }}
-                      className={`${color2} w-[284px] bottom-0 rounded-b-sm !max-h-[140px]`}
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="flex justify-center">
-                <span className="text-center font-bold text-xl">
-                  {dumpsters[0].name}
-                </span>
-              </div>
-            </div>
-            <div>
-              <div
-                className="hover:scale-105 hover:transform transition max-w-xl h-36 border-2 border-transparent rounded-tl-none rounded-tr-none border-l-slate-900 border-b-slate-900 border-r-slate-900 dark:border-l-white dark:border-b-white dark:border-r-white flex justify-between rounded"
-                onClick={() => {
-                  router.push("/add/three/content");
-                  if (typeof window !== "undefined") {
-                    localStorage.setItem(
-                      "dumpsters",
-                      JSON.stringify(dumpsters[2].name)
-                    );
-                  }
-                }}
-              >
-                <div className="flex justify-end items-end top-0">
-                  <div className="flex flex-col">
-                    <span className="text-center font-bold text-xl z-50">
-                      {total3 + " kg"}
-                    </span>
-
-                    <div
-                      style={{ height: totalPercent3 + "px" }}
-                      className={`${color3} w-[284px] bottom-0 rounded-b-sm !max-h-[140px]`}
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="flex justify-center">
-                <span className="text-center font-bold text-xl">
-                  {dumpsters[2].name}
-                </span>
-              </div>
-            </div>
-            <div>
-              <div
-                className="hover:scale-105 hover:transform transition  max-w-xl h-36 border-2 border-transparent rounded-tl-none rounded-tr-none border-l-slate-900 border-b-slate-900 border-r-slate-900 dark:border-l-white dark:border-b-white dark:border-r-white flex justify-between rounded"
-                onClick={() => {
-                  router.push("/add/fourth/content");
-                  if (typeof window !== "undefined") {
-                    localStorage.setItem(
-                      "dumpsters",
-                      JSON.stringify(dumpsters[3].name)
-                    );
-                  }
-                }}
-              >
-                <div className="flex justify-end items-end top-0">
-                  <div className="flex flex-col">
-                    <span className="text-center font-bold text-xl z-50">
-                      {total4 + " kg"}
-                    </span>
-
-                    <div
-                      style={{ height: totalPercent4 + "px" }}
-                      className={`${color4} w-[284px] bottom-0 rounded-b-sm !max-h-[140px]`}
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="flex justify-center">
-                <span className="text-center font-bold text-xl">
-                  {dumpsters[3].name}
-                </span>
-              </div>
-            </div>
-            <div>
-              <div
-                className="hover:scale-105 hover:transform transition  max-w-xl h-36 border-2 border-transparent rounded-tl-none rounded-tr-none border-l-slate-900 border-b-slate-900 border-r-slate-900 dark:border-l-white dark:border-b-white dark:border-r-white flex justify-between rounded"
-                onClick={() => {
-                  router.push("/add/five/content");
-                  if (typeof window !== "undefined") {
-                    localStorage.setItem(
-                      "dumpsters",
-                      JSON.stringify(dumpsters[4].name)
-                    );
-                  }
-                }}
-              >
-                <div className="flex justify-end items-end top-0">
-                  <div className="flex flex-col">
-                    <span className="text-center font-bold text-xl z-50">
-                      {total5 + " kg"}
-                    </span>
-
-                    <div
-                      style={{ height: totalPercent5 + "px" }}
-                      className={`${color5} w-[284px] bottom-0 rounded-b-sm !max-h-[140px]`}
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="flex justify-center">
-                <span className="text-center font-bold text-xl">
-                  {dumpsters[4].name}
-                </span>
-              </div>
-            </div>
-            <div>
-              <div
-                className="hover:scale-105 hover:transform transition  max-w-xl h-36 border-2 border-transparent rounded-tl-none rounded-tr-none border-l-slate-900 border-b-slate-900 border-r-slate-900 dark:border-l-white dark:border-b-white dark:border-r-white flex justify-between rounded"
-                onClick={() => {
-                  router.push("/add/six/content");
-                  if (typeof window !== "undefined") {
-                    localStorage.setItem(
-                      "dumpsters",
-                      JSON.stringify(dumpsters[5].name)
-                    );
-                  }
-                }}
-              >
-                <div className="flex justify-end items-end top-0">
-                  <div className="flex flex-col">
-                    <span className="text-center font-bold text-xl z-50">
-                      {total6 + " kg"}
-                    </span>
-
-                    <div
-                      style={{ height: totalPercent6 + "px" }}
-                      className={`${color6} w-[284px] bottom-0 rounded-b-sm !max-h-[140px]`}
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="flex justify-center">
-                <span className="text-center font-bold text-xl">
-                  {dumpsters[5].name}
-                </span>
-              </div>
-            </div>
-            <div>
-              <div
-                className="hover:scale-105 hover:transform transition  max-w-xl h-36 border-2 border-transparent rounded-tl-none rounded-tr-none border-l-slate-900 border-b-slate-900 border-r-slate-900 dark:border-l-white dark:border-b-white dark:border-r-white flex justify-between rounded"
-                onClick={() => {
-                  router.push("/add/seven/content");
-                  if (typeof window !== "undefined") {
-                    localStorage.setItem(
-                      "dumpsters",
-                      JSON.stringify(dumpsters[6].name)
-                    );
-                  }
-                }}
-              >
-                <div className="flex justify-end items-end top-0">
-                  <div className="flex flex-col">
-                    <span className="text-center font-bold text-xl z-50">
-                      {total7 + " kg"}
-                    </span>
-
-                    <div
-                      style={{ height: totalPercent7 + "px" }}
-                      className={`${color7} w-[284px] bottom-0 rounded-b-sm !max-h-[140px]`}
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="flex justify-center">
-                <span className="text-center font-bold text-xl">
-                  {dumpsters[6].name}
-                </span>
-              </div>
-            </div>
-            <div>
-              <div
-                className="hover:scale-105 hover:transform transition  max-w-xl h-36 border-2 border-transparent rounded-tl-none rounded-tr-none border-l-slate-900 border-b-slate-900 border-r-slate-900 dark:border-l-white dark:border-b-white dark:border-r-white flex justify-between rounded"
-                onClick={() => {
-                  router.push("/add/eight/content");
-                  if (typeof window !== "undefined") {
-                    localStorage.setItem(
-                      "dumpsters",
-                      JSON.stringify(dumpsters[7].name)
-                    );
-                  }
-                }}
-              >
-                <div className="flex justify-end items-end top-0">
-                  <div className="flex flex-col">
-                    <span className="text-center font-bold text-xl z-50">
-                      {total8 + " kg"}
-                    </span>
-
-                    <div
-                      style={{ height: totalPercent8 + "px" }}
-                      className={`${color8} w-[284px] bottom-0 rounded-b-sm !max-h-[140px]`}
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="flex justify-center">
-                <span className="text-center font-bold text-xl">
-                  {dumpsters[7].name}
-                </span>
-              </div>
-            </div>
-            <div>
-              <div
-                className="hover:scale-105 hover:transform transition  max-w-xl h-36 border-2 border-transparent rounded-tl-none rounded-tr-none border-l-slate-900 border-b-slate-900 border-r-slate-900 dark:border-l-white dark:border-b-white dark:border-r-white flex justify-between rounded"
-                onClick={() => {
-                  router.push("/add/nine/content");
-                  if (typeof window !== "undefined") {
-                    localStorage.setItem(
-                      "dumpsters",
-                      JSON.stringify(dumpsters[8].name)
-                    );
-                  }
-                }}
-              >
-                <div className="flex justify-end items-end top-0">
-                  <div className="flex flex-col">
-                    <span className="text-center font-bold text-xl z-50">
-                      {total9 + " kg"}
-                    </span>
-
-                    <div
-                      style={{ height: totalPercent9 + "px" }}
-                      className={`${color9} w-[284px] bottom-0 rounded-b-sm !max-h-[140px]`}
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="flex justify-center">
-                <span className="text-center font-bold text-xl">
-                  {dumpsters[8].name}
-                </span>
-              </div>
-            </div>
-            <div>
-              <div
-                className="hover:scale-105 hover:transform transition  max-w-xl h-36 border-2 border-transparent rounded-tl-none rounded-tr-none border-l-slate-900 border-b-slate-900 border-r-slate-900 dark:border-l-white dark:border-b-white dark:border-r-white flex justify-between rounded"
-                onClick={() => {
-                  router.push("/add/teen/content");
-                  if (typeof window !== "undefined") {
-                    localStorage.setItem(
-                      "dumpsters",
-                      JSON.stringify(dumpsters[9].name)
-                    );
-                  }
-                }}
-              >
-                <div className="flex justify-end items-end top-0">
-                  <div className="flex flex-col">
-                    <span className="text-center font-bold text-xl z-50">
-                      {total10 + " kg"}
-                    </span>
-
-                    <div
-                      style={{ height: totalPercent10 + "px" }}
-                      className={`${color10} w-[284px] bottom-0 rounded-b-sm !max-h-[140px]`}
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="flex justify-center">
-                <span className="text-center font-bold text-xl">
-                  {dumpsters[9].name}
-                </span>
-              </div>
-            </div>
-            <div>
-              <div
-                className="hover:scale-105 hover:transform transition  max-w-xl h-36 border-2 border-transparent rounded-tl-none rounded-tr-none border-l-slate-900 border-b-slate-900 border-r-slate-900 dark:border-l-white dark:border-b-white dark:border-r-white flex justify-between rounded"
-                onClick={() => {
-                  router.push("/add/eleven/content");
-                  if (typeof window !== "undefined") {
-                    localStorage.setItem(
-                      "dumpsters",
-                      JSON.stringify(dumpsters[10].name)
-                    );
-                  }
-                }}
-              >
-                <div className="flex justify-end items-end top-0">
-                  <div className="flex flex-col">
-                    <span className="text-center font-bold text-xl z-50">
-                      {total11 + " kg"}
-                    </span>
-
-                    <div
-                      style={{ height: totalPercent11 + "px" }}
-                      className={`${color11} w-[284px] bottom-0 rounded-b-sm !max-h-[140px]`}
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="flex justify-center">
-                <span className="text-center font-bold text-xl">
-                  {dumpsters[10].name}
-                </span>
-              </div>
-            </div>
+            {dumpster(
+              data,
+              JSON.parse(
+                (typeof window !== "undefined"
+                  ? localStorage.getItem("users") || "Papier"
+                  : null) || "[]"
+              ),
+              dumpsters[1].name,
+              "/add/one/content",
+              totalPercent,
+              color,
+              total
+            )}
+            {dumpster(
+              data,
+              JSON.parse(
+                (typeof window !== "undefined"
+                  ? localStorage.getItem("users") || "Cartons"
+                  : null) || "[]"
+              ),
+              dumpsters[2].name,
+              "/add/two/content",
+              totalPercent2,
+              color2,
+              total2
+            )}
+            {dumpster(
+              data,
+              JSON.parse(
+                (typeof window !== "undefined"
+                  ? localStorage.getItem("users") || "DEE"
+                  : null) || "[]"
+              ),
+              dumpsters[3].name,
+              "/add/three/content",
+              totalPercent3,
+              color3,
+              total3
+            )}
+            {dumpster(
+              data,
+              JSON.parse(
+                (typeof window !== "undefined"
+                  ? localStorage.getItem("users") || "Papier"
+                  : null) || "[]"
+              ),
+              dumpsters[4].name,
+              "/add/fourth/content",
+              totalPercent4,
+              color4,
+              total4
+            )}
+            {dumpster(
+              data,
+              JSON.parse(
+                (typeof window !== "undefined"
+                  ? localStorage.getItem("users") || "Papier"
+                  : null) || "[]"
+              ),
+              dumpsters[5].name,
+              "/add/five/content",
+              totalPercent5,
+              color5,
+              total5
+            )}
+            {dumpster(
+              data,
+              JSON.parse(
+                (typeof window !== "undefined"
+                  ? localStorage.getItem("users") || "Papier"
+                  : null) || "[]"
+              ),
+              dumpsters[6].name,
+              "/add/six/content",
+              totalPercent6,
+              color6,
+              total6
+            )}
+            {dumpster(
+              data,
+              JSON.parse(
+                (typeof window !== "undefined"
+                  ? localStorage.getItem("users") || "Papier"
+                  : null) || "[]"
+              ),
+              dumpsters[7].name,
+              "/add/seven/content",
+              totalPercent7,
+              color7,
+              total7
+            )}
+            {dumpster(
+              data,
+              JSON.parse(
+                (typeof window !== "undefined"
+                  ? localStorage.getItem("users") || "Papier"
+                  : null) || "[]"
+              ),
+              dumpsters[8].name,
+              "/add/eight/content",
+              totalPercent8,
+              color8,
+              total8
+            )}
+            {dumpster(
+              data,
+              JSON.parse(
+                (typeof window !== "undefined"
+                  ? localStorage.getItem("users") || "Papier"
+                  : null) || "[]"
+              ),
+              dumpsters[9].name,
+              "/add/nine/content",
+              totalPercent9,
+              color9,
+              total9
+            )}
+            {dumpster(
+              data,
+              JSON.parse(
+                (typeof window !== "undefined"
+                  ? localStorage.getItem("users") || "Papier"
+                  : null) || "[]"
+              ),
+              dumpsters[10].name,
+              "/add/teen/content",
+              totalPercent10,
+              color10,
+              total10
+            )}
+            {dumpster(
+              data,
+              JSON.parse(
+                (typeof window !== "undefined"
+                  ? localStorage.getItem("users") || "Papier"
+                  : null) || "[]"
+              ),
+              dumpsters[11].name,
+              "/add/eleven/content",
+              totalPercent11,
+              color11,
+              total11
+            )}
           </div>
         </div>
       </div>
