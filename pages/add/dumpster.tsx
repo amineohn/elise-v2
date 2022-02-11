@@ -86,103 +86,77 @@ const Home: NextPage = () => {
       weight: "0",
       color: "bg-blue-500",
     },
-    {
-      id: "12",
-      name: "Blanc 11",
-      weight: "0",
-      color: "bg-blue-500",
-    },
   ]);
 
   useEffect(() => {
     setDumpsters([
       {
         id: "1",
-        name: "Écrit couleur",
+        name: "Benne 1",
         weight: "0",
         color: "bg-blue-500",
       },
       {
         id: "2",
-        name: "Blanc",
+        name: "Benne 2",
         weight: "0",
         color: "bg-blue-500",
       },
       {
         id: "3",
-        name: "Blanc 2",
+        name: "Benne 3",
         weight: "0",
         color: "bg-blue-500",
       },
       {
         id: "4",
-        name: "Blanc 3",
+        name: "Benne 4",
         weight: "0",
         color: "bg-blue-500",
       },
       {
         id: "5",
-        name: "Blanc 4",
+        name: "Benne 5",
         weight: "0",
         color: "bg-blue-500",
       },
       {
         id: "6",
-        name: "Blanc 5",
+        name: "Benne 6",
         weight: "0",
         color: "bg-blue-500",
       },
       {
         id: "7",
-        name: "Blanc 6",
+        name: "Benne 7",
         weight: "0",
         color: "bg-blue-500",
       },
       {
         id: "8",
-        name: "Blanc 7",
+        name: "Benne 8",
         weight: "0",
         color: "bg-blue-500",
       },
       {
         id: "9",
-        name: "Blanc 8",
+        name: "Benne 9",
         weight: "0",
         color: "bg-blue-500",
       },
       {
         id: "10",
-        name: "Blanc 9",
+        name: "Benne 10",
         weight: "0",
         color: "bg-blue-500",
       },
       {
         id: "11",
-        name: "Blanc 10",
-        weight: "0",
-        color: "bg-blue-500",
-      },
-      {
-        id: "12",
-        name: "Blanc 11",
+        name: "Benne 11",
         weight: "0",
         color: "bg-blue-500",
       },
     ]);
-  }, []);
-  useEffect(() => {
-    const fire = new Firebase();
-    fire
-      .collection("matters")
-      .orderBy("name")
-      .onSnapshot((snapshot) => {
-        const data = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        const matters = data.map((matter: any) => matter.name);
-        setData(matters);
-      });
   }, []);
   useEffect(() => {
     const fire = new Firebase();
@@ -338,6 +312,20 @@ const Home: NextPage = () => {
       const total11 = mapped.reduce((acc, cur) => acc + cur, 0);
       setTotal11(total11);
     });
+  }, []);
+
+  useEffect(() => {
+    const fire = new Firebase();
+    fire
+      .collection("matters")
+      .orderBy("name")
+      .onSnapshot((snapshot) => {
+        const data3 = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setData(data3);
+      });
   }, []);
 
   let totalPercent: any = (total / maxWeight) * 140;
@@ -687,46 +675,45 @@ const Home: NextPage = () => {
   }
 
   const dumpster = (
-    item: any,
-    type: any,
     dumpsters: any,
     directory: any,
     percent: any,
     colors: any,
     totalValue: any
   ) => {
-    if (item !== type) {
-      return (
-        <div>
-          <div
-            className="hover:scale-105 hover:transform transition w-72 ml-0 lg:ml-4 max-w-xl h-36 border-2 border-transparent rounded-tl-none rounded-tr-none border-l-slate-900 border-b-slate-900 border-r-slate-900 dark:border-l-white dark:border-b-white dark:border-r-white flex justify-between rounded"
-            onClick={() => {
-              router.push(directory);
-              if (typeof window !== "undefined") {
-                localStorage.setItem("dumpsters", JSON.stringify(dumpsters));
-              }
-            }}
-          >
-            <div className="flex justify-end items-end top-0">
-              <div className="flex flex-col">
-                <span className="text-center font-bold text-xl z-50">
-                  {totalValue + " kg"}
-                </span>
+    const router = useRouter();
 
-                <div
-                  style={{ height: percent + "px" }}
-                  className={`${colors} w-[284px] bottom-0 rounded-b-sm !max-h-[140px]`}
-                />
-              </div>
+    return (
+      <div>
+        <div
+          className="hover:scale-105 hover:transform transition w-72 ml-0 lg:ml-4 max-w-xl h-36 border-2 border-transparent rounded-tl-none rounded-tr-none border-l-slate-900 border-b-slate-900 border-r-slate-900 dark:border-l-white dark:border-b-white dark:border-r-white flex justify-between rounded"
+          onClick={() => {
+            router.push(directory);
+            if (typeof window !== "undefined") {
+              localStorage.setItem("dumpsters", JSON.stringify(dumpsters));
+            }
+          }}
+        >
+          <div className="flex justify-end items-end top-0">
+            <div className="flex flex-col">
+              <span className="text-center font-bold text-xl z-50">
+                {totalValue + " kg"}
+              </span>
+
+              <div
+                style={{ height: percent + "px" }}
+                className={`${colors} w-[284px] bottom-0 rounded-b-sm !max-h-[140px]`}
+              />
             </div>
           </div>
-          <div className="flex justify-center">
-            <span className="text-center font-bold text-xl">{dumpsters}</span>
-          </div>
         </div>
-      );
-    }
+        <div className="flex justify-center">
+          <span className="text-center font-bold text-xl">{dumpsters}</span>
+        </div>
+      </div>
+    );
   };
+  console.log(data[12]?.name);
   return (
     <>
       <div className="flex flex-col py-5 px-1 space-y-2 h-screen scale items-center justify-center !overflow-auto">
@@ -736,145 +723,84 @@ const Home: NextPage = () => {
           </h1>
         </div>
         <div className="h-[400px] overflow-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 lg:space-x-4 mt-10 gap-4">
-            {dumpster(
-              data,
-              JSON.parse(
-                (typeof window !== "undefined"
-                  ? localStorage.getItem("users") || "Papier"
-                  : null) || "[]"
-              ),
-              dumpsters[1].name,
-              "/add/one/content",
-              totalPercent,
-              color,
-              total
+          <div className="grid grid-cols-1 lg:grid-cols-2 mt-10 gap-4">
+            {data[12]?.name && (
+              <>
+                {dumpster(
+                  dumpsters[0].name,
+                  "/add/one/content",
+                  totalPercent,
+                  color,
+                  total
+                )}
+              </>
             )}
+
             {dumpster(
-              data,
-              JSON.parse(
-                (typeof window !== "undefined"
-                  ? localStorage.getItem("users") || "Cartons"
-                  : null) || "[]"
-              ),
-              dumpsters[2].name,
+              dumpsters[1].name,
               "/add/two/content",
               totalPercent2,
               color2,
               total2
             )}
             {dumpster(
-              data,
-              JSON.parse(
-                (typeof window !== "undefined"
-                  ? localStorage.getItem("users") || "DEE"
-                  : null) || "[]"
-              ),
-              dumpsters[3].name,
+              dumpsters[2].name,
               "/add/three/content",
               totalPercent3,
               color3,
               total3
             )}
             {dumpster(
-              data,
-              JSON.parse(
-                (typeof window !== "undefined"
-                  ? localStorage.getItem("users") || "Papier"
-                  : null) || "[]"
-              ),
-              dumpsters[4].name,
+              dumpsters[3].name,
               "/add/fourth/content",
               totalPercent4,
               color4,
               total4
             )}
             {dumpster(
-              data,
-              JSON.parse(
-                (typeof window !== "undefined"
-                  ? localStorage.getItem("users") || "Papier"
-                  : null) || "[]"
-              ),
-              dumpsters[5].name,
+              dumpsters[4].name,
               "/add/five/content",
               totalPercent5,
               color5,
               total5
             )}
             {dumpster(
-              data,
-              JSON.parse(
-                (typeof window !== "undefined"
-                  ? localStorage.getItem("users") || "Papier"
-                  : null) || "[]"
-              ),
-              dumpsters[6].name,
+              dumpsters[5].name,
               "/add/six/content",
               totalPercent6,
               color6,
               total6
             )}
             {dumpster(
-              data,
-              JSON.parse(
-                (typeof window !== "undefined"
-                  ? localStorage.getItem("users") || "Papier"
-                  : null) || "[]"
-              ),
-              dumpsters[7].name,
+              dumpsters[6].name,
               "/add/seven/content",
               totalPercent7,
               color7,
               total7
             )}
             {dumpster(
-              data,
-              JSON.parse(
-                (typeof window !== "undefined"
-                  ? localStorage.getItem("users") || "Papier"
-                  : null) || "[]"
-              ),
-              dumpsters[8].name,
+              dumpsters[7].name,
               "/add/eight/content",
               totalPercent8,
               color8,
               total8
             )}
             {dumpster(
-              data,
-              JSON.parse(
-                (typeof window !== "undefined"
-                  ? localStorage.getItem("users") || "Papier"
-                  : null) || "[]"
-              ),
-              dumpsters[9].name,
+              dumpsters[8].name,
               "/add/nine/content",
               totalPercent9,
               color9,
               total9
             )}
             {dumpster(
-              data,
-              JSON.parse(
-                (typeof window !== "undefined"
-                  ? localStorage.getItem("users") || "Papier"
-                  : null) || "[]"
-              ),
-              dumpsters[10].name,
+              dumpsters[9].name,
               "/add/teen/content",
               totalPercent10,
               color10,
               total10
             )}
             {dumpster(
-              data,
-              JSON.parse(
-                (typeof window !== "undefined"
-                  ? localStorage.getItem("users") || "Papier"
-                  : null) || "[]"
-              ),
-              dumpsters[11].name,
+              dumpsters[10].name,
               "/add/eleven/content",
               totalPercent11,
               color11,

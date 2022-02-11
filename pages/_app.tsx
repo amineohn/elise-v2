@@ -156,13 +156,13 @@ export default function MyApp({
                       </span>
                       <p className="ml-3 font-medium text-white truncate">
                         <span className="md:hidden">
-                          Cette application est en test. Merci de prévenir
-                          Jerome en cas de bug.
+                          Cette application est en test. Merci de prévenir Amine
+                          en cas de bug.
                         </span>
                         <span className="hidden md:inline">
                           Cette application est en cours de test. Si vous
                           rencontrez un problème, n'hésitez pas à contacter
-                          Jerome.
+                          Amine.
                         </span>
                       </p>
                     </div>
