@@ -84,6 +84,7 @@ const Home: NextPage = () => {
   } else if (totalPercent > 10) {
     color = "bg-green-500";
   }
+  const router = useRouter();
 
   const dumpster = (
     dumpsters: any,
@@ -92,8 +93,6 @@ const Home: NextPage = () => {
     colors: any,
     totalValue: any
   ) => {
-    const router = useRouter();
-
     return (
       <div>
         <div
