@@ -11,10 +11,128 @@ const Code = ({ exit }) => {
   const [data2, setData2] = useState([{}] as any);
   const [data3, setData3] = useState([{}] as any);
   const [data4, setData4] = useState([{}] as any);
+  const [data5, setData5] = useState([{}] as any);
+  const [data6, setData6] = useState([{}] as any);
+  const [data7, setData7] = useState([{}] as any);
+  const [data8, setData8] = useState([{}] as any);
+  const [data9, setData9] = useState([{}] as any);
+  const [data10, setData10] = useState([{}] as any);
+  const [data11, setData11] = useState([{}] as any);
+  const [data12, setData12] = useState([{}] as any);
+  const [data13, setData13] = useState([{}] as any);
+
   const [modal, setModal] = useState(false);
   const [download, setDownload] = useState(false);
   useEffect(() => {
     const fire = new Firebase();
+    fire.collection("test13").onSnapshot((snapshot) => {
+      const data = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        value: doc.data().value,
+        date: doc.data().date,
+        user: doc.data().user,
+        dumpster: doc.data().dumpster,
+        matter: doc.data().matter,
+        ...doc.data(),
+      }));
+      setData13(data);
+    });
+    fire.collection("test12").onSnapshot((snapshot) => {
+      const data = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        value: doc.data().value,
+        date: doc.data().date,
+        user: doc.data().user,
+        dumpster: doc.data().dumpster,
+        matter: doc.data().matter,
+        ...doc.data(),
+      }));
+      setData12(data);
+    });
+    fire.collection("test11").onSnapshot((snapshot) => {
+      const data = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        value: doc.data().value,
+        date: doc.data().date,
+        user: doc.data().user,
+        dumpster: doc.data().dumpster,
+        matter: doc.data().matter,
+        ...doc.data(),
+      }));
+      setData11(data);
+    });
+    fire.collection("test10").onSnapshot((snapshot) => {
+      const data = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        value: doc.data().value,
+        date: doc.data().date,
+        user: doc.data().user,
+        dumpster: doc.data().dumpster,
+        matter: doc.data().matter,
+        ...doc.data(),
+      }));
+      setData10(data);
+    });
+    fire.collection("test9").onSnapshot((snapshot) => {
+      const data = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        value: doc.data().value,
+        date: doc.data().date,
+        user: doc.data().user,
+        dumpster: doc.data().dumpster,
+        matter: doc.data().matter,
+        ...doc.data(),
+      }));
+      setData9(data);
+    });
+    fire.collection("test8").onSnapshot((snapshot) => {
+      const data = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        value: doc.data().value,
+        date: doc.data().date,
+        user: doc.data().user,
+        dumpster: doc.data().dumpster,
+        matter: doc.data().matter,
+        ...doc.data(),
+      }));
+      setData8(data);
+    });
+    fire.collection("test7").onSnapshot((snapshot) => {
+      const data = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        value: doc.data().value,
+        date: doc.data().date,
+        user: doc.data().user,
+        dumpster: doc.data().dumpster,
+        matter: doc.data().matter,
+        ...doc.data(),
+      }));
+      setData7(data);
+    });
+    fire.collection("test6").onSnapshot((snapshot) => {
+      const data = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        value: doc.data().value,
+        date: doc.data().date,
+        user: doc.data().user,
+        dumpster: doc.data().dumpster,
+        matter: doc.data().matter,
+        ...doc.data(),
+      }));
+      setData6(data);
+    });
+    fire.collection("test5").onSnapshot((snapshot) => {
+      const data = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        value: doc.data().value,
+        date: doc.data().date,
+        user: doc.data().user,
+        dumpster: doc.data().dumpster,
+        matter: doc.data().matter,
+        ...doc.data(),
+      }));
+      setData5(data);
+    });
     fire.collection("test4").onSnapshot((snapshot) => {
       const data = snapshot.docs.map((doc) => ({
         id: doc.id,
@@ -96,9 +214,66 @@ const Code = ({ exit }) => {
               item.value + " kg"
             }\n ${item.date}`;
           });
-          const csv = new Blob([csvData + csvData2 + csvData3 + csvData4], {
-            type: "text/csv",
+          const csvData5 = data5.map((item: Data) => {
+            return `\n${item.user}\n${item.matter}\n${item.dumpster}\n ${
+              item.value + " kg"
+            }\n ${item.date}`;
           });
+          const csvData6 = data6.map((item: Data) => {
+            return `\n${item.user}\n${item.matter}\n${item.dumpster}\n ${
+              item.value + " kg"
+            }\n ${item.date}`;
+          });
+          const csvData7 = data7.map((item: Data) => {
+            return `\n${item.user}\n${item.matter}\n${item.dumpster}\n ${
+              item.value + " kg"
+            }\n ${item.date}`;
+          });
+          const csvData8 = data8.map((item: Data) => {
+            return `\n${item.user}\n${item.matter}\n${item.dumpster}\n ${
+              item.value + " kg"
+            }\n ${item.date}`;
+          });
+          const csvData9 = data9.map((item: Data) => {
+            return `\n${item.user}\n${item.matter}\n${item.dumpster}\n ${
+              item.value + " kg"
+            }\n ${item.date}`;
+          });
+          const csvData10 = data10.map((item: Data) => {
+            return `\n${item.user}\n${item.matter}\n${item.dumpster}\n ${
+              item.value + " kg"
+            }\n ${item.date}`;
+          });
+          const csvData11 = data11.map((item: Data) => {
+            return `\n${item.user}\n${item.matter}\n${item.dumpster}\n ${
+              item.value + " kg"
+            }\n ${item.date}`;
+          });
+          const csvData12 = data12.map((item: Data) => {
+            return `\n${item.user}\n${item.matter}\n${item.dumpster}\n ${
+              item.value + " kg"
+            }\n ${item.date}`;
+          });
+          const csvData13 = data13.map((item: Data) => {
+            return `\n${item.user}\n${item.matter}\n${item.dumpster}\n ${
+              item.value + " kg"
+            }\n ${item.date}`;
+          });
+          const csv = new Blob(
+            [
+              csvData +
+                csvData2 +
+                csvData3 +
+                csvData4 +
+                csvData5 +
+                csvData6 +
+                csvData7 +
+                csvData8,
+            ],
+            {
+              type: "text/csv",
+            }
+          );
           const url = URL.createObjectURL(csv);
           const a = document.createElement("a");
           a.href = url;
