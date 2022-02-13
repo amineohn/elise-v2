@@ -20,6 +20,8 @@ const Index = () => {
   const [data9, setData9] = useState([{}] as any);
   const [data10, setData10] = useState([{}] as any);
   const [data11, setData11] = useState([{}] as any);
+  const [data12, setData12] = useState([{}] as any);
+  const [data13, setData13] = useState([{}] as any);
 
   const [show, setShow] = useState(false);
   const [code, setCode] = useState("");
@@ -157,6 +159,30 @@ const Index = () => {
       });
     fire
       .collection("test11")
+      .orderBy("matter")
+      .onSnapshot((snapshot) => {
+        const data11 = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          value: doc.data().value,
+          ...doc.data(),
+        }));
+        setData11(data11);
+      });
+    setShow(true);
+    fire
+      .collection("test12")
+      .orderBy("matter")
+      .onSnapshot((snapshot) => {
+        const data11 = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          value: doc.data().value,
+          ...doc.data(),
+        }));
+        setData11(data11);
+      });
+    setShow(true);
+    fire
+      .collection("test13")
       .orderBy("matter")
       .onSnapshot((snapshot) => {
         const data11 = snapshot.docs.map((doc) => ({
@@ -771,6 +797,50 @@ const Index = () => {
               </div>
             ))}
             {data11.map((item: Data, index: any) => (
+              <div
+                key={index}
+                className="bg-neutral-600 border-b-4 border-neutral-700 rounded-xl px-4 py-4 slide-in-elliptic-top-fwd h-[80px] md:h-[100px] lg:h-[100px]"
+              >
+                <p className="text-white">
+                  <div className="space-x-1">
+                    <div className="inline-flex space-x-2">
+                      <p>
+                        Poids: {item.value}
+                        <span className="text-xs font-bold">kg</span>
+                      </p>
+                      <p> {item.dumpster}</p>
+                      <p> Date: {item.date}</p>
+                      <p> User: {item.user}</p>
+                      <p> Matter: {item.matter}</p>
+                      <p> Dumpster: {item.dumpster}</p>
+                    </div>
+                  </div>
+                </p>
+              </div>
+            ))}
+            {data12.map((item: Data, index: any) => (
+              <div
+                key={index}
+                className="bg-neutral-600 border-b-4 border-neutral-700 rounded-xl px-4 py-4 slide-in-elliptic-top-fwd h-[80px] md:h-[100px] lg:h-[100px]"
+              >
+                <p className="text-white">
+                  <div className="space-x-1">
+                    <div className="inline-flex space-x-2">
+                      <p>
+                        Poids: {item.value}
+                        <span className="text-xs font-bold">kg</span>
+                      </p>
+                      <p> {item.dumpster}</p>
+                      <p> Date: {item.date}</p>
+                      <p> User: {item.user}</p>
+                      <p> Matter: {item.matter}</p>
+                      <p> Dumpster: {item.dumpster}</p>
+                    </div>
+                  </div>
+                </p>
+              </div>
+            ))}
+            {data13.map((item: Data, index: any) => (
               <div
                 key={index}
                 className="bg-neutral-600 border-b-4 border-neutral-700 rounded-xl px-4 py-4 slide-in-elliptic-top-fwd h-[80px] md:h-[100px] lg:h-[100px]"

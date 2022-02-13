@@ -62,18 +62,61 @@ export default function MyApp({
   const router = useRouter();
   const routes = () => {
     switch (router.pathname) {
-      case "/add/dumpster":
+      case "/add/one/dumpster":
+        return router.push("/user/select");
+      case "/add/two/dumpster":
+        return router.push("/user/select");
+      case "/add/three/dumpster":
+        return router.push("/user/select");
+      case "/add/four/dumpster":
+        return router.push("/user/select");
+      case "/add/five/dumpster":
+        return router.push("/user/select");
+      case "/add/six/dumpster":
+        return router.push("/user/select");
+      case "/add/seven/dumpster":
+        return router.push("/user/select");
+      case "/add/eight/dumpster":
+        return router.push("/user/select");
+      case "/add/nine/dumpster":
+        return router.push("/user/select");
+      case "/add/ten/dumpster":
+        return router.push("/user/select");
+      case "/add/eleven/dumpster":
+        return router.push("/user/select");
+      case "/add/twelve/dumpster":
+        return router.push("/user/select");
+      case "/add/thirteen/dumpster":
         return router.push("/user/select");
       case "/user/select":
         return router.push("/");
       case "/add/one/content":
-        return router.push("/add/dumpster");
+        return router.push("/add/one/dumpster");
       case "/add/two/content":
-        return router.push("/add/dumpster");
+        return router.push("/add/two/dumpster");
       case "/add/three/content":
-        return router.push("/add/dumpster");
+        return router.push("/add/three/dumpster");
       case "/add/fourth/content":
-        return router.push("/add/dumpster");
+        return router.push("/add/fourth/dumpster");
+      case "/add/five/content":
+        return router.push("/add/five/dumpster");
+      case "/add/six/content":
+        return router.push("/add/six/dumpster");
+      case "/add/seven/content":
+        return router.push("/add/seven/dumpster");
+      case "/add/eight/content":
+        return router.push("/add/eight/dumpster");
+      case "/add/nine/content":
+        return router.push("/add/nine/dumpster");
+      case "/add/ten/content":
+        return router.push("/add/ten/dumpster");
+      case "/add/eleven/content":
+        return router.push("/add/eleven/dumpster");
+      case "/add/twelve/content":
+        return router.push("/add/twelve/dumpster");
+      case "/add/thirteen/content":
+        return router.push("/add/thirteen/dumpster");
+
       case "/security/code":
         return router.push("/admin");
     }

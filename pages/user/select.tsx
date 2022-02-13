@@ -17,6 +17,7 @@ const Home: NextPage = () => {
       .onSnapshot((snapshot) => {
         const data = snapshot.docs.map((doc) => ({
           id: doc.id,
+          link: doc.data().link,
           ...doc.data(),
         }));
         setData(data);
@@ -206,7 +207,7 @@ const Home: NextPage = () => {
                 <div>
                   <button
                     onClick={() => {
-                      router.push("/add/dumpster");
+                      router.push(`/add/${item.link}/dumpster`);
                       localStorage.setItem(
                         `matters`,
                         JSON.stringify(item.name)

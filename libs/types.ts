@@ -14,6 +14,7 @@ export type User = {
 };
 export type Matter = {
   name: string;
+  link: string;
 };
 export type Users = {
   name: string;
