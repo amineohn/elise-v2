@@ -136,7 +136,7 @@ const Home: NextPage = () => {
             <>
               {dumpster(
                 dumpsters[0].name,
-                "/add/one/content",
+                "/add/nine/content",
                 totalPercent,
                 color,
                 total
