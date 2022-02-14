@@ -80,7 +80,7 @@ export default function MyApp({
         return router.push("/user/select");
       case "/add/nine/dumpster":
         return router.push("/user/select");
-      case "/add/ten/dumpster":
+      case "/add/teen/dumpster":
         return router.push("/user/select");
       case "/add/eleven/dumpster":
         return router.push("/user/select");
@@ -108,8 +108,8 @@ export default function MyApp({
         return router.push("/add/eight/dumpster");
       case "/add/nine/content":
         return router.push("/add/nine/dumpster");
-      case "/add/ten/content":
-        return router.push("/add/ten/dumpster");
+      case "/add/teen/content":
+        return router.push("/add/teen/dumpster");
       case "/add/eleven/content":
         return router.push("/add/eleven/dumpster");
       case "/add/twelve/content":
