@@ -11,7 +11,7 @@ export function Switch() {
     <button
       aria-label="Toggle Dark Mode"
       type="button"
-      className="w-10 h-10 hover:animate-wiggle focus:animate-wiggle border border-black-900 dark:border-white rounded-full"
+      className="w-10 h-10 hover:animate-wiggle focus:animate-wiggle border border-black dark:border-white rounded-full"
       onClick={() => setTheme(set(theme))}
     >
       {(() => {
