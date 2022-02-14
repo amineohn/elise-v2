@@ -249,9 +249,9 @@ export default function MyApp({
             <div className="flex justify-between py-3 px-3">
               {router.pathname !== "/" && (
                 <div className="flex justify-center">
-                  <div className="border border-slate-900 dark:border-white w-10 h-10 rounded-full px-2.5 py-2">
+                  <div className="border border-black-900 dark:border-white w-10 h-10 rounded-full px-2.5 py-2">
                     <svg
-                      className="fill-current text-slate-900 dark:text-white w-5 h-5"
+                      className="fill-current text-black-900 dark:text-white w-5 h-5"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 448 512"
                       onClick={() => routes()}

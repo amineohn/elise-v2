@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Lora&display=swap");
 html,
 body {
-  @apply transition-all font-default ease-in-out overflow-hidden antialiased p-0 m-0 select-none bg-white dark:bg-slate-900 h-screen focus:outline-none;
+  @apply transition-all font-default ease-in-out overflow-hidden antialiased p-0 m-0 select-none bg-white dark:bg-black-900 h-screen focus:outline-none;
 }
 
 a {
@@ -60,7 +60,7 @@ p {
   }
 }
 .go2072408551 {
-  @apply !bg-white dark:!bg-slate-900 !text-slate-900 dark:!text-white;
+  @apply !bg-white dark:!bg-black-900 !text-black-900 dark:!text-white;
 }
 .slide-out-top {
   -webkit-animation: slide-out-top 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53)

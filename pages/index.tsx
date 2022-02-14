@@ -53,9 +53,9 @@ const Home: NextPage = () => {
                       }}
                       className=""
                     >
-                      <div className="flex justify-center items-center my-5 rounded-full w-20 h-20 border border-slate-900 dark:border-white bg-white dark:bg-slate-900">
+                      <div className="flex justify-center items-center my-5 rounded-full w-20 h-20 border border-black-900 dark:border-white bg-white dark:bg-black-900">
                         <svg
-                          className="text-slate-900 dark:text-white w-10 h-10"
+                          className="text-black-900 dark:text-white w-10 h-10"
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 448 512"
                         >
