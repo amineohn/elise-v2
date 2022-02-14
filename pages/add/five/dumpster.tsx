@@ -123,6 +123,13 @@ const Home: NextPage = () => {
       </div>
     );
   };
+  const text = `${JSON.parse(
+    (typeof window !== "undefined" ? localStorage.getItem(`user`) : null) ||
+      "[]"
+  )} > ${JSON.parse(
+    (typeof window !== "undefined" ? localStorage.getItem(`matters`) : null) ||
+      "[]"
+  )}`;
   return (
     <>
       <div className="flex flex-col py-5 px-1 space-y-2 h-screen scale items-center justify-center !overflow-auto">
@@ -130,6 +137,9 @@ const Home: NextPage = () => {
           <h1 className="text-center font-bold text-3xl uppercase">
             Choisir une benne
           </h1>
+        </div>
+        <div className="flex justify-center items-center">
+          <span className="text-xl font-bold">{text}</span>
         </div>
         <div className="h-[400px] overflow-auto">
           <div className="grid grid-cols-1 mt-10 gap-4">

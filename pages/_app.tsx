@@ -246,21 +246,25 @@ export default function MyApp({
                 </div>
               </div>
             </Transition>
-            <div className="flex justify-between py-3 px-3">
+            <div className="flex justify-between py-5 px-5">
               {router.pathname !== "/" && (
-                <div className="flex justify-center">
-                  <div className="border border-black dark:border-white w-10 h-10 rounded-full px-2.5 py-2">
-                    <svg
-                      className="fill-current text-black dark:text-white w-5 h-5"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 448 512"
-                      onClick={() => routes()}
-                    >
-                      <path
-                        fill="currentColor"
-                        d="M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"
-                      />
-                    </svg>
+                <div className="flex justify-center items-center">
+                  <div
+                    className="border border-black dark:border-white w-14 h-14 rounded-full px-2.5 py-2 cursor-pointer"
+                    onClick={() => routes()}
+                  >
+                    <div className="flex justify-center items-center my-1">
+                      <svg
+                        className="fill-current text-black dark:text-white w-7 h-7"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 448 512"
+                      >
+                        <path
+                          fill="currentColor"
+                          d="M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"
+                        />
+                      </svg>
+                    </div>
                   </div>
                 </div>
               )}

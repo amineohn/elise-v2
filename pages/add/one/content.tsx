@@ -179,6 +179,9 @@ const Send: NextPage = () => {
       });
   };
   const text = `${JSON.parse(
+    (typeof window !== "undefined" ? localStorage.getItem(`user`) : null) ||
+      "[]"
+  )} > ${JSON.parse(
     (typeof window !== "undefined" ? localStorage.getItem(`matters`) : null) ||
       "[]"
   )} > ${JSON.parse(

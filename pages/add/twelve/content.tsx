@@ -179,6 +179,9 @@ const Send: NextPage = () => {
       });
   };
   const text = `${JSON.parse(
+    (typeof window !== "undefined" ? localStorage.getItem(`user`) : null) ||
+      "[]"
+  )} > ${JSON.parse(
     (typeof window !== "undefined" ? localStorage.getItem(`matters`) : null) ||
       "[]"
   )} > ${JSON.parse(
@@ -478,7 +481,7 @@ const Send: NextPage = () => {
                               setShowModal(true);
                             }}
                           >
-                            Supprimer benne 1
+                            Supprimer benne 12
                           </a>
                         </div>
                       )}
