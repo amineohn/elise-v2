@@ -173,24 +173,24 @@ const Index = () => {
       .collection("test12")
       .orderBy("matter")
       .onSnapshot((snapshot) => {
-        const data11 = snapshot.docs.map((doc) => ({
+        const data12 = snapshot.docs.map((doc) => ({
           id: doc.id,
           value: doc.data().value,
           ...doc.data(),
         }));
-        setData11(data11);
+        setData12(data12);
       });
     setShow(true);
     fire
       .collection("test13")
       .orderBy("matter")
       .onSnapshot((snapshot) => {
-        const data11 = snapshot.docs.map((doc) => ({
+        const data13 = snapshot.docs.map((doc) => ({
           id: doc.id,
           value: doc.data().value,
           ...doc.data(),
         }));
-        setData11(data11);
+        setData13(data13);
       });
     setShow(true);
   }, []);
