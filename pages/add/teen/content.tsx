@@ -416,7 +416,7 @@ const Send: NextPage = () => {
                         ) : (
                           <button className="mr-0.5" type="button" disabled>
                             <div
-                              className="rounded-full w-20 h-20 bg-neutral-300 transition-colors"
+                              className="rounded-full w-20 h-20 dark:bg-neutral-700 bg-neutral-300 transition-colors"
                               onClick={() => setValue("")}
                             >
                               <div className="p-5">
@@ -451,7 +451,7 @@ const Send: NextPage = () => {
                           </button>
                         ) : (
                           <button type="submit" disabled>
-                            <div className="rounded-full w-20 h-20 bg-neutral-300 transition-colors">
+                            <div className="rounded-full w-20 h-20 dark:bg-neutral-700 bg-neutral-300 transition-colors">
                               <div className="p-5">
                                 <span className=" text-3xl font-bold text-white">
                                   V
