@@ -68,7 +68,7 @@ export default function MyApp({
         return router.push("/user/select");
       case "/add/three/dumpster":
         return router.push("/user/select");
-      case "/add/four/dumpster":
+      case "/add/fourth/dumpster":
         return router.push("/user/select");
       case "/add/five/dumpster":
         return router.push("/user/select");
