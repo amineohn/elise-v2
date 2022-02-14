@@ -124,7 +124,7 @@ const Home: NextPage = () => {
     );
   };
   const text = `${JSON.parse(
-    (typeof window !== "undefined" ? localStorage.getItem(`user`) : null) ||
+    (typeof window !== "undefined" ? localStorage.getItem(`users`) : null) ||
       "[]"
   )} > ${JSON.parse(
     (typeof window !== "undefined" ? localStorage.getItem(`matters`) : null) ||
