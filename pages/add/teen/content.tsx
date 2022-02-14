@@ -249,7 +249,7 @@ const Send: NextPage = () => {
         </div>
       </Transition>
       <Toaster />
-      <div className="h-screen my-10 scale">
+      <div className="h-screen scale">
         <div className="flex flex-col py-5 px-1 space-y-3">
           <div className="flex justify-center">
             <h1 className="text-center font-bold text-3xl uppercase">

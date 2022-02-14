@@ -132,7 +132,7 @@ const Home: NextPage = () => {
           </h1>
         </div>
         <div className="h-[400px] overflow-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 mt-10 gap-4">
+          <div className="grid grid-cols-1 mt-10 gap-4">
             <>
               {dumpster(
                 dumpsters[0].name,
