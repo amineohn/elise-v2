@@ -398,7 +398,7 @@ l-6 47 -718 -1296z"
                         JSON.stringify(item.name)
                       );
                     }}
-                    className="hover:scale-105 hover:transform transition"
+                    className=""
                   >
                     <div className="rounded-full w-20 h-20 border border-slate-900 dark:border-white bg-white dark:bg-slate-900">
                       <div className="flex justify-center items-center my-5">
