@@ -94,7 +94,7 @@ const Send: NextPage = () => {
         setData(value);
       }
 
-      if (total > 10000) {
+      if (total >= 10000) {
         toast.error(
           "Attention, vous êtes à plus de 10000kg, Un mail sera directement envoyé à Jerome."
         );
@@ -117,6 +117,7 @@ const Send: NextPage = () => {
             });
           }
         }
+        return;
       }
       setPrevent(true);
     });
