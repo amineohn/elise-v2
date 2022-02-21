@@ -174,10 +174,10 @@ export default function MyApp({
               leave="transition ease-in duration-500 slide-out-top"
               leaveFrom="opacity-100"
               leaveTo="opacity-0 duration-500 slide-out-top"
-              className="z-50"
+              className="z-50 absolute w-full"
             >
               <div className="bg-rose-600">
-                <div className="max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
+                <div className="max-w-7xl mx-auto py-5 px-3 sm:px-6 lg:px-8">
                   <div className="flex items-center justify-between flex-wrap">
                     <div className="w-0 flex-1 flex items-center">
                       <span className="flex p-2 rounded-lg bg-rose-800">
