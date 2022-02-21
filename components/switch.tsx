@@ -3,8 +3,8 @@ export function Switch() {
   const { theme, setTheme } = useTheme();
   const set = (theme: any) => {
     if (theme === "dark") return "light";
-    if (theme === "light") return "system";
-    return "dark";
+    if (theme === "light") return "dark";
+    return "light";
   };
 
   return (
@@ -31,7 +31,7 @@ export function Switch() {
                 </svg>
               </div>
             );
-          case "system":
+          /* case "system":
             return (
               <div className="flex justify-center items-center my-2">
                 <svg
@@ -45,7 +45,7 @@ export function Switch() {
                   />
                 </svg>
               </div>
-            );
+            );*/
           case "light":
             return (
               <div className="flex justify-center items-center my-2">
