@@ -101,9 +101,7 @@ const Send: NextPage = () => {
         if (typeof window !== "undefined") {
           // check if is stored in localStorage and if not, send mail
           if (localStorage.getItem("total") === null) {
-            console.log("not stored");
           } else {
-            console.log("ok");
             fetch("/api/send", {
               method: "POST",
               headers: {
