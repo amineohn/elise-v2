@@ -439,7 +439,7 @@ l-6 47 -718 -1296z"
             x2="3.83167"
             y2="95.9986"
             stroke="currentColor"
-            stroke-width="2"
+            stroke-width="3"
             stroke-linecap="round"
           />
           <line
@@ -448,7 +448,7 @@ l-6 47 -718 -1296z"
             x2="93"
             y2="1"
             stroke="currentColor"
-            stroke-width="2"
+            stroke-width="3"
             stroke-linecap="round"
           />
           <line
@@ -457,7 +457,7 @@ l-6 47 -718 -1296z"
             x2="88"
             y2="67"
             stroke="currentColor"
-            stroke-width="2"
+            stroke-width="3"
             stroke-linecap="round"
           />
           <line
@@ -466,7 +466,7 @@ l-6 47 -718 -1296z"
             x2="87"
             y2="67"
             stroke="currentColor"
-            stroke-width="2"
+            stroke-width="3"
             stroke-linecap="round"
           />
           <line
@@ -475,7 +475,7 @@ l-6 47 -718 -1296z"
             x2="69"
             y2="96"
             stroke="currentColor"
-            stroke-width="2"
+            stroke-width="3"
             stroke-linecap="round"
           />
           <path
@@ -488,7 +488,7 @@ l-6 47 -718 -1296z"
             x2="70"
             y2="96"
             stroke="currentColor"
-            stroke-width="2"
+            stroke-width="3"
             stroke-linecap="round"
           />
         </svg>
