@@ -439,8 +439,8 @@ l-6 47 -718 -1296z"
             x2="3.83167"
             y2="95.9986"
             stroke="currentColor"
-            stroke-width="3"
-            stroke-linecap="round"
+            strokeWidth="3"
+            strokeLinecap="round"
           />
           <line
             x1="1"
@@ -448,8 +448,8 @@ l-6 47 -718 -1296z"
             x2="93"
             y2="1"
             stroke="currentColor"
-            stroke-width="3"
-            stroke-linecap="round"
+            strokeWidth="3"
+            strokeLinecap="round"
           />
           <line
             x1="88"
@@ -466,8 +466,8 @@ l-6 47 -718 -1296z"
             x2="87"
             y2="67"
             stroke="currentColor"
-            stroke-width="3"
-            stroke-linecap="round"
+            strokeWidth="3"
+            strokeLinecap="round"
           />
           <line
             x1="4"
@@ -475,8 +475,8 @@ l-6 47 -718 -1296z"
             x2="69"
             y2="96"
             stroke="currentColor"
-            stroke-width="3"
-            stroke-linecap="round"
+            strokeWidth="3"
+            strokeLinecap="round"
           />
           <path
             d="M37 35.074C37 30.9279 43.3937 22.0654 46.4312 18.0932C47.2 17.0898 48.8 17.0898 49.5688 18.0932C52.6063 22.0654 59 30.9279 59 35.074C59 40.6305 54.075 45.0937 48 45.0937C41.925 45.0937 37 40.6305 37 35.074ZM43 35.074C43 34.6266 42.55 34.1678 42 34.1678C41.4475 34.1678 41 34.6266 41 35.074C41 38.631 44.1312 41.4687 48 41.4687C48.55 41.4687 49 41.0609 49 40.5625C49 40.0641 48.55 39.6562 48 39.6562C45.2375 39.6562 43 37.6285 43 35.074Z"
@@ -488,8 +488,8 @@ l-6 47 -718 -1296z"
             x2="70"
             y2="96"
             stroke="currentColor"
-            stroke-width="3"
-            stroke-linecap="round"
+            strokeWidth="3"
+            strokeLinecap="round"
           />
         </svg>
       );
