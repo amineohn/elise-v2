@@ -457,8 +457,8 @@ l-6 47 -718 -1296z"
             x2="88"
             y2="67"
             stroke="currentColor"
-            stroke-width="3"
-            stroke-linecap="round"
+            strokeWidth="3"
+            strokeLinecap="round"
           />
           <line
             x1="51"
